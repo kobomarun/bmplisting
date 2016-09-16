@@ -14,7 +14,7 @@ function __construct() {
 	}
 
 
-	function  myItems() {
+	function  editProfile() {
 
 		$userid = $this->session->userdata('userid');
 		$data['items'] = $this->mdl_user->getMyItems($userid);
