@@ -10,7 +10,7 @@
   <title>BMPListing</title>
 
   <!-- Bootstrap Core CSS -->
-  <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link href="<?php echo base_url(); ?>css/bmp-www.css" rel="stylesheet">     
   <link href="<?php echo base_url(); ?>css/bmp-slider.css" rel="stylesheet"> 
