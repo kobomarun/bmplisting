@@ -1,0 +1,24 @@
+Options -Indexes
+<Files ".ht*">
+deny from all
+</Files>
+<IfModule mod_rewrite.c>
+Options -MultiViews
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.php [F,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(index\.php|assets|api|portal|images|includes|webservice|robots\.txt)
+RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
+</IfModule> 
+#AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript text/css application/javascript
+#FileETag None
+#AddType text/html;charset=UTF-8 html
+#SetEnvIfNoCase User-Agent libwww-perl block_bad_bots
+# to deny more User-Agents, copy the line above and change
+# only libwww-perl, to match the new name.
+deny from env=block_bad_bots
