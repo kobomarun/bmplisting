@@ -6,5 +6,4 @@ npm-debug.log*
 #folders
 user_guide
 lib
-application/config/config.php
-application/config/database.php
+application/config
