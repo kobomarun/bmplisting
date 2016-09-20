@@ -18,6 +18,7 @@
               $this->db->from('bmp_products p');
               $this->db->join('sub_category s','p.subcatid = s.id');
               $this->db->where('p.catid',$category_id);
+              $this->db->limit(8);
               $result = $this->db->get()->result();
           ?>
         <div class="row">
@@ -27,7 +28,7 @@
               <?php foreach($result as $row1){ ?>
                 <div class="col-sm-3 col-xs-12 bmp-home-listing">
                   <a href="#">
-                    <img src="<?php echo base_url(); ?>img/<?php echo $row1->img; ?>" class="img-responsive" style="width:200px"/>
+                    <img src="<?php echo base_url(); ?>img/<?php echo $row1->img; ?>" class="img-responsive" style="height:135px"/>
                   </a>
                   <div class="bmp-prod-cat"><?php echo $row1->category_name; ?></div>
                   <div class="bmp-prod-name"><?php echo $row1->product_name; ?></div>
