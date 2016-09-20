@@ -12,7 +12,7 @@
     <ul>
       <?php foreach($query as $cat) { ?>
       <li>
-        <a href="<?php echo base_url(); ?>listing/listing/<?php echo $cat->id; ?>/<?php echo preg_replace('/\s+/', '', $cat->name) ?>">
+        <a href="<?php echo base_url(); ?>category/listing/<?php echo $cat->id; ?>/<?php echo preg_replace('/\s+/', '', $cat->name) ?>">
           <i class="glyphicon glyphicon-list-alt"></i> <?php echo $cat->name; ?>
         </a>
       </li>
