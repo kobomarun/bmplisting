@@ -93,7 +93,7 @@
             <div class="bmp-menu-r">
               <ul>
                 <li data-toggle="modal" data-target="#myModal"><a href="#">Sign In </a></li>
-                <li>|&nbsp; <a href="#">Sign up</a> </li>
+                <li>|&nbsp; <a href="registration">Sign up</a> </li>
                 <li>|&nbsp; <a href="#">Wish List</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
           </div>
