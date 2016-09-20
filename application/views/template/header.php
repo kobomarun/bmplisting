@@ -102,7 +102,7 @@
               <ul>
                 <li data-toggle="modal" data-target="#myModal"><a href="authentication/logout">Logout </a></li>
                 <li>|&nbsp; <a href="#">My Profile</a> </li>
-                <li>|&nbsp; <a href="#">Wish List</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
+                <li>|&nbsp; <a href="#">Wish List(0)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
           </div>
           <?php } ?>
