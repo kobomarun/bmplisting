@@ -37,6 +37,13 @@
                   </div>
                      <?php } ?>
 
+                     <?php if($this->session->flashdata('success')) { ?>
+                  <div data-alert class="alert alert-success" role="alert">
+                    <strong><?php echo $this->session->flashdata('success'); ?></strong> 
+                    <a href="#" class="close">&times;</a>
+                  </div>
+                     <?php } ?>
+
                   <form action="login  " class="form-horizontal" method="post" name="signup" id="signup" enctype="multipart/form-data" >        
                     
                     <div class="form-group">
