@@ -16,6 +16,8 @@
   <link href="<?php echo base_url(); ?>css/bmp-slider.css" rel="stylesheet"> 
   <script type="text/javascript" src="<?php echo base_url(); ?>js/jssor.slider-21.1.5.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>js/slider.js"></script>
+  <script src="<?php echo base_url(); ?>dist/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="<?php echo base_url(); ?>dist/sweetalert.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
