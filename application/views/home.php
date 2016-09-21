@@ -14,7 +14,7 @@
                 $category_id = $row->id;
       ?>
           <?php 
-              $this->db->select('p.id as id, p.name as product_name,p.price,p.img,s.name as category_name');
+              $this->db->select('p.id as product_id, p.name as product_name,p.price,p.img,s.name as category_name,p.subcatid');
               $this->db->from('bmp_products p');
               $this->db->join('sub_category s','p.subcatid = s.id');
               $this->db->where('p.catid',$category_id);
@@ -27,14 +27,14 @@
           </div>
               <?php foreach($result as $row1){ ?>
                 <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                  <a href="<?php echo base_url() . "/products/". $row1->id; ?>">
+                  <a href="<?php echo base_url() . "/products/". $row1->product_id.'/'.$row1->subcatid; ?>">
                     <img src="<?php echo base_url(); ?>img/<?php echo $row1->img; ?>" class="img-responsive" style="height:135px"/>
                   </a>
                   <div class="bmp-prod-cat"><?php echo $row1->category_name; ?></div>
                   <div class="bmp-prod-name"><?php echo $row1->product_name; ?></div>
                   <div class="bmp-prod-price">Guide Price: <?php echo $row1->price; ?></div>
                   <div class="bmp-wishlist-btn-container">
-                  <a href="#">
+                  <a href="<?php echo base_url(); ?>wishlist/add/<?php echo $row1->product_id; ?>">
                     <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
                   </a>
                   </div>
