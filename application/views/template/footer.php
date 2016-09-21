@@ -50,12 +50,26 @@
                 <h2 class="header">Newsletter</h2>
                 <div class="">
                   <p>Subscribe to Newsletter</p>
+                  <?php if($this->input->post('newsletter')) { 
+                    $email = $this->input->post('newsletter');
+                    $date = date("Y,m,d");
+
+                    $data = array(
+                      'email'=>$email,
+                      'date'=>$date
+                    );
+                    $this->db->insert('newsletter',$data);
+                  ?>
+                      <script type="text/javascript">
+                        swal("Succesful!", "You have successfully subscribed to our newsletter", "success")
+                      </script>
+                      <?php } ?>
                   <form action="" method="post">
                     <div class="input-group">
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-envelope"></i></button>
                       </span>
-                      <input type="text" class="form-control" placeholder="Search your@email.com">
+                      <input type="email" class="form-control" placeholder="Search your@email.com" name="newsletter" required />
                     </div><br />
                     <div>
                      <input type="submit" value="Subscribe Now!" class="btns btn-large" />
