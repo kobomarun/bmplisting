@@ -220,7 +220,7 @@
                         <td><?php echo $items['name']; ?></td>
                         <td><?php echo $items['price']; ?></td>
                           </div>
-                        <td><a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a></td>
+                        <td><a href="<?php echo base_url(); ?>wishlist/remove/<?php echo $items['rowid']; ?> "data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a></td>
                       </tr>
                     <?php $i++; } }else{ ?>
                       <tr>
