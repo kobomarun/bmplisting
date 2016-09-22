@@ -14,27 +14,29 @@
                 $category_id = $row->id;
       ?>
           <?php 
-              $this->db->select('p.id as id, p.name as product_name,p.price,p.img,s.name as category_name');
+              $this->db->select('p.id as product_id, p.name as product_name,p.price,p.img,s.name as category_name,p.subcatid');
               $this->db->from('bmp_products p');
               $this->db->join('sub_category s','p.subcatid = s.id');
               $this->db->where('p.catid',$category_id);
               $this->db->limit(8);
               $result = $this->db->get()->result();
           ?>
+
         <div class="row">
           <div class="col-sm-12 container">
             <h2><?php echo $row->name; ?><small><a href="<?php //echo base_url() . "/categories/". $row1->category_name; ?>">see more</a></small></h2>
           </div>
               <?php foreach($result as $row1){ ?>
                 <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                  <a href="<?php echo base_url() . "/products/". $row1->id; ?>">
+                  <a href="<?php echo base_url() . "/products/details/". $row1->product_id.'/'.preg_replace('/\s+/', '', $row1->product_name); ?>">
                     <img src="<?php echo base_url(); ?>img/<?php echo $row1->img; ?>" class="img-responsive" style="height:135px"/>
                   </a>
                   <div class="bmp-prod-cat"><?php echo $row1->category_name; ?></div>
                   <div class="bmp-prod-name"><?php echo $row1->product_name; ?></div>
                   <div class="bmp-prod-price">Guide Price: <?php echo $row1->price; ?></div>
                   <div class="bmp-wishlist-btn-container">
-                  <a href="#">
+                  <!-- <a href="<?php //echo base_url(); ?>wishlist/add/<?php echo $row1->product_id; ?>"> -->
+                  <a onclick="addtowishlist(<?php echo $row1->product_id; ?>)">
                     <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
                   </a>
                   </div>
@@ -55,3 +57,22 @@
 <?php
   include("template/footer.php");
 ?>
+
+<script type="text/javascript">
+  function addtowishlist(product_id)
+  {
+     // alert(product_id);
+      //get items from outlet id
+      $.ajax({  
+        type: "POST",  
+        url: "<?php echo base_url();?>wishlist/add/"+product_id,  
+
+        success: function(response)
+        {
+              console.log("return", response);
+        }
+      });
+
+  }
+
+</script>
