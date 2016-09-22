@@ -36,10 +36,15 @@ class Wishlist extends CI_Controller {
                     'name' => $product_name,
                     'options' => array('image ' => $product_image, 'category ' => $category),
             );
-        $this->cart->insert($data); 
-        $data['cartitems'] = 1;
+
+		if($query = $this->cart->insert($data))
+		{
+			header('Content-Type: application/json');
+	        echo json_encode($query);
+		} 
+        /*$data['cartitems'] = 1;
 		$data['categories'] = $this->mdl_wishlist->get_categories();
-		$this->load->view('home',$data);
+		$this->load->view('home',$data);*/
 	}
 
 	public function remove() 
@@ -49,6 +54,18 @@ class Wishlist extends CI_Controller {
 	  $array = array('rowid' =>$row_id ,'qty'=>$qty );
 	  $this->cart->update($array);
 	  redirect('wishlist');
+	}
+
+	function delete_product()
+	{
+		$row_id = $this->uri->segment(3);
+		$qty = 0;
+		$array = array('rowid' =>$row_id ,'qty'=>$qty );
+		if($query = $this->cart->update($array))
+		{
+			header('Content-Type: application/json');
+	        echo json_encode($query);
+		}
 	}
 
 }

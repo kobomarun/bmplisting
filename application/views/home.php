@@ -21,8 +21,10 @@
               $this->db->limit(8);
               $result = $this->db->get()->result();
           ?>
+
         <div class="row">
           <div class="col-sm-12 container">
+            <?php  echo count($this->cart->contents()); ?>
             <h2><?php echo $row->name; ?><small><a href="<?php //echo base_url() . "/categories/". $row1->category_name; ?>">see more</a></small></h2>
           </div>
               <?php foreach($result as $row1){ ?>
@@ -34,7 +36,8 @@
                   <div class="bmp-prod-name"><?php echo $row1->product_name; ?></div>
                   <div class="bmp-prod-price">Guide Price: <?php echo $row1->price; ?></div>
                   <div class="bmp-wishlist-btn-container">
-                  <a href="<?php echo base_url(); ?>wishlist/add/<?php echo $row1->product_id; ?>">
+                  <!-- <a href="<?php //echo base_url(); ?>wishlist/add/<?php echo $row1->product_id; ?>"> -->
+                  <a onclick="addtowishlist(<?php echo $row1->product_id; ?>)">
                     <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
                   </a>
                   </div>
@@ -55,3 +58,22 @@
 <?php
   include("template/footer.php");
 ?>
+
+<script type="text/javascript">
+  function addtowishlist(product_id)
+  {
+     // alert(product_id);
+      //get items from outlet id
+      $.ajax({  
+                type: "POST",  
+                url: "<?php echo base_url();?>wishlist/add/"+product_id,  
+
+                success: function(response)
+                {
+                      console.log("return", response);
+                }
+      });
+
+  }
+
+</script>

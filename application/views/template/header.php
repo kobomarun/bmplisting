@@ -8,7 +8,8 @@
   <meta name="author" content="">
 
   <title>BMPListing</title>
-
+  <!-- jQuery Version 1.11.1 -->
+  <script src="<?php echo base_url(); ?>js/jquery.js"></script>
   <!-- Bootstrap Core CSS -->
   <link href="<?php echo base_url(); ?>/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->

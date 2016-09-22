@@ -12,6 +12,7 @@
     <title>BMPListing</title>
 
     <!-- Bootstrap Core CSS -->
+    <script src="js/jquery.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/bmp-www.css" rel="stylesheet">   
@@ -220,7 +221,8 @@
                         <td><?php echo $items['name']; ?></td>
                         <td><?php echo $items['price']; ?></td>
                           </div>
-                        <td><a href="<?php echo base_url(); ?>wishlist/remove/<?php echo $items['rowid']; ?> "data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a></td>
+                        <!-- <td><a href="<?php echo base_url(); ?>wishlist/remove/<?php echo $items['rowid']; ?> "data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a></td> -->
+                        <td><a onclick="deleteitem(<?php echo $items['rowid']; ?>)"  type="button" class="btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a></td>
                       </tr>
                     <?php $i++; } }else{ ?>
                       <tr>
@@ -325,7 +327,7 @@
  </div>
     
 <!-- jQuery Version 1.11.1 -->
-<script src="js/jquery.js"></script>
+
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
@@ -333,3 +335,21 @@
 </body>
 
 </html>
+
+
+<script type="text/javascript">
+    function deleteitem(product_id)
+    {
+      $.ajax({  
+                type: "POST",  
+                url: "<?php echo base_url();?>wishlist/delete_product/"+product_id,  
+
+                success: function(response)
+                {
+                      console.log("return", response);
+                }
+      });
+    }
+
+
+</script>
