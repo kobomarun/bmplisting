@@ -61,7 +61,7 @@ class Wishlist extends CI_Controller {
 		$row_id = $this->uri->segment(3);
 		$qty = 0;
 		$array = array('rowid' =>$row_id ,'qty'=>$qty );
-		if($query = $this->cart->update($array))
+		if($query = $this->cart->delete($array))
 		{
 			header('Content-Type: application/json');
 	        echo json_encode($query);

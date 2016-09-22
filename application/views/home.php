@@ -24,12 +24,11 @@
 
         <div class="row">
           <div class="col-sm-12 container">
-            <?php  echo count($this->cart->contents()); ?>
             <h2><?php echo $row->name; ?><small><a href="<?php //echo base_url() . "/categories/". $row1->category_name; ?>">see more</a></small></h2>
           </div>
               <?php foreach($result as $row1){ ?>
                 <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                  <a href="<?php echo base_url() . "/products/". $row1->product_id.'/'.$row1->subcatid; ?>">
+                  <a href="<?php echo base_url() . "/products/details/". $row1->product_id.'/'.preg_replace('/\s+/', '', $row1->product_name); ?>">
                     <img src="<?php echo base_url(); ?>img/<?php echo $row1->img; ?>" class="img-responsive" style="height:135px"/>
                   </a>
                   <div class="bmp-prod-cat"><?php echo $row1->category_name; ?></div>
@@ -65,13 +64,13 @@
      // alert(product_id);
       //get items from outlet id
       $.ajax({  
-                type: "POST",  
-                url: "<?php echo base_url();?>wishlist/add/"+product_id,  
+        type: "POST",  
+        url: "<?php echo base_url();?>wishlist/add/"+product_id,  
 
-                success: function(response)
-                {
-                      console.log("return", response);
-                }
+        success: function(response)
+        {
+              console.log("return", response);
+        }
       });
 
   }

@@ -35,6 +35,10 @@
   font-size: 10px;
 }
 
+.glyphicon-remove {
+  cursor: pointer;
+}
+
 .bmplisting header {
   position: fixed;
   width: 100%;
