@@ -19,7 +19,7 @@ class Authentication extends CI_Controller {
   function login() {
 		if($this->input->post()) { 
 		$email = $this->input->post('email');
-		$pwd = md5($this->input->post('password'));
+		$pwd = $this->hash($this->input->post('password'));
 
 
 		$row = $this->mdl_auth->login($email,$pwd);
@@ -55,6 +55,12 @@ class Authentication extends CI_Controller {
   	$this->session->set_flashdata('logout','You have successfully logout');
   	redirect('authentication/login');
   }
+
+
+//hash password
+function hash($string) {
+       return hash('sha512', $string . config_item('encryption_key'));
+}
 
 
 }

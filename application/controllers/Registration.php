@@ -42,7 +42,7 @@ class Registration extends CI_Controller {
         'fname'=>$fname,
         'lname'=>$lname,
         'fname'=>$fname,
-        'pwdd'=>md5($pwd),
+        'pwdd'=>$this->hash($pwd),
         'email'=>$email,
         'ipaddress'=>$this->input->ip_address(),
         'date'=> date("Y,m,d")
@@ -126,5 +126,11 @@ class Registration extends CI_Controller {
     $this->session->set_flashdata('success', 'Your registration was successful. Please log in .');
     redirect('authentication/login');
   }
+
+//hash password
+function hash($string) {
+       return hash('sha512', $string . config_item('encryption_key'));
+}
+
 		
 }

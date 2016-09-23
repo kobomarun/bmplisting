@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Details extends CI_Controller {
+class Product_details extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -11,8 +11,8 @@ class Details extends CI_Controller {
 
 	public function index()
 	{
-		//$data['categories'] = $this->mdl_home->get_categories();
-		$this->load->view('product_details.php');
+		$product_id = $this->uri->segment(3);
+		$this->load->view('product_details');
 
 	}
 
