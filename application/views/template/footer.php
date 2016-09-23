@@ -122,7 +122,7 @@
       </div> <!-- /.modal-header -->
 
       <div class="modal-body">
-        <form role="form" action="authentication/login" method="post">
+        <form role="form" action="<?php echo base_url();?>authentication/login" method="post">
           <div class="form-group">
             <div class="input-group">
               <input type="text" class="form-control" id="uLogin" placeholder="Login" name="email">

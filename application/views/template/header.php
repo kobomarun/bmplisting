@@ -38,13 +38,15 @@
       <div class="container-fluid">
         <header>
           <div class="col-md-2 col-sm-2 col-xs-12">
-            <img src="<?php echo base_url(); ?>img/logo.png" class="logo img-responsive" />
+            <a href="<?php echo base_url(); ?>">
+              <img src="<?php echo base_url(); ?>img/logo.png" class="logo img-responsive" />
+            </a>
             <div class="search-by">Search by</div>
             <div class="cat-text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categoty <i class="glyphicon glyphicon-triangle-bottom"></i></div>
             <ul class="dropdown-menu">
               <?php foreach($query as $cat) { ?>
             <li>
-              <a href="<?php echo base_url(); ?>listing/listing/<?php echo $cat->id; ?>/<?php echo preg_replace('/\s+/', '', $cat->name) ?>">
+              <a href="<?php echo base_url(); ?>category/listing/<?php echo $cat->id; ?>/<?php echo preg_replace('/\s+/', '', $cat->name) ?>">
                 <?php echo $cat->name; ?>
               </a>
             </li>
@@ -96,16 +98,16 @@
             <div class="bmp-menu-r">
               <ul>
                 <li data-toggle="modal" data-target="#myModal"><a href="#">Sign In </a></li>
-                <li>|&nbsp; <a href="registration">Sign up</a> </li>
-                <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">Wish List (<?php  echo count($this->cart->contents()); ?>)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
+                <li>|&nbsp; <a href="<?php echo base_url(); ?>registration">Sign up</a> </li>
+                <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">WishList (<?php  echo count($this->cart->contents()); ?>)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
           </div>
           <?php } else { ?>
           <div class="bmp-menu-r">
               <ul>
-                <li data-toggle="modal" data-target="#myModal"><a href="authentication/logout">Logout </a></li>
+                <li data-toggle="modal" data-target="#myModal"><a href="<?php echo base_url(); ?>authentication/logout">Logout </a></li>
                 <li>|&nbsp; <a href="#">My Profile</a> </li>
-                <li>|&nbsp; <a href="#">Wish List(0)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
+                <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">Wish List(0)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
           </div>
           <?php } ?>
