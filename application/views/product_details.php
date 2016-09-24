@@ -411,7 +411,7 @@
             <div class="prod-recommended">
               <div class="bmp-product-tabs">
                 <ul>
-                  <li class="tab-header"><a style="color:red; float: left">Frequently Bougth Together</a></li>
+                  <li class="tab-header"><a style="color:red; float: left">Frequently Bought Together</a></li>
                   <li>
                     <a href="#"><i class="glyphicon glyphicon-chevron-left"></i></a>
                    <a href=""> <i class="glyphicon glyphicon-chevron-right"></i></a>
