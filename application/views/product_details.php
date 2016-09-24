@@ -11,11 +11,11 @@
             <div class="row">
               <!--Product Image-->
               <div class="col-md-5 col-sm-5 col-xs-12">
-                <img src="<?php echo base_url(); ?>img/<?php echo $product->img; ?>" alt="" class="img-responsive">
+                <img name="preview" src="<?php echo base_url(); ?>img/<?php echo $product->img; ?>" alt="" class="img-responsive">
                 <div class="img-thumb">
                   <ul>
-                    <li><img src="http://placehold.it/20x20" alt=""></li>
-                    <li><img src="http://placehold.it/20x20" alt=""></li>
+                    <li><img onmouseover="preview.src=img1.src" name="img1" src="<?php echo base_url(); ?>img/<?php echo $product->img; ?>" alt=""></li>
+                    <li><img onmouseover="preview.src=img2.src" name="img2" src="<?php echo base_url(); ?>img/04.jpg" alt=""></li>
                     <li><img src="http://placehold.it/20x20" alt=""></li>
                     <li><img src="http://placehold.it/20x20" alt=""></li>
                   </ul>
