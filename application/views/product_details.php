@@ -4,6 +4,12 @@
 <div class="row"> 
   <div class="container-fluid">
     <?php include("template/sidebar.php"); ?>
+    <?php if(isset($error)) {   ?>
+    <div class="alert alert-danger" role="alert">
+       <?php echo $error; ?>
+      <a href="#" class="close">&times;</a>
+    </div>
+     <?php } ?>
     <div class="col-md-9 col-sm-8 col-xs-12">
       <?php foreach($products as $product) { ?>
           <!-- Product Column-->
@@ -16,7 +22,7 @@
                   <ul>
                     <li><img onmouseover="preview.src=img1.src" name="img1" src="<?php echo base_url(); ?>img/<?php echo $product->img; ?>" alt=""></li>
                     <li><img onmouseover="preview.src=img2.src" name="img2" src="<?php echo base_url(); ?>img/04.jpg" alt=""></li>
-                    <li><img src="http://placehold.it/20x20" alt=""></li>
+                    <li><img onmouseover="preview.src=img3.src" name="img3" src="<?php echo base_url(); ?>img/01.jpg" alt=""></li>
                     <li><img src="http://placehold.it/20x20" alt=""></li>
                   </ul>
                 </div>
@@ -238,18 +244,18 @@
                        </p>
                         <?php } else { ?>
                         
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>products/dealers">
                         <div class="form-group">
                           <label class="control-label col-sm-4">Dealer's Name:</label>
                           <div class="col-sm-8">
-                            <input type="email" class="form-control" id="email" value="">
+                            <input type="text" class="form-control" name="dname" value="" required />
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label col-sm-4">State:</label>
                           <div class="col-sm-8"> 
-                              <select class="form-control" id="sel1">
-                                <option>Lagos</option>
+                              <select class="form-control" id="sel1" name="state">
+                                <option value="lagos">Lagos</option>
                                 <option>Ogun</option>
                                 <option>3</option>
                                 <option>4</option>
@@ -259,13 +265,22 @@
                         <div class="form-group">
                           <label class="control-label col-sm-4">Office Address:</label>
                           <div class="col-sm-8">
-                            <input type="email" class="form-control" id="email" value="">
+                            <input type="text" name="address" class="form-control" value="" required />
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label col-sm-4">Phone Number:</label>
                           <div class="col-sm-8">
-                            <input type="email" class="form-control" id="email" value="">
+                            <input type="phone" name="phone" class="form-control" value="" required />
+                            <input type="hidden" name="id" value="<?php echo $this->session->userdata('id'); ?>"/>
+                            <input type="hidden" name="productid" value="<?php echo $product->id; ?>"/>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Price:</label>
+                          <div class="col-sm-8">
+                            <input type="phone" name="phone" class="form-control" value="" required />
+                            <input type="hidden" name="price" value=""/>
                           </div>
                         </div>
                         <div class="form-group"> 
@@ -293,18 +308,18 @@
                        </p>
                         <?php } else { ?>
                         
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>products/dealers">
                         <div class="form-group">
                           <label class="control-label col-sm-4">Dealer's Name:</label>
                           <div class="col-sm-8">
-                            <input type="email" class="form-control" id="email" value="">
+                            <input type="text" class="form-control" name="dname" value="" required />
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label col-sm-4">State:</label>
                           <div class="col-sm-8"> 
-                              <select class="form-control" id="sel1">
-                                <option>Lagos</option>
+                              <select class="form-control" id="sel1" name="state">
+                                <option value="lagos">Lagos</option>
                                 <option>Ogun</option>
                                 <option>3</option>
                                 <option>4</option>
@@ -314,18 +329,27 @@
                         <div class="form-group">
                           <label class="control-label col-sm-4">Office Address:</label>
                           <div class="col-sm-8">
-                            <input type="email" class="form-control" id="email" value="">
+                            <input type="text" name="address" class="form-control" value="" required />
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label col-sm-4">Phone Number:</label>
                           <div class="col-sm-8">
-                            <input type="email" class="form-control" id="email" value="">
+                            <input type="phone" name="phone" class="form-control" value="" required />
+                            <input type="hidden" name="id" value="<?php echo $this->session->userdata('id'); ?>"/>
+                           <input type="hidden" name="productid" value="<?php echo $product->id; ?>"/>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Price:</label>
+                          <div class="col-sm-8">
+                            <input type="phone" name="phone" class="form-control" value="" required />
+                            <input type="hidden" name="price" value=""/>
                           </div>
                         </div>
                         <div class="form-group"> 
                           <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Recommend My Business</button>
+                            <button type="submit" class="btn btn-default">Submit</button>
                           </div>
                         </div>
                       </form>
