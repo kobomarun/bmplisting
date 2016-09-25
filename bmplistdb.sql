@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2016 at 10:23 PM
--- Server version: 5.6.11
--- PHP Version: 5.5.1
+-- Generation Time: Sep 25, 2016 at 06:44 PM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,13 +14,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `bmplistdb`
 --
-CREATE DATABASE IF NOT EXISTS `bmplistdb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `bmplistdb`;
 
 -- --------------------------------------------------------
 
@@ -28,8 +26,8 @@ USE `bmplistdb`;
 -- Table structure for table `bmp_dealers`
 --
 
-CREATE TABLE IF NOT EXISTS `bmp_dealers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bmp_dealers` (
+  `id` int(11) NOT NULL,
   `productid` int(11) NOT NULL,
   `name` text NOT NULL,
   `phone` int(30) NOT NULL,
@@ -37,9 +35,8 @@ CREATE TABLE IF NOT EXISTS `bmp_dealers` (
   `state` varchar(30) NOT NULL,
   `country` text NOT NULL,
   `userid` int(11) NOT NULL,
-  `recommended_by` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `recommended_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -47,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `bmp_dealers` (
 -- Table structure for table `bmp_products`
 --
 
-CREATE TABLE IF NOT EXISTS `bmp_products` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bmp_products` (
+  `id` int(11) NOT NULL,
   `catid` int(111) NOT NULL,
   `subcatid` int(111) NOT NULL,
   `name` text NOT NULL,
@@ -59,9 +56,8 @@ CREATE TABLE IF NOT EXISTS `bmp_products` (
   `sku` varchar(255) NOT NULL,
   `market` varchar(100) NOT NULL,
   `add_info` longtext NOT NULL,
-  `img` varchar(40) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `img` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bmp_products`
@@ -89,12 +85,12 @@ INSERT INTO `bmp_products` (`id`, `catid`, `subcatid`, `name`, `price`, `descrip
 -- Table structure for table `bmp_users`
 --
 
-CREATE TABLE IF NOT EXISTS `bmp_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bmp_users` (
+  `id` int(11) NOT NULL,
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `pwdd` varchar(40) NOT NULL,
+  `pwdd` varchar(255) NOT NULL,
   `gender` varchar(7) NOT NULL,
   `address` longtext NOT NULL,
   `state` text NOT NULL,
@@ -103,16 +99,15 @@ CREATE TABLE IF NOT EXISTS `bmp_users` (
   `ipaddress` varchar(30) NOT NULL,
   `phone` int(30) NOT NULL,
   `date` date NOT NULL,
-  `lastlogin` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `lastlogin` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bmp_users`
 --
 
 INSERT INTO `bmp_users` (`id`, `fname`, `lname`, `email`, `pwdd`, `gender`, `address`, `state`, `country`, `status`, `ipaddress`, `phone`, `date`, `lastlogin`) VALUES
-(1, 'Olufemi', 'Oluoje', 'kobomarun@gmail.com', 'a01610228fe998f515a72dd730294d87', '', '', '', '', 0, '::1', 0, '0000-00-00', '0000-00-00');
+(1, 'Olufemi', 'Oluoje', 'kennyemma2008@gmail.com', 'b0412597dcea813655574dc54a5b74967cf85317f0332a2591be7953a016f8de56200eb37d5ba593b1e4aa27cea5ca27100f94dccd5b04bae5cadd4454dba67d', '', '', '', '', 0, '::1', 0, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -120,12 +115,11 @@ INSERT INTO `bmp_users` (`id`, `fname`, `lname`, `email`, `pwdd`, `gender`, `add
 -- Table structure for table `bmp_wishlists`
 --
 
-CREATE TABLE IF NOT EXISTS `bmp_wishlists` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bmp_wishlists` (
+  `id` int(11) NOT NULL,
   `productid` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `userid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -133,12 +127,11 @@ CREATE TABLE IF NOT EXISTS `bmp_wishlists` (
 -- Table structure for table `category`
 --
 
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
   `name` mediumtext NOT NULL,
-  `description` longtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  `description` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
@@ -164,11 +157,17 @@ INSERT INTO `category` (`id`, `name`, `description`) VALUES
 -- Table structure for table `recover_pass`
 --
 
-CREATE TABLE IF NOT EXISTS `recover_pass` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pass` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE `recover_pass` (
+  `id` int(11) NOT NULL,
+  `pass` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `recover_pass`
+--
+
+INSERT INTO `recover_pass` (`id`, `pass`) VALUES
+(1, '7d5606f1526df7e82bea99eb41c87d8d');
 
 -- --------------------------------------------------------
 
@@ -176,13 +175,12 @@ CREATE TABLE IF NOT EXISTS `recover_pass` (
 -- Table structure for table `sub_category`
 --
 
-CREATE TABLE IF NOT EXISTS `sub_category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sub_category` (
+  `id` int(11) NOT NULL,
   `catid` int(111) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` longtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `description` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sub_category`
@@ -196,6 +194,91 @@ INSERT INTO `sub_category` (`id`, `catid`, `name`, `description`) VALUES
 (5, 9, 'Kitchen Appliances', ''),
 (6, 9, 'Sinks', '');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `bmp_dealers`
+--
+ALTER TABLE `bmp_dealers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bmp_products`
+--
+ALTER TABLE `bmp_products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bmp_users`
+--
+ALTER TABLE `bmp_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bmp_wishlists`
+--
+ALTER TABLE `bmp_wishlists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `recover_pass`
+--
+ALTER TABLE `recover_pass`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sub_category`
+--
+ALTER TABLE `sub_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bmp_dealers`
+--
+ALTER TABLE `bmp_dealers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `bmp_products`
+--
+ALTER TABLE `bmp_products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `bmp_users`
+--
+ALTER TABLE `bmp_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `bmp_wishlists`
+--
+ALTER TABLE `bmp_wishlists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `recover_pass`
+--
+ALTER TABLE `recover_pass`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `sub_category`
+--
+ALTER TABLE `sub_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

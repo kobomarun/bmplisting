@@ -16,11 +16,13 @@
                 <section>      
                   <h1 class="entry-title"><span>Reset Password</span> </h1>
                   <hr width="990px;">
-                  <?php if(validation_errors()) { ?>
-                  <div data-alert class="alert alert-success" role="alert">
-                    <strong><?php echo validation_errors(); ?></strong> 
-                  </div>
-                     <?php } ?>
+                 
+                   <?php if(isset($error_msg)) {   ?>
+                      <div class="alert alert-danger" role="alert">
+                         <?php echo $error_msg; ?>
+                        <a href="#" class="close">&times;</a>
+                      </div>
+                  <?php } ?>
 
                   <form action="<?php echo base_url(); ?>user/reset_password" class="form-horizontal" method="post" name="signup" id="signup" enctype="multipart/form-data" >        
                     <input type="hidden" name="user_id" value="<?php echo $userid; ?>">
@@ -39,7 +41,7 @@
                       <div class="col-md-8 col-sm-9">
                           <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                          <input type="email" placeholder="Enter password" class="form-control" name="password" id="password"  required/>
+                          <input type="password" placeholder="Enter password" class="form-control" name="password" id="password"  required/>
                         </div>
                       </div>
                     </div>
@@ -48,7 +50,7 @@
                       <div class="col-md-8 col-sm-9">
                           <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                          <input type="email" placeholder="Confirm password" class="form-control" name="passconf" id="passconf" required/>
+                          <input type="password" placeholder="Confirm password" class="form-control" name="passconf" id="passconf" required/>
                         </div>
                       </div>
                     </div>

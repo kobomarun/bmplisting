@@ -16,13 +16,21 @@
                 <section>      
                   <h1 class="entry-title"><span>Recover</span> </h1>
                   <hr width="990px;">
-                  <?php if(validation_errors()) { ?>
+                  <?php 
+                      if(isset($errorMessage)){
+                 ?>
                   <div data-alert class="alert alert-success" role="alert">
+                    <strong><?php echo $errorMessage; ?></strong> 
+                  </div>
+                  <?php } ?>
+                  
+                  <?php if(validation_errors()) { ?>
+                  <div data-alert class="alert alert-error" role="alert">
                     <strong><?php echo validation_errors(); ?></strong> 
                   </div>
                      <?php } ?>
 
-                  <form action="<?php echo base_url(); ?>user/forgot_password" class="form-horizontal" method="post" name="signup" id="signup" enctype="multipart/form-data" >        
+                  <form action="<?php echo base_url(); ?>user/retrieve_password" class="form-horizontal" method="post" name="signup" id="signup" enctype="multipart/form-data" >        
                     
                     <div class="form-group">
                       <label class="control-label col-sm-3">Email Address <span class="text-danger">*</span></label>

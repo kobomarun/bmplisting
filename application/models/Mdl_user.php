@@ -55,7 +55,7 @@ class Mdl_user extends CI_Model {
 	function reset_password($user_id,$password)
 	{
 		$data = array(
-               'password' => $password,
+               'pwdd' => $password,
             );
 		$this->db->where('id', $user_id);
 		$this->db->update('bmp_users', $data);

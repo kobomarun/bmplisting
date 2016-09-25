@@ -23,6 +23,12 @@
                         <a href="#" class="close">&times;</a>
                       </div>
                        <?php } ?>
+                         <?php if($this->session->flashdata('successMessage')) {   ?>
+                      <div class="alert alert-success" role="alert">
+                         <?php echo $this->session->flashdata('successMessage'); ?>
+                        <a href="#" class="close">&times;</a>
+                      </div>
+                      <?php } ?>
 
                           <?php if($this->session->flashdata('logout')) {   ?>
                       <div class="alert alert-success" role="alert">

@@ -32,9 +32,8 @@ function __construct() {
    {
    		if($this->input->post())
 		{
-			//loads validation library
-			$this->load->library('form_validation');
-			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|xss_clean');
+
+			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 			
 			//redirects user to login page if validation fails
 			if($this->form_validation->run() == FALSE)
@@ -69,12 +68,25 @@ function __construct() {
 					{
 						$userid = $data['userid'];
 						$rand_pass = $rand_number_pass;
-						//send email
-					    $this->load->library('email');
+						
+						 //Email Configuration
+				    	$this->load->library('email');
+				      	$config = Array(
+					        'protocol' => 'smtp',
+					        'smtp_host' => 'ssl://smtp.googlemail.com',
+					        'smtp_port' => 465,
+					        'smtp_user' => 'kennyemma2008@gmail.com',
+					        'smtp_pass' => 'Marunkobo',
+					        'mailtype'  => 'html', 
+					        'charset'   => 'iso-8859-1'
+				      	);
+				      
+				      
+				      	$this->email->initialize($config);
 						$this->email->set_newline("\r\n");
 							
 						$this->email->set_mailtype('html');
-						$this->email->from('info@bmplisting.com','BMPListing');
+						$this->email->from('no-reply@bmplist.com','BMPListing');
 						$this->email->to($email);
 						$this->email->subject('BMPListing::: Reset Password');
 								
@@ -94,15 +106,14 @@ function __construct() {
 						$this->email->message($message);
 						$this->email->send();
 						$this->session->set_flashdata('successMessage','Thanks for resetting your password. A link has been sent to your email. Please click this link to reset your password.');
-						redirect('usersboard');
+						redirect('authentication');
 					}
 
 				}
 				else
 				{
-					
-					$this->session->set_flashdata('errorMessage','The email you entered does not exist. Please enter the correct email.');
-					redirect('usersboard/forgot_password');
+					$data['errorMessage'] = 'The email you entered does not exist. Please enter the correct email.';
+					$this->load->view('forgot_password',$data);
 				}
 				
 			}
