@@ -32,7 +32,7 @@
               </div>
               <?php foreach($categories as $cat) { ?>
               <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                <a href="#">
+                <a href="<?php echo base_url() . "products/details/". $cat->id.'/'.preg_replace('/\s+/', '', $cat->name); ?>">
                   <img src="<?php echo base_url(); ?>img/<?php echo $cat->img; ?>" class="img-responsive" style="height:135px"/>
                 </a>
                 <div class="bmp-prod-cat">Sub-category name</div>

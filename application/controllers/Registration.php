@@ -109,7 +109,7 @@ class Registration extends CI_Controller {
       $this->email->send();
 
         $this->session->set_flashdata('success', 'An email has been sent to your email address. You need to activate your account');
-        redirect('authentication/login');
+        redirect(base_url() . 'authentication/login');
         }
 
       } 

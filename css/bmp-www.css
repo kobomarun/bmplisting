@@ -913,6 +913,7 @@ footer .terms li a:hover{
 
 .prod-recommended-container .block-one  th{
   padding-right: 10px;
+  width: 100px;
   color: #666;
   font-size: 13px;
   font-family: sans-serif;
@@ -1289,6 +1290,7 @@ footer .terms li a:hover{
 .img-thumb li {
   display: inline-block;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .img-thumb li img {

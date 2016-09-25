@@ -35,7 +35,7 @@ class Authentication extends CI_Controller {
 			);
 
 			$this->session->set_userdata($usersdata);
-			redirect("home");
+			redirect(base_url() . "home");
 
 		} else {
 
@@ -53,7 +53,7 @@ class Authentication extends CI_Controller {
 
   function logout() {
   	$this->session->set_flashdata('logout','You have successfully logout');
-  	redirect('authentication/login');
+  	redirect(base_url() .'authentication/login');
   }
 
 

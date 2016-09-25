@@ -4,18 +4,25 @@
 <div class="row"> 
   <div class="container-fluid">
     <?php include("template/sidebar.php"); ?>
+    <?php if(isset($error)) {   ?>
+    <div class="alert alert-danger" role="alert">
+       <?php echo $error; ?>
+      <a href="#" class="close">&times;</a>
+    </div>
+     <?php } ?>
     <div class="col-md-9 col-sm-8 col-xs-12">
+      <?php foreach($products as $product) { ?>
           <!-- Product Column-->
           <div class="bmp-product">
             <div class="row">
               <!--Product Image-->
               <div class="col-md-5 col-sm-5 col-xs-12">
-                <img src="img/cement.jpeg" alt="" class="img-responsive">
+                <img name="preview" src="<?php echo base_url(); ?>img/<?php echo $product->img; ?>" alt="" class="img-responsive">
                 <div class="img-thumb">
                   <ul>
-                    <li><img src="http://placehold.it/20x20" alt=""></li>
-                    <li><img src="http://placehold.it/20x20" alt=""></li>
-                    <li><img src="http://placehold.it/20x20" alt=""></li>
+                    <li><img onmouseover="preview.src=img1.src" name="img1" src="<?php echo base_url(); ?>img/<?php echo $product->img; ?>" alt=""></li>
+                    <li><img onmouseover="preview.src=img2.src" name="img2" src="<?php echo base_url(); ?>img/04.jpg" alt=""></li>
+                    <li><img onmouseover="preview.src=img3.src" name="img3" src="<?php echo base_url(); ?>img/01.jpg" alt=""></li>
                     <li><img src="http://placehold.it/20x20" alt=""></li>
                   </ul>
                 </div>
@@ -24,23 +31,21 @@
               <div class="col-md-7 col-sm-7 col-xs-12">
                 <div class="bmp-product-container">
                   <div class="bmp-product-title">
-                     3 DOOR MIRRORED BATHROOM CABINET – WHITE
+                     <?php echo $product->name; ?>
                    </div>
                    <p>
                     <a>
-                      SKU: avdc123444
+                      SKU: <?php echo $product->sku; ?>
                     </a>
                   </p>
                   <div class="bmp-product-detail">
                     <h2 class="movetop">QUICK OVERVIEW</h2>
                     <div class="horiz"></div>
                     <h3>Product Details</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus quaerat eligendi molestiae eius dolor aliquam quia, corrupti labore sit quod architecto est iure adipisci sapiente voluptatibus culpa, fuga laudantium unde.
-                    </p>
+                    <p> <?php echo $product->overview; ?></p>
 
-                    <div class="prod-price">Guide Price: ₦1200</div>
-                    <p class="place">Last updated on 12th July, 2014. Price is based on Odunlade Market. </p>
+                    <div class="prod-price">Guide Price: ₦ <?php echo $product->price; ?></div>
+                    <p class="place">Last updated on <?php echo date("F j, Y"); ?>. Price is based on  <?php echo $product->market; ?>. </p>
                     <div class="bmp-related-wishlist">
                       <div class="bmp-wishlist-btn-container">
                         <a href="#">
@@ -57,11 +62,11 @@
                     <div class="bmp-soc">
                       <h4>SHARE</h4>
                       <ul class="">
-                      <li><a href="#"><img src="img/fb.png" alt="" /> </li>
-                      <li><a href="#"><img src="img/tw.png" alt="" /></li>
-                      <li><a href="#"><img src="img/pint.png" alt="" /></li>
-                      <li><a href="#"><img src="img/gplus.png" alt="" /></li>
-                      <li><a href="#"><img src="img/ins.png" alt="" /></li>
+                      <li><a href="#"><img src="<?php echo base_url(); ?>img/fb.png" alt="" /> </li>
+                      <li><a href="#"><img src="<?php echo base_url(); ?>img/tw.png" alt="" /></li>
+                      <li><a href="#"><img src="<?php echo base_url(); ?>img/pint.png" alt="" /></li>
+                      <li><a href="#"><img src="<?php echo base_url(); ?>img/gplus.png" alt="" /></li>
+                      <li><a href="#"><img src="<?php echo base_url(); ?>img/ins.png" alt="" /></li>
                     </ul>   
                     </div>
                   </div>
@@ -107,28 +112,78 @@
                 <div class="row">
                   <div class="col-sm-5">
                     <div class="block-one">
+                      <?php if(!$dealers) { ?>
+                      <p>No dealer found for this product</p>
+                      <a href="#"> 
+                        <button class="btn btn-primary">Recommend a dealer now</button>
+                       </a>
+                      <?php } foreach($dealers as $dealer) { ?>
                       <h3>dealer's details</h3>
                       <table>
                         <tbody>
                           <tr>
                             <th>Buz. Name</th>
-                            <td>Awodele Ventures</td>
+                            <td><?php echo $dealer->name; ?></td>
                           </tr>
                           <tr>
                             <th>Address</th>
-                            <td>24 Mushin Road, Idi-oro Lagos</td>
+                            <td><?php echo $dealer->address; ?></td>
                           </tr>
                           <tr>
                             <th>Telephone</th>
-                            <td>080234820282</td>
+                            <td><?php echo $dealer->phone; ?></td>
                           </tr>
                           <tr>
-                            <th>City / State</th>
-                            <td>Mushin / Lagos</td>
+                            <th>State</th>
+                            <td><?php echo $dealer->state; ?></td>
                           </tr>
                           <tr>
                             <th>Selling Price</th>
-                            <td style="color:red;"> ₦1200</td>
+                            <td style="color:red;"> ₦<?php echo number_format($dealer->price,2); ?></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div>
+                       <a href="#"> 
+                        <button class="review-btn">Review this dealer</button>
+                       </a>
+                      </div>
+                      <?php } ?>
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="line-divider"></div>
+                  </div>
+                  <div class="col-sm-5">
+                    <?php if(!$dealers) { ?>
+                      <p>No dealer found for this product</p>
+                      <a href="#"> 
+                        <button class="btn btn-primary">Recommend a dealer now</button>
+                       </a>
+                  <?php } foreach($dealers as $dealer) { ?>
+                    <div class="block-one">
+                      <h3>dealer's details</h3>
+                      <table>
+                        <tbody>
+                          <tr>
+                            <th>Buz. Name</th>
+                            <td><?php echo $dealer->name; ?></td>
+                          </tr>
+                          <tr>
+                            <th>Address</th>
+                            <td><?php echo $dealer->address; ?></td>
+                          </tr>
+                          <tr>
+                            <th>Telephone</th>
+                            <td><?php echo $dealer->phone; ?></td>
+                          </tr>
+                          <tr>
+                            <th>State</th>
+                            <td><?php echo $dealer->state; ?></td>
+                          </tr>
+                          <tr>
+                            <th>Selling Price</th>
+                            <td style="color:red;"> ₦<?php echo number_format($dealer->price,2); ?></td>
                           </tr>
                         </tbody>
                       </table>
@@ -138,43 +193,7 @@
                        </a>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-sm-1">
-                    <div class="line-divider"></div>
-                  </div>
-                  <div class="col-sm-5">
-                  <div class="block-one">
-                    <h3>dealer's details</h3>
-                    <table>
-                      <tbody>
-                        <tr>
-                          <th>Buz. Name</th>
-                          <td>Awodele Ventures</td>
-                        </tr>
-                        <tr>
-                          <th>Address</th>
-                          <td>24 Mushin Road, Idi-oro Lagos</td>
-                        </tr>
-                        <tr>
-                          <th>Telephone</th>
-                          <td>080234820282</td>
-                        </tr>
-                        <tr>
-                          <th>City / State</th>
-                          <td>Mushin / Lagos</td>
-                        </tr>
-                        <tr>
-                          <th>Selling Price</th>
-                          <td style="color:red;"> ₦1200</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <div>
-                     <a href="#"> 
-                      <button class="review-btn">Review this dealer</button>
-                     </a>
-                    </div>
-                  </div>
+                    <?php } ?>
                 </div>
               </div>
               </div>
@@ -188,15 +207,14 @@
             </div>
             <div class="prod-recommended-container">
               <div id="home" class="description fade in active">
-                
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, saepe, doloribus. Sed harum modi minus! Officiis odio aliquid aperiam, a eaque animi suscipit voluptatum architecto sapiente commodi, asperiores debitis quasi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br /><br /> Illum non incidunt, eaque temporibus quia quidem maiores quis architecto harum corrupti, ratione nobis iure itaque inventore quasi rerum ipsam, reprehenderit minus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam molestiae consequuntur sequi temporibus saepe corrupti, maxime enim quibusdam, quia doloribus recusandae, minus illo ex et accusamus harum. Delectus, at, assumenda!</p>
+                <p> <?php echo $product->description; ?></p>
               </div>
               <div id="additional" class="description fade">
                 
                 <div style="margin-top:-150px;">
                   <h3>Additional Information</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, saepe, doloribus. Sed harum modi minus! Officiis odio aliquid aperiam, a eaque animi suscipit voluptatum architecto sapiente commodi, asperiores debitis quasi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br /><br /> Illum non incidunt, eaque temporibus quia quidem maiores quis architecto harum corrupti, ratione nobis iure itaque inventore quasi rerum ipsam, reprehenderit minus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam molestiae consequuntur sequi temporibus saepe corrupti, maxime enim quibusdam, quia doloribus recusandae, minus illo ex et accusamus harum. Delectus, at, assumenda!</p>
-                </div>
+                  <p> <?php echo $product->add_info; ?></p>
+                 </div>
               </div>
               <div id="review" class="description fade">
                 <h3>Review</h3>
@@ -218,23 +236,26 @@
                       <p>
                         Have you recently bought this item from a trusted dealer? If your answer is yes, you can share your experience with other users by entering details of the dealer and the price you paid for it using the short form below.
                        </p>
+                       <?php 
+                       if($this->session->userdata('isLoggedin')== false) { ?>
                        <p>
-                         <span style="color:red; font-weigth:bolder">Note:</span> Only registered user can recommend. Click <a href="#" style="color:red; font-weigth:bolder">here </a>to register
+                         <span style="color:red; font-weigth:bolder">Note:</span> Only registered user can recommend. Click <a href="/registration" style="color:red; font-weigth:bolder">here </a>to register or <a href="/authentication/login" style="color:red; font-weigth:bolder">here </a> to login
 
                        </p>
-
-                        <form class="form-horizontal">
+                        <?php } else { ?>
+                        
+                        <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>products/dealers">
                         <div class="form-group">
                           <label class="control-label col-sm-4">Dealer's Name:</label>
                           <div class="col-sm-8">
-                            <input type="email" class="form-control" id="email" value="">
+                            <input type="text" class="form-control" name="dname" value="" required />
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label col-sm-4">State:</label>
                           <div class="col-sm-8"> 
-                              <select class="form-control" id="sel1">
-                                <option>Lagos</option>
+                              <select class="form-control" id="sel1" name="state">
+                                <option value="lagos">Lagos</option>
                                 <option>Ogun</option>
                                 <option>3</option>
                                 <option>4</option>
@@ -244,13 +265,22 @@
                         <div class="form-group">
                           <label class="control-label col-sm-4">Office Address:</label>
                           <div class="col-sm-8">
-                            <input type="email" class="form-control" id="email" value="">
+                            <input type="text" name="address" class="form-control" value="" required />
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label col-sm-4">Phone Number:</label>
                           <div class="col-sm-8">
-                            <input type="email" class="form-control" id="email" value="">
+                            <input type="phone" name="phone" class="form-control" value="" required />
+                            <input type="hidden" name="id" value="<?php echo $this->session->userdata('id'); ?>"/>
+                            <input type="hidden" name="productid" value="<?php echo $product->id; ?>"/>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Price:</label>
+                          <div class="col-sm-8">
+                            <input type="phone" name="phone" class="form-control" value="" required />
+                            <input type="hidden" name="price" value=""/>
                           </div>
                         </div>
                         <div class="form-group"> 
@@ -259,6 +289,7 @@
                           </div>
                         </div>
                       </form>
+                      <?php } ?>
                     </div>
                   </div>
                   <div class="col-sm-1">
@@ -269,16 +300,61 @@
                     <p>
                       Are you a building material dealer? Do you deal in quality materials? Do you sell the item on this page? Do you offer competitive prices? If your answer is yes, you can recommend your business for this item by clicking the recommendation button below
                      </p>
-                     <p>
-                         <span style="color:red; font-weigth:bolder">Note:</span> Only registered user can recommend. Click <a href="#" style="color:red; font-weigth:bolder">here </a>to register
+                     <?php 
+                       if($this->session->userdata('isLoggedin')== false) { ?>
+                       <p>
+                         <span style="color:red; font-weigth:bolder">Note:</span> Only registered user can recommend. Click <a href="/registration" style="color:red; font-weigth:bolder">here </a>to register or <a href="/authentication/login" style="color:red; font-weigth:bolder">here </a> to login
 
                        </p>
-
-                      <div class="form-group my-business"> 
-                          <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Recommend My Business</button>
+                        <?php } else { ?>
+                        
+                        <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>products/dealers">
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Dealer's Name:</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" name="dname" value="" required />
                           </div>
                         </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">State:</label>
+                          <div class="col-sm-8"> 
+                              <select class="form-control" id="sel1" name="state">
+                                <option value="lagos">Lagos</option>
+                                <option>Ogun</option>
+                                <option>3</option>
+                                <option>4</option>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Office Address:</label>
+                          <div class="col-sm-8">
+                            <input type="text" name="address" class="form-control" value="" required />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Phone Number:</label>
+                          <div class="col-sm-8">
+                            <input type="phone" name="phone" class="form-control" value="" required />
+                            <input type="hidden" name="id" value="<?php echo $this->session->userdata('id'); ?>"/>
+                           <input type="hidden" name="productid" value="<?php echo $product->id; ?>"/>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Price:</label>
+                          <div class="col-sm-8">
+                            <input type="phone" name="phone" class="form-control" value="" required />
+                            <input type="hidden" name="price" value=""/>
+                          </div>
+                        </div>
+                        <div class="form-group"> 
+                          <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                          </div>
+                        </div>
+                      </form>
+                      <?php } ?>
+                      
                   </div>
                 </div>
                 </div>
@@ -359,7 +435,7 @@
             <div class="prod-recommended">
               <div class="bmp-product-tabs">
                 <ul>
-                  <li class="tab-header"><a style="color:red; float: left">Frequently Bougth Together</a></li>
+                  <li class="tab-header"><a style="color:red; float: left">Frequently Bought Together</a></li>
                   <li>
                     <a href="#"><i class="glyphicon glyphicon-chevron-left"></i></a>
                    <a href=""> <i class="glyphicon glyphicon-chevron-right"></i></a>
@@ -444,6 +520,7 @@
             <!--end of ads-->
 
           <!--end of product page -->
+          <?php } ?>
       </div>
       </div>
 <?php
