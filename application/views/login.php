@@ -44,14 +44,14 @@
                   </div>
                      <?php } ?>
 
-                  <form action="login  " class="form-horizontal" method="post" name="signup" id="signup" enctype="multipart/form-data" >        
+                  <form action="<?php echo base_url(); ?>authentication/login" class="form-horizontal" method="post" />        
                     
                     <div class="form-group">
                       <label class="control-label col-sm-3">Email Addresss</label>
                       <div class="col-md-8 col-sm-5">
                           <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                          <input type="email" class="form-control" name="email" id="emailid" value="">
+                          <input type="email" class="form-control" name="email" value="<?php echo set_value(' email '); ?>">
                         </div>
                       </div>
                     </div>

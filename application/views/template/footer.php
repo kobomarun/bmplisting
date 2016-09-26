@@ -139,7 +139,7 @@
 
           <div class="forgotp">
             <label>
-              <a href=""> Forgot your password?</a>
+              <a href="<?php echo base_url(); ?>authentication/iforgot"> Forgot your password?</a>
             </label>
           </div> <!-- /.checkbox -->
           <div class="modal-footer">
