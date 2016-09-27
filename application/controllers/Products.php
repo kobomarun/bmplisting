@@ -65,4 +65,37 @@ class Products extends CI_Controller {
   }
   }
 
+  function search()
+  {
+      if($this->input->post())
+      {
+          $search_item = $this->input->post('search_item');
+          $products = $this->mdl_products->getproducts($search_item);
+          if($products!=null)
+          {
+              $data['products'] = $products;
+              $this->load->view('search',$data);
+          }
+          else
+          {
+              $first_char_searchitem = $search_item[0];
+              $data['msg'] = 'No result found for your search';
+              $data['products'] = $this->mdl_products->getproductslimit($first_char_searchitem);
+              $this->load->view('search',$data);
+          }
+      }
+      else
+      {
+              $data['categories'] = $this->mdl_products->get_categories();
+              $this->load->view('home',$data); 
+      }
+  }
+
+  function product_search()
+  {
+          $search_item = $this->input->post('search_item');
+          $products = $this->mdl_products->getproducts($search_item);
+          return json_encode($products);
+  }
+
 }

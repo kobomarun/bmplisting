@@ -13,7 +13,6 @@ class Home extends CI_Controller {
 	{
 		$data['categories'] = $this->mdl_home->get_categories();
 		$this->load->view('home.php',$data);
-
 	}
 
 }

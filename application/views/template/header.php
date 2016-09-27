@@ -56,6 +56,11 @@
           
           <div class="col-md-7 col-sm-7 col-xs-12">
             <div class="bmp-header-search">
+             <?php if($this->session->flashdata('error')) { ?>
+                  <p align="center" style="color:red">
+                    <?php echo $this->session->flashdata('error'); ?>
+                  </p>
+            <?php } ?>
               <div class="input-group">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All <span class="caret"></span></button>
@@ -68,13 +73,18 @@
                   </li>
       <?php } ?>
                   </ul>
+
+
+                  <?php echo form_open('products/search'); ?>
                 </div><!-- /btn-group -->
-                <input type="text" class="form-control" placeholder="Enter your search terms" aria-label="Enter your Search terms">
+
+                <input type="text" class="form-control" name="search_item" placeholder="Enter your search terms" aria-label="Enter your Search terms">
                 <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                        <button class="btn btn-default" name="submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                       </span>
               </div><!-- /input-group -->
             </div>
+            <?php echo form_close(); ?>
             <div class="bmp-menu hidden-xs">
               <ul>
                 <li><a href="<?php echo base_url();?>dealers">Are you a Dealer? </a></li>
