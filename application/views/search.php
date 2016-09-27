@@ -30,14 +30,22 @@
                   </div>
                 </div>
               </div>
-              <?php foreach($categories as $cat) { ?>
+              <?php if(isset($msg)){ ?>
+              <div align="center">
+                    <?php echo $msg; ?>
+              </div>
+              <br>
+              <?php } ?>
+              <?php if($products!=null){ ?>
+              <h3 align="center">Below are suggested products</h3>
+              <?php foreach($products as $row) { ?>
               <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                <a href="<?php echo base_url() . "products/details/". $cat->id.'/'.preg_replace('/\s+/', '', $cat->name); ?>">
-                  <img src="<?php echo base_url(); ?>img/<?php echo $cat->img; ?>" class="img-responsive" style="height:135px"/>
+                <a href="<?php echo base_url() . "products/details/". $row->catid.'/'.preg_replace('/\s+/', '', $row->category_name); ?>">
+                  <img src="<?php echo base_url(); ?>img/<?php echo $row->img; ?>" class="img-responsive" style="height:135px"/>
                 </a>
-                <div class="bmp-prod-cat">Sub-category name</div>
-                <div class="bmp-prod-name"><?php echo $cat->name; ?></div>
-                <div class="bmp-prod-price">Guide Price: ₦<?php echo $cat->price; ?></div>
+                <div class="bmp-prod-cat"><?php echo $row->category_name; ?></div>
+                <div class="bmp-prod-name"><?php echo $row->product_name; ?></div>
+                <div class="bmp-prod-price">Guide Price: ₦<?php echo $row->price; ?></div>
                 <div class="bmp-wishlist-btn-container">
                 <a onclick="addtowishlist(<?php echo $row1->product_id; ?>)">
                   <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
@@ -46,6 +54,7 @@
               </div>
               <?php } ?>
             </div>
+            <?php } ?>
             
             <div class="back-to-top">
               <a  onClick="window.scrollTo(0,0);"><i class="glyphicon glyphicon-triangle-top"></i></a>
