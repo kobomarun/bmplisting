@@ -999,7 +999,22 @@ footer .terms li a:hover{
 .bmp-profile ..panel-info>.panel-heading {
   border: none;
   background: none;
+}
 
+.bmp-dealers {
+  margin-top: 20px;
+}
+.bmp-dealers .bmp-dealers-title {
+  margin-bottom: 10px;
+  color: #000;
+  font-size: 20px;
+  font-family: serif;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.bmp-dealers select {
+  width: 71%;
 }
 
 
