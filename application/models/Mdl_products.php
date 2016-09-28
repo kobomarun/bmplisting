@@ -39,7 +39,7 @@ class Mdl_products extends CI_Model {
 
   function getproducts($search_item)
   {
-      $this->db->select('p.name as product_name,p.price,p.img,s.name as category_name,p.catid');
+      $this->db->select('p.id as product_id,p.name as product_name,p.price,p.img,s.name as category_name,p.catid');
       $this->db->from('bmp_products p');
       $this->db->join('sub_category s','p.subcatid = s.id');
       $this->db->like('p.name', $search_item);
@@ -49,7 +49,7 @@ class Mdl_products extends CI_Model {
 
   function getproductslimit($first_char_searchitem)
   {
-      $this->db->select('p.name as product_name,p.price,p.img,s.name as category_name,p.catid');
+      $this->db->select('p.id as product_id,p.name as product_name,p.price,p.img,s.name as category_name,p.catid');
       $this->db->from('bmp_products p');
       $this->db->join('sub_category s','p.subcatid = s.id');
       $this->db->like('p.name', $first_char_searchitem);
