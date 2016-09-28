@@ -24,9 +24,9 @@ class Category extends CI_Controller {
     }
 
     $id = $this->uri->segment(3);
-
+    
     $data['categories'] = $this->mdl_category->get_categories($id);
-    $this->load->view('category_page.php',$data);
+    $this->load->view('category_page',$data);
 
   }
 

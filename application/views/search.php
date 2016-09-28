@@ -8,44 +8,34 @@
           <!-- Category Column-->
           <div class="bmp-maincol">
             <div class="row">
-              <div class="col-sm-12 container">
-                <div class="bmp-show-num">
-                  <div class="row">
-                    <div class="col-sm-9">
-                      <p>Showing 1 - 16 of 40</p>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="dropdown" style="float:right">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                          Default
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                          <li><a href="#">Default</a></li>
-                          <li><a href="#">Price: Low to High</a></li>
-                          <li><a href="#">Price: High to Low</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <?php if(isset($msg)){ ?>
+              <div align="center">
+                    <?php echo $msg; ?>
               </div>
-              <?php foreach($categories as $cat) { ?>
+              <br>
+              <?php } ?>
+              <!--<h5>Search results for  <strong><?php echo $search_item; ?></strong></h5>-->
+              <?php if($products!=null and isset($suggested)){ ?>
+                <h3 align="center">Below are suggested products for <strong><?php echo $search_item; ?></strong></h3>
+              <?php } ?>
+              <?php if($products!=null){ ?>
+              <?php foreach($products as $row) { ?>
               <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                <a href="<?php echo base_url() . "products/details/". $cat->id.'/'.preg_replace('/\s+/', '', $cat->name); ?>">
-                  <img src="<?php echo base_url(); ?>img/<?php echo $cat->img; ?>" class="img-responsive" style="height:135px"/>
+                <a href="<?php echo base_url() . "products/details/". $row->catid.'/'.preg_replace('/\s+/', '', $row->category_name); ?>">
+                  <img src="<?php echo base_url(); ?>img/<?php echo $row->img; ?>" class="img-responsive" style="height:135px"/>
                 </a>
-                <div class="bmp-prod-cat">Sub-category name</div>
-                <div class="bmp-prod-name"><?php echo $cat->name; ?></div>
-                <div class="bmp-prod-price">Guide Price: ₦<?php echo $cat->price; ?></div>
+                <div class="bmp-prod-cat"><?php echo $row->category_name; ?></div>
+                <div class="bmp-prod-name"><?php echo $row->product_name; ?></div>
+                <div class="bmp-prod-price">Guide Price: ₦<?php echo $row->price; ?></div>
                 <div class="bmp-wishlist-btn-container">
-                <a onclick="addtowishlist(<?php echo $cat->id; ?>)">
+                <a onclick="addtowishlist(<?php echo $row->product_id; ?>)">
                   <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
                 </a>
                 </div>
               </div>
               <?php } ?>
             </div>
+            <?php } ?>
             
             <div class="back-to-top">
               <a  onClick="window.scrollTo(0,0);"><i class="glyphicon glyphicon-triangle-top"></i></a>

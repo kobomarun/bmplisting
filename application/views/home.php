@@ -61,8 +61,6 @@
 <script type="text/javascript">
   function addtowishlist(product_id)
   {
-     // alert(product_id);
-      //get items from outlet id
       $.ajax({  
         type: "POST",  
         url: "<?php echo base_url();?>wishlist/add/"+product_id,  
