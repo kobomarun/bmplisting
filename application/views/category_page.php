@@ -39,7 +39,7 @@
                 <div class="bmp-prod-name"><?php echo $cat->name; ?></div>
                 <div class="bmp-prod-price">Guide Price: ₦<?php echo $cat->price; ?></div>
                 <div class="bmp-wishlist-btn-container">
-                <a onclick="addtowishlist(<?php echo $row1->product_id; ?>)">
+                <a onclick="addtowishlist(<?php echo $cat->id; ?>)">
                   <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
                 </a>
                 </div>
@@ -83,3 +83,20 @@
 <?php
   include("template/footer.php");
 ?>
+
+<script type="text/javascript">
+  function addtowishlist(product_id)
+  {
+      $.ajax({  
+        type: "POST",  
+        url: "<?php echo base_url();?>wishlist/add/"+product_id,  
+
+        success: function(response)
+        {
+              console.log("return", response);
+        }
+      });
+
+  }
+
+</script>
