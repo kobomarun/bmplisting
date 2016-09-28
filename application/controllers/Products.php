@@ -68,12 +68,15 @@ class Products extends CI_Controller {
           if($products!=null)
           {
               $data['products'] = $products;
+              $this->session->set_flashdata('search_item', $search_item);
               $this->load->view('search',$data);
           }
           else
           {
               $first_char_searchitem = $search_item[0];
+              $data['search_item'] = $search_item;
               $data['msg'] = 'No result found for your search';
+              $data['suggested'] = true;
               $data['products'] = $this->mdl_products->getproductslimit($first_char_searchitem);
               $this->load->view('search',$data);
           }

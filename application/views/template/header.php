@@ -78,7 +78,7 @@
                   <?php echo form_open('products/search'); ?>
                 </div><!-- /btn-group -->
 
-                <input type="text" class="form-control" name="search_item" placeholder="Enter your search terms" aria-label="Enter your Search terms">
+                <input type="text" class="form-control" name="search_item" placeholder="Enter your search terms" value="<?php if($this->session->flashdata('search_item')) echo $this->session->flashdata('search_item');  ?>" aria-label="Enter your Search terms">
                 <span class="input-group-btn">
                         <button class="btn btn-default" name="submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                       </span>

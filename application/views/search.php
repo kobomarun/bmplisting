@@ -36,8 +36,10 @@
               </div>
               <br>
               <?php } ?>
+              <?php if($products!=null and isset($suggested)){ ?>
+                <h3 align="center">Below are suggested products for <strong><?php echo $search_item; ?></strong></h3>
+              <?php } ?>
               <?php if($products!=null){ ?>
-              <h3 align="center">Below are suggested products</h3>
               <?php foreach($products as $row) { ?>
               <div class="col-sm-3 col-xs-12 bmp-home-listing">
                 <a href="<?php echo base_url() . "products/details/". $row->catid.'/'.preg_replace('/\s+/', '', $row->category_name); ?>">
