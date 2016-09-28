@@ -8,36 +8,17 @@
           <!-- Category Column-->
           <div class="bmp-maincol">
             <div class="row">
-              <div class="col-sm-12 container">
-                <div class="bmp-show-num">
-                  <div class="row">
-                    <div class="col-sm-9">
-                      <p>Showing 1 - 16 of 40</p>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="dropdown" style="float:right">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                          Default
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                          <li><a href="#">Default</a></li>
-                          <li><a href="#">Price: Low to High</a></li>
-                          <li><a href="#">Price: High to Low</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <?php if(isset($msg)){ ?>
               <div align="center">
                     <?php echo $msg; ?>
               </div>
               <br>
               <?php } ?>
+              <!--<h5>Search results for  <strong><?php echo $search_item; ?></strong></h5>-->
+              <?php if($products!=null and isset($suggested)){ ?>
+                <h3 align="center">Below are suggested products for <strong><?php echo $search_item; ?></strong></h3>
+              <?php } ?>
               <?php if($products!=null){ ?>
-              <h3 align="center">Below are suggested products</h3>
               <?php foreach($products as $row) { ?>
               <div class="col-sm-3 col-xs-12 bmp-home-listing">
                 <a href="<?php echo base_url() . "products/details/". $row->catid.'/'.preg_replace('/\s+/', '', $row->category_name); ?>">
