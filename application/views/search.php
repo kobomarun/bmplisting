@@ -47,7 +47,7 @@
                 <div class="bmp-prod-name"><?php echo $row->product_name; ?></div>
                 <div class="bmp-prod-price">Guide Price: ₦<?php echo $row->price; ?></div>
                 <div class="bmp-wishlist-btn-container">
-                <a onclick="addtowishlist(<?php echo $row1->product_id; ?>)">
+                <a onclick="addtowishlist(<?php echo $row->product_id; ?>)">
                   <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
                 </a>
                 </div>
