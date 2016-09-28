@@ -92,3 +92,20 @@
 <?php
   include("template/footer.php");
 ?>
+
+<script type="text/javascript">
+  function addtowishlist(product_id)
+  {
+      $.ajax({  
+        type: "POST",  
+        url: "<?php echo base_url();?>wishlist/add/"+product_id,  
+
+        success: function(response)
+        {
+              console.log("return", response);
+        }
+      });
+
+  }
+
+</script>
