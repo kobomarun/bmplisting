@@ -147,10 +147,10 @@
                ?>
              </li>
             <li> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
-            <li><a href="">Building Calculator</a></li>
-            <li><a href="">&nbsp;&nbsp;Price Tracker</a></li>
-            <li><a href="">List Your Products</a></li>
-            <li><a href="">Looking for a Tradesman?</a></li>
+            <li><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
+            <li><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
+            <li><a href="<?php echo base_url(); ?>">List Your Products</a></li>
+            <li><a href="<?php echo base_url(); ?>">Looking for a Tradesman?</a></li>
           </ul>
         </div>
        </div>
