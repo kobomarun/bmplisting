@@ -77,13 +77,13 @@
             </div>
             <div class="bmp-menu hidden-xs">
               <ul>
-                <li><a href="#">Are you a Dealer? </a></li>
-                <li><a href="#">|&nbsp; Business Directory </a></li>
-                <li><a href="">|&nbsp; Exchange Rates </a></li>
-                <li><a href="">|&nbsp; Your Requisition </a></li>
-                <li><a href="">|&nbsp; DIY </a></li>
-                <li><a href="#">| &nbsp;Blog </a></li>
-                <li><a href="#">| &nbsp; My Account </a></li>
+                <li><a href="<?php echo base_url();?>dealers">Are you a Dealer? </a></li>
+                <li><a href="<?php echo base_url();?>">|&nbsp; Business Directory </a></li>
+                <li><a href="<?php echo base_url();?>">|&nbsp; Exchange Rates </a></li>
+                <li><a href="<?php echo base_url();?>">|&nbsp; Your Requisition </a></li>
+                <li><a href="<?php echo base_url();?>">|&nbsp; DIY </a></li>
+                <li><a href="<?php echo base_url();?>">| &nbsp;Blog </a></li>
+                <li><a href="<?php echo base_url();?>">| &nbsp; My Account </a></li>
               </ul>
             </div>
           </div>

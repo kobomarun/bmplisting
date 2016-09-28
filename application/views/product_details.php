@@ -112,12 +112,12 @@
                 <div class="row">
                   <div class="col-sm-5">
                     <div class="block-one">
-                      <?php if(!$dealers) { ?>
+                      <?php if(!$dealers1) { ?>
                       <p>No dealer found for this product</p>
                       <a href="#"> 
                         <button class="btn btn-primary">Recommend a dealer now</button>
                        </a>
-                      <?php } foreach($dealers as $dealer) { ?>
+                      <?php } foreach($dealers1 as $dealer) { ?>
                       <h3>dealer's details</h3>
                       <table>
                         <tbody>
@@ -155,12 +155,12 @@
                     <div class="line-divider"></div>
                   </div>
                   <div class="col-sm-5">
-                    <?php if(!$dealers) { ?>
+                    <?php if(!$dealers2) { ?>
                       <p>No dealer found for this product</p>
                       <a href="#"> 
                         <button class="btn btn-primary">Recommend a dealer now</button>
                        </a>
-                  <?php } foreach($dealers as $dealer) { ?>
+                  <?php } foreach($dealers2 as $dealer) { ?>
                     <div class="block-one">
                       <h3>dealer's details</h3>
                       <table>
@@ -279,8 +279,8 @@
                         <div class="form-group">
                           <label class="control-label col-sm-4">Price:</label>
                           <div class="col-sm-8">
-                            <input type="phone" name="phone" class="form-control" value="" required />
-                            <input type="hidden" name="price" value=""/>
+                            <input type="phone" name="price" class="form-control" value="" required />
+                            <input type="hidden" name="productName" value="<?php echo $product->name; ?>"/>
                           </div>
                         </div>
                         <div class="form-group"> 
@@ -343,8 +343,8 @@
                         <div class="form-group">
                           <label class="control-label col-sm-4">Price:</label>
                           <div class="col-sm-8">
-                            <input type="phone" name="phone" class="form-control" value="" required />
-                            <input type="hidden" name="price" value=""/>
+                            <input type="phone" name="price" class="form-control" value="" required />
+                            <input type="hidden" name="productName" value="<?php echo $product->name; ?>"/>
                           </div>
                         </div>
                         <div class="form-group"> 
