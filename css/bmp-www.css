@@ -415,6 +415,9 @@ aside {
   font-size: 10px;
 }
 
+.pagination>li>a, .pagination>li>span {
+  float: none;
+}
 /*Product Listing names*/
 .bmp-prod-cat {
   margin-top: 10px;

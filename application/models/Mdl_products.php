@@ -37,14 +37,27 @@ class Mdl_products extends CI_Model {
   }
 
 
-  function getproducts($search_item)
+  function count_all_products($search_item)
+  {
+    $this->db->like('name', $search_item);
+    $this->db->from('bmp_products');
+    return $this->db->count_all_results();
+  }
+  function getproducts($search_item,$per_page,$uri_segment)
   {
       $this->db->select('p.id as product_id, p.name as product_name,p.price,p.img,s.name as category_name,p.catid');
       $this->db->from('bmp_products p');
       $this->db->join('sub_category s','p.subcatid = s.id');
       $this->db->like('p.name', $search_item);
-      $result = $this->db->get()->result();
-      return $result; 
+      $this->db->limit($per_page); 
+      $this->db->offset($uri_segment); 
+      $query = $this->db->get();
+      $result = $query->result();
+
+      if($query->num_rows()>0)
+        return $result;
+      else
+        return false;
   }
 
   function getproductslimit($first_char_searchitem)

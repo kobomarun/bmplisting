@@ -71,16 +71,31 @@ class Products extends CI_Controller {
       {
           $search_item = $this->input->post('search_item');
           $data['search_item'] = $search_item;
-          $products = $this->mdl_products->getproducts($search_item);
+
+          //create pages
+          $total_rows = $this->mdl_products->count_all_products($search_item);
+          $this->load->library('pagination');
+          $config['base_url'] = base_url() . 'products/search';
+          $config['per_page'] = 1;
+          $config['total_rows'] = $total_rows;
+          $config['num_links'] = 5;
+          $config['use_page_numbers'] = TRUE;
+          
+
+          $this->pagination->initialize($config); 
+          $per_page = $config['per_page'];
+          $uri_segment = $this->uri->segment(2);
+
+          $products = $this->mdl_products->getproducts($search_item,$per_page,$uri_segment);
           if($products!=null)
           {
+              $data["links"] = $this->pagination->create_links();
               $data['products'] = $products;
               $this->load->view('search',$data);
           }
           else
           {
               $first_char_searchitem = $search_item[0];
-              $data['msg'] = 'No result found for your search';
               $data['msg'] = 'No result found for your search';
               $data['suggested'] = true;
               $data['products'] = $this->mdl_products->getproductslimit($first_char_searchitem);

@@ -12,7 +12,7 @@
                 <div class="bmp-show-num">
                   <div class="row">
                     <div class="col-sm-9">
-                      <p>Showing 1 - 16 of 40</p>
+                    <p>Showing 1 - 3 of 9</p>
                     </div>
                     <div class="col-sm-3">
                       <div class="dropdown" style="float:right">
@@ -30,7 +30,11 @@
                   </div>
                 </div>
               </div>
-              <?php foreach($categories as $cat) { ?>
+
+              <?php 
+                      if($categories!=null){
+                        foreach($categories as $cat) { 
+               ?>
               <div class="col-sm-3 col-xs-12 bmp-home-listing">
                 <a href="<?php echo base_url() . "products/details/". $cat->id.'/'.preg_replace('/\s+/', '', $cat->name); ?>">
                   <img src="<?php echo base_url(); ?>img/<?php echo $cat->img; ?>" class="img-responsive" style="height:135px"/>
@@ -44,7 +48,7 @@
                 </a>
                 </div>
               </div>
-              <?php } ?>
+              <?php } } ?>
             </div>
             
             <div class="back-to-top">
@@ -53,17 +57,19 @@
           </div>
           <div class="row cat-pagination">
             <div class="col-md-4 col-sm-5">
-              <p>Showing 1 - 16 of 20</p>
+              <!-- <p>Showing 1 - 16 of 20</p> -->
+             
             </div>
             <div class="col-md-8 col-sm-7">
               <p><nav aria-label="Page navigation">
-            <ul class="pagination">
+           <ul class="pagination">
             <li>
               <a href="#" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <li><a href="#">1</a></li>
+            <?php echo $links; ?> 
+            <!--<li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
             <li><a href="#">4</a></li>
@@ -72,8 +78,8 @@
               <a href="#" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
               </a>
-            </li>
-          </ul>
+            </li>-->
+          </ul> 
         </nav>
             </div>
           </div>
