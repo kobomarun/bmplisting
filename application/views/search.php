@@ -43,10 +43,11 @@
           </div>
           <div class="row cat-pagination">
             <div class="col-md-4 col-sm-5">
-              <p>Showing 1 - 16 of 20</p>
+             <!--  <p>Showing 1 - 16 of 20</p> -->
+                <p align="center"> <?php echo $links; ?>  </p>
             </div>
             <div class="col-md-8 col-sm-7">
-              <p><nav aria-label="Page navigation">
+            <!--   <p><nav aria-label="Page navigation">
             <ul class="pagination">
             <li>
               <a href="#" aria-label="Previous">
@@ -64,7 +65,7 @@
               </a>
             </li>
           </ul>
-        </nav>
+        </nav> -->
             </div>
           </div>
     </div>
