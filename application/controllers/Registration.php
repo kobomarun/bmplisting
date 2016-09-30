@@ -44,8 +44,9 @@ class Registration extends CI_Controller {
         'fname'=>$fname,
         'pwdd'=>md5($pwd),
         'email'=>$email,
+        'phone'=>$phone,
         'ipaddress'=>$this->input->ip_address(),
-        'date'=> date("Y,m,d")
+        'date'=> date("F j, Y")
       );
         $this->db->insert('bmp_users',$data);
 

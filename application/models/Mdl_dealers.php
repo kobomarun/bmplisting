@@ -11,4 +11,11 @@ class Mdl_dealers extends CI_Model {
 		return $query;
 	}
 
+  function get_recomended_dealers($id)
+  {
+    $this->db->where('userid', $id );
+    $query =  $this->db->get('bmp_dealers')->result();
+    return $query;
+  }
+
 }

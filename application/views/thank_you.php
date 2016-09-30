@@ -14,7 +14,7 @@
             <div class="row">
               <div class="col-md-8">
                 <section>      
-                  <h1 class="entry-title"><span>Login to your account</span> </h1>
+                  <h1 class="entry-title"><span>Successful</span> </h1>
                   <hr width="990px;">
                     <?php if($this->session->flashdata('thankyou')) {   ?>
                       <div class="alert alert-success" role="alert">
