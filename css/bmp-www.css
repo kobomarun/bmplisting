@@ -1017,6 +1017,18 @@ footer .terms li a:hover{
   width: 71%;
 }
 
+.bmp-pages {
+  margin-top: 20px;
+}
+.bmp-pages .bmp-pages-title {
+  margin-bottom: 10px;
+  color: #000;
+  font-size: 20px;
+  font-family: serif;
+  text-transform: uppercase;
+  text-align: left;
+}
+
 
 
 /* Tablet viewport*/

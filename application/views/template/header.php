@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>BMPListing</title>
+  <title>Buiding Materials</title>
   <!-- jQuery Version 1.11.1 -->
   <script src="<?php echo base_url(); ?>js/jquery.js"></script>
   <!-- Bootstrap Core CSS -->
@@ -87,12 +87,12 @@
             <div class="bmp-menu hidden-xs">
               <ul>
                 <li><a href="<?php echo base_url();?>dealers">Are you a Dealer? </a></li>
-                <li><a href="<?php echo base_url();?>">|&nbsp; Business Directory </a></li>
-                <li><a href="<?php echo base_url();?>">|&nbsp; Exchange Rates </a></li>
+                <li><a href="<?php echo base_url();?>pages/directory">|&nbsp; Business Directory </a></li>
+                <li><a href="<?php echo base_url();?>pages/exchange">|&nbsp; Exchange Rates </a></li>
                 <li><a href="<?php echo base_url();?>">|&nbsp; Your Requisition </a></li>
                 <li><a href="<?php echo base_url();?>">|&nbsp; DIY </a></li>
-                <li><a href="<?php echo base_url();?>">| &nbsp;Blog </a></li>
-                <li><a href="<?php echo base_url();?>">| &nbsp; My Account </a></li>
+                <li><a href="<?php echo base_url();?>pages/Blog">| &nbsp;Blog </a></li>
+                <li><a href="<?php echo base_url();?>user">| &nbsp; My Account </a></li>
               </ul>
             </div>
           </div>
@@ -115,7 +115,6 @@
           <div class="bmp-menu-r">
               <ul>
                 <li data-toggle="modal" data-target="#myModal"><a href="<?php echo base_url(); ?>authentication/logout">Logout </a></li>
-                <li>|&nbsp; <a href="#">My Profile</a> </li>
                 <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">Wish List(0)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
           </div>

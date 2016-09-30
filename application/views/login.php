@@ -25,10 +25,10 @@
                        <?php } ?>
 
                           <?php if($this->session->flashdata('logout')) {   ?>
-                      <div class="alert alert-success" role="alert">
-                         <?php echo $this->session->flashdata('logout'); ?>
-                        <a href="#" class="close">&times;</a>
-                      </div>
+                          <div class="alert alert-success" role="alert">
+                             <?php echo $this->session->flashdata('logout'); ?>
+                            <a href="#" class="close">&times;</a>
+                          </div>
                       <?php } ?>
                   <?php if($this->session->flashdata('notLoggedIn')) { ?>
                   <div data-alert class="alert alert-success" role="alert">
@@ -51,7 +51,7 @@
                       <div class="col-md-8 col-sm-5">
                           <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                          <input type="email" class="form-control" name="email" value="<?php echo set_value(' email '); ?>">
+                          <input type="email" autocomplete="off" class="form-control" name="email" value="<?php echo set_value(' email '); ?>">
                         </div>
                       </div>
                     </div>
@@ -65,6 +65,12 @@
                        </div>   
                       </div>
                     </div>
+
+                    <div class="forgotp" style="margin-left:200px;">
+                      <label>
+                        <a href="<?php echo base_url(); ?>authentication/iforgot"> Forgot your password?</a>
+                      </label>
+                    </div><br />
 
                     <div class="form-group">
                       <div class="col-xs-offset-3 col-xs-10">

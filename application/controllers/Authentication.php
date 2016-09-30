@@ -30,12 +30,16 @@ class Authentication extends CI_Controller {
         'lname' => $row['lname'],
 				'email' => $row['email'],
 				'phone' => $row['phone'],
+        'gender' => $row['gender'],
+        'address' => $row['address'],
+        'date' => $row['date'],
+        'country' => $row['country'],
 				'state' => $row['state'],
 				'isLoggedin' => true
 			);
 
 			$this->session->set_userdata($usersdata);
-			redirect(base_url() . "home");
+			redirect(base_url() . "user");
 
 		} else {
 

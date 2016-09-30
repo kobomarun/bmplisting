@@ -11,9 +11,18 @@ class Dealers extends CI_Controller {
 
 	public function index()
 	{
-		//$data['categories'] = $this->mdl_home->get_categories();
 		$this->load->view('dealers.php');
 
 	}
+
+  public function recommended($id=null) {
+    $id = $this->uri->segment(3);
+    if($id=='') {
+      $this->index();
+    }
+    $data['recommend'] = $this->mdl_dealers->get_recomended_dealers($id);
+
+    $this->load->view('recommended_dealers', $data);
+  }
 
 }
