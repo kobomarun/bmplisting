@@ -9,6 +9,10 @@
   right: 0;
  }
 
+ .iti-flag {
+  background-image: url("../img/flags.png");
+}
+
 .bmplisting {
   overflow: hidden;
   background-color: #fff;
@@ -21,18 +25,18 @@
 }
 
 .search-by {
-  margin-top: 15px;
+  margin-top: 10px;
   font-size: 11px;
-  cursor: pointer;
 }
 
 .cat-text {
   font-size: 13px;
-  cursor: pointer;
 }
 
 .glyphicon-triangle-bottom {
   font-size: 10px;
+  cursor: pointer;
+  margin-top: -10px;
 }
 
 .glyphicon-remove {
@@ -77,7 +81,7 @@ header .bmp-header-search input[type='text'] {
 .bmp-menu {
   position: relative;
   margin-left: -58px;
-  margin-top: 20px;
+  margin-top: 18px;
   color: #fff;
   font-weight: bold;
   font-size: 14px;
@@ -88,6 +92,7 @@ header .bmp-header-search input[type='text'] {
   display: inline-block;
   margin-right: 5px;
   list-style: none;
+  cursor: pointer;
 }
 
 .bmp-menu ul li a {
@@ -99,7 +104,7 @@ header .bmp-header-search input[type='text'] {
 .bmp-menu-r {
   position: relative;
   margin-left: 0px;
-  margin-top: 20px;
+  margin-top: 18px;
   color: #fff;
   font-weight: bold;
   font-size: 14px;
@@ -186,7 +191,6 @@ header .bmp-header-search input[type='text'] {
   color: #fff;
   font-size: 16px;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
 .bmp-intro ul li:nth-child(2) {

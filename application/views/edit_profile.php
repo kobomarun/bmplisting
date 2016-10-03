@@ -111,7 +111,7 @@
                           <label class="control-label col-sm-3">gender</label>
                           <div class="col-md-5"> 
                               <select class="form-control" id="sel1" name="gender">
-                                <option value="<?php echo $row->country; ?>><?php echo $row->gender; ?></option>
+                                <option value="<?php echo $row->country; ?>"><?php echo $row->gender; ?></option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
                               </select>

@@ -26,10 +26,12 @@ class Registration extends CI_Controller {
       $phone = $this->input->post('phone');
       $email = $this->input->post('email');
       $pwd = $this->input->post('password');
+      $gender = $this->input->post('gender');
 
       $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
       $this->form_validation->set_rules('cpassword', 'Password Confirmation', 'required|matches[password]');
       $this->form_validation->set_rules('fname', 'Full Name', 'trim|required');
+      $this->form_validation->set_rules('gender', 'Gender', 'trim|required');
       $this->form_validation->set_rules('email', 'Email', 'valid_email|required|is_unique[bmp_users.email]');
 
       if ($this->form_validation->run() == FALSE) {
@@ -45,6 +47,7 @@ class Registration extends CI_Controller {
         'pwdd'=>md5($pwd),
         'email'=>$email,
         'phone'=>$phone,
+        'gender'=>$gender,
         'ipaddress'=>$this->input->ip_address(),
         'date'=> date("F j, Y")
       );
@@ -93,13 +96,9 @@ class Registration extends CI_Controller {
       
       <br />
       </div><br />';
-      $message .='<p style="font-size:15px;">Thank you for signing up on BMP Listing! <br />You need to activate your account</p>';
+      $message .='<p style="font-size:15px;"> ' . $this->db->get_where('email',array('type'=>'Registration'))->row()->email . '</p>';
       
-      $message .='<div style="">
-      <p style="font-size:15px;">
-      Click on the link below to activate your account</a>
-      </p>
-      </div>';
+     
       $message .= base_url() . "/registration/activation/" . $this->input->post('email'). "/" . rand(); 
       $message .='<p>Thank you!</p>';
       $message .='<p>The Team at BMPLIST</p>';

@@ -24,7 +24,7 @@
 
         <div class="row">
           <div class="col-sm-12 container">
-            <h2><?php echo $row->name; ?><small><a href="<?php //echo base_url() . "/categories/". $row1->category_name; ?>">see more</a></small></h2>
+            <h2><?php echo $row->name; ?><small><a href="<?php echo base_url() . "category/listing/". $row->id; ?>">see more</a></small></h2>
           </div>
               <?php foreach($result as $row1){ ?>
                 <div class="col-sm-3 col-xs-12 bmp-home-listing">
