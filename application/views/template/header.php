@@ -12,6 +12,7 @@
   <script src="<?php echo base_url(); ?>js/jquery.js"></script>
   <!-- Bootstrap Core CSS -->
   <link href="<?php echo base_url(); ?>/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>/css/intlTelInput.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link href="<?php echo base_url(); ?>css/bmp-www.css" rel="stylesheet">     
   <link href="<?php echo base_url(); ?>css/bmp-slider.css" rel="stylesheet"> 
@@ -42,7 +43,7 @@
               <img src="<?php echo base_url(); ?>img/logo.png" class="logo img-responsive" />
             </a>
             <div class="search-by">Search by</div>
-            <div class="cat-text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categoty <i class="glyphicon glyphicon-triangle-bottom"></i></div>
+            <div class="cat-text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category <i class="glyphicon glyphicon-triangle-bottom"></i></div>
             <ul class="dropdown-menu">
               <?php foreach($query as $cat) { ?>
             <li>
@@ -71,7 +72,7 @@
                       <?php echo $cat->name; ?>
                     </a>
                   </li>
-      <?php } ?>
+          <?php } ?>
                   </ul>
 
 
@@ -106,7 +107,7 @@
                ?>
             <div class="bmp-menu-r">
               <ul>
-                <li data-toggle="modal" data-target="#myModal"><a href="#">Sign In </a></li>
+                <li><a href="<?php echo base_url(); ?>authentication/login">Sign In </a></li>
                 <li>|&nbsp; <a href="<?php echo base_url(); ?>registration">Sign up</a> </li>
                 <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">WishList (<?php  echo count($this->cart->contents()); ?>)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
@@ -127,7 +128,7 @@
           } else {
         ?>
 
-       <div class="category">Hell</div>
+       <div class="category" style="color: transparent">Hell</div>
      </div>
    </div>
 
@@ -141,13 +142,13 @@
             <li><i class="glyphicon glyphicon-user"></i> Hi, 
                <?php 
                 if($this->session->userdata('isLoggedin')) {
-                 echo $this->session->userdata('fname'); 
-               } else echo "Guest" ;
+                 echo strtoupper($this->session->userdata('fname')); 
+               } else echo strtoupper("guest" );
                ?>
              </li>
             <li> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
             <li><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
-            <li><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
+            <li align="left"><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
             <li><a href="<?php echo base_url(); ?>">List Your Products</a></li>
             <li><a href="<?php echo base_url(); ?>">Looking for a Tradesman?</a></li>
           </ul>

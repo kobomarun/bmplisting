@@ -65,14 +65,19 @@
                            <i class="glyphicon glyphicon-user"></i>   <?php echo $this->session->userdata('fname') . " " . $this->session->userdata('lname'); ?></h3>
                            <?php if(!$this->session->userdata('gender') || !$this->session->userdata('country')) {   ?>
                               <div class="alert alert-success" role="alert">
-                                 Click on Edit Profile to complete your profile
+                                 <?php echo $this->get_where('email', array('type','profileUpdate'))->row()->email; ?>
                                 <a href="#" class="close">&times;</a>
                               </div>
                           <?php } ?>
                         </div>
                         
                           <div class="row">
-                            <div class="col-md-2 col-lg-2 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+                            <div class="col-md-2 col-lg-2 " align="center"> 
+                              <?php if($this->session->userdata('gender') == 'Male') { ?>
+                              <img alt="User Pic" src="<?php echo base_url(); ?>img/d-male.jpeg" class="img-circle img-responsive" />
+                              <?php } else { ?>
+                              <img alt="User Pic" src="<?php echo base_url(); ?>img/d-female.png" class="img-circle img-responsive" />
+                              <?php  } ?>
                             </div>
                             <div class=" col-md-10 col-lg-10 "> 
                               <table class="table table-user-information">
