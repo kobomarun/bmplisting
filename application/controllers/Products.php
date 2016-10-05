@@ -19,6 +19,8 @@ class Products extends CI_Controller {
 		$data['products'] = $this->mdl_products->get_products($id);
     $data['dealers1'] = $this->mdl_products->get_dealers1($id);
     $data['dealers2'] = $this->mdl_products->get_dealers2($id);
+    $data['bought'] = $this->mdl_products->getRandomProduct();
+    $data['checked'] = $this->mdl_products->getProductChecked();
 		$this->load->view('product_details.php', $data);
 
 	}
@@ -76,7 +78,7 @@ class Products extends CI_Controller {
           $total_rows = $this->mdl_products->count_all_products($search_item);
           $this->load->library('pagination');
           $config['base_url'] = base_url() . 'products/search';
-          $config['per_page'] = 1;
+          $config['per_page'] = 20;
           $config['total_rows'] = $total_rows;
           $config['num_links'] = 5;
           $config['use_page_numbers'] = TRUE;

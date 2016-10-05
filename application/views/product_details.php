@@ -62,11 +62,30 @@
                     <div class="bmp-soc">
                       <h4>SHARE</h4>
                       <ul class="">
-                      <li><a href="#"><img src="<?php echo base_url(); ?>img/fb.png" alt="" /> </li>
-                      <li><a href="#"><img src="<?php echo base_url(); ?>img/tw.png" alt="" /></li>
-                      <li><a href="#"><img src="<?php echo base_url(); ?>img/pint.png" alt="" /></li>
-                      <li><a href="#"><img src="<?php echo base_url(); ?>img/gplus.png" alt="" /></li>
-                      <li><a href="#"><img src="<?php echo base_url(); ?>img/ins.png" alt="" /></li>
+                      <li>
+                        <a href="http://www.facebook.com/share.php?u=<?php echo current_url(); ?>&title=<?php echo $product->name; ?>" target="_blank">
+                          <img src="<?php echo base_url(); ?>img/fb.png" alt=""/>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="http://twitter.com/intent/tweet?status=<?php echo $product->name; ?>+<?php echo current_url(); ?>" target="_blank"><img src="<?php echo base_url(); ?>img/tw.png" alt="" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="http://pinterest.com/pin/create/bookmarklet/?url=<?php echo current_url(); ?>&is_video=false&description=<?php echo $product->name; ?>" target="_blank">
+                        <img src="<?php echo base_url(); ?>img/pint.png" alt="" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://plus.google.com/share?url=<?php echo current_url(); ?>" target="_blank">
+                          <img src="<?php echo base_url(); ?>img/gplus.png" alt="" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <img src="<?php echo base_url(); ?>img/ins.png" alt="" />
+                        </a>
+                      </li>
                     </ul>   
                     </div>
                   </div>
@@ -375,58 +394,21 @@
               <div class="prod-recommended-container" style="border:none">
                 <br />
                 <div class="row">
+                  <?php foreach($checked as $check) { ?>
                   <div class="col-sm-3 col-xs-12 bmp-home-listing">
                 <a href="#">
-                  <img src="img/blocks.jpeg" class="img-responsive"/>
+                  <img src="<?php echo base_url(); ?>img/<?php echo $check->img; ?>" class="img-responsive"/>
                 </a>
-                <div class="bmp-prod-cat">Sub-category name</div>
-                <div class="bmp-prod-name">Product name</div>
-                <div class="bmp-prod-price">Guide Price ₦1200</div>
+                <div class="bmp-prod-cat"><?php echo $this->db->get_where('sub_category',array('id'=>$check->subcatid))->row()->name; ?></div>
+                <div class="bmp-prod-name"><?php echo $check->name; ?></div>
+                <div class="bmp-prod-price">Guide Price ₦<?php echo number_format($check->price,2); ?></div>
                 <div class="bmp-wishlist-btn-container">
                 <a href="#">
                   <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
                 </a>
                 </div>
               </div>
-              <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                <a href="#">
-              <img src="img/branite.jpeg" class="img-responsive"/>
-                </a>
-              <div class="bmp-prod-cat">Sub-category name</div>
-                <div class="bmp-prod-name">Product name</div>
-                <div class="bmp-prod-price">Guide Price ₦1200</div>
-                <div class="bmp-wishlist-btn-container">
-                <a href="#">
-                  <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                <a href="#">
-              <img src="img/iron.jpeg" class="img-responsive"/>
-                </a>
-              <div class="bmp-prod-cat">Sub-category name</div>
-                <div class="bmp-prod-name">Product name</div>
-                <div class="bmp-prod-price">Guide Price ₦1200</div>
-                <div class="bmp-wishlist-btn-container">
-                <a href="#">
-                  <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                <a href="#">
-              <img src="img/cement.jpeg" class="img-responsive"/>
-                </a>
-              <div class="bmp-prod-cat">Sub-category name</div>
-              <div class="bmp-prod-name">Product name</div>
-              <div class="bmp-prod-price">Guide Price ₦1200</div>
-                <div class="bmp-wishlist-btn-container">
-                <a href="#">
-                  <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-                </a>
-                </div>
-              </div>
+              <?php } ?>
                 </div>
               </div>
             </div>
@@ -446,59 +428,22 @@
               <div class="prod-recommended-container" style="border:none">
                 <br />
                 <div class="row">
+                <?php foreach($bought as $frequently) { ?>
                   <div class="col-sm-3 col-xs-12 bmp-home-listing">
                 <a href="#">
-                  <img src="img/blocks.jpeg" class="img-responsive"/>
+                  <img src="<?php echo base_url(); ?>img/<?php echo $frequently->img; ?>" class="img-responsive"/>
                 </a>
-                <div class="bmp-prod-cat">Sub-category name</div>
-                <div class="bmp-prod-name">Product name</div>
-                <div class="bmp-prod-price">Guide Price ₦1200</div>
+                <div class="bmp-prod-cat"><?php echo $this->db->get_where('sub_category',array('id'=>$frequently->subcatid))->row()->name; ?></div>
+                <div class="bmp-prod-name"><?php echo $frequently->name; ?></div>
+                <div class="bmp-prod-price">Guide Price ₦<?php echo number_format($frequently->price,2); ?></div>
                 <div class="bmp-wishlist-btn-container">
                 <a href="#">
                   <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
                 </a>
                 </div>
               </div>
-              <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                <a href="#">
-              <img src="img/branite.jpeg" class="img-responsive"/>
-                </a>
-              <div class="bmp-prod-cat">Sub-category name</div>
-                <div class="bmp-prod-name">Product name</div>
-                <div class="bmp-prod-price">Guide Price ₦1200</div>
-                <div class="bmp-wishlist-btn-container">
-                <a href="#">
-                  <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-                </a>
-                </div>
+              <?php } ?>
               </div>
-              <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                <a href="#">
-              <img src="img/iron.jpeg" class="img-responsive"/>
-                </a>
-              <div class="bmp-prod-cat">Sub-category name</div>
-                <div class="bmp-prod-name">Product name</div>
-                <div class="bmp-prod-price">Guide Price ₦1200</div>
-                <div class="bmp-wishlist-btn-container">
-                <a href="#">
-                  <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                <a href="#">
-              <img src="img/cement.jpeg" class="img-responsive"/>
-                </a>
-              <div class="bmp-prod-cat">Sub-category name</div>
-              <div class="bmp-prod-name">Product name</div>
-              <div class="bmp-prod-price">Guide Price ₦1200</div>
-                <div class="bmp-wishlist-btn-container">
-                <a href="#">
-                  <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-                </a>
-                </div>
-              </div>
-                </div>
               </div>
             </div>
              <!-- Ads-->
@@ -515,7 +460,7 @@
               </div>
             </div>
             <div class="bmp-clients">
-              <img src="img/clients.png" alt="" width="700" class="img-responsive">
+              <img src="<?php echo base_url(); ?>img/clients.png" alt="" width="700" class="img-responsive">
             </div>
             <!--end of ads-->
 

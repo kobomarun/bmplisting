@@ -28,7 +28,7 @@
           </div>
               <?php foreach($result as $row1){ ?>
                 <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                  <a href="<?php echo base_url() . "products/details/". $row1->product_id.'/'.preg_replace('/\s+/', '', $row1->product_name); ?>">
+                  <a href="<?php echo base_url() . "products/details/". $row1->product_id.'/'.url_title($row1->product_name); ?>">
                     <img src="<?php echo base_url(); ?>img/<?php echo $row1->img; ?>" class="img-responsive" style="height:135px"/>
                   </a>
                   <div class="bmp-prod-cat"><?php echo $row1->category_name; ?></div>
