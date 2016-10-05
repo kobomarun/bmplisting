@@ -6,11 +6,13 @@ class Wishlist extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model("mdl_wishlist");
+		$this->shop1 = new Udp_cart("shop1");//cart1
 	}
 
 	function index()
 	{
-		$this->load->view('wishlist');
+		$data['cart_contents'] = $this->shop1->get_content();
+		$this->load->view('wishlist',$data);
 	}
 
 	function add()
@@ -37,10 +39,12 @@ class Wishlist extends CI_Controller {
                     'options' => array('image ' => $product_image, 'category ' => $category),
             );
 
-		if($query = $this->cart->insert($data))
+		if($query = $this->shop1->insert($data))
 		{
-			header('Content-Type: application/json');
-	        echo json_encode($query);
+			//header('Content-Type: application/json');
+	        //echo json_encode($query);
+	        $totalitems = $this->shop1->total_articles();
+	        echo json_encode($totalitems);
 		} 
         /*$data['cartitems'] = 1;
 		$data['categories'] = $this->mdl_wishlist->get_categories();
@@ -50,9 +54,12 @@ class Wishlist extends CI_Controller {
 	public function remove() 
 	{
 	  $row_id = $this->uri->segment(3);
+	  /*echo $row_id;
+	  exit;
 	  $qty = 0;
-	  $array = array('rowid' =>$row_id ,'qty'=>$qty );
-	  $this->cart->update($array);
+	  $array = array('rowid' =>$row_id ,'qty'=>$qty );*/
+	  $this->shop1->remove_item($row_id);
+	  //$this->shop1->update($array);
 	  redirect('wishlist');
 	}
 
@@ -61,11 +68,18 @@ class Wishlist extends CI_Controller {
 		$row_id = $this->uri->segment(3);
 		$qty = 0;
 		$array = array('rowid' =>$row_id ,'qty'=>$qty );
-		if($query = $this->cart->delete($array))
+		if($query = $this->shop1->delete($array))
 		{
 			header('Content-Type: application/json');
 	        echo json_encode($query);
 		}
+	}
+
+	function total_items()
+	{
+		 $totalitems = $this->shop1->total_articles();
+		 header('Content-Type: application/json');
+	     echo json_encode($totalitems);
 	}
 
 }

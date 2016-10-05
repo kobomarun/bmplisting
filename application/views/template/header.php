@@ -7,12 +7,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Buiding Materials</title>
+  <title>BMPListing</title>
   <!-- jQuery Version 1.11.1 -->
   <script src="<?php echo base_url(); ?>js/jquery.js"></script>
   <!-- Bootstrap Core CSS -->
   <link href="<?php echo base_url(); ?>/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>/css/intlTelInput.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link href="<?php echo base_url(); ?>css/bmp-www.css" rel="stylesheet">     
   <link href="<?php echo base_url(); ?>css/bmp-slider.css" rel="stylesheet"> 
@@ -43,7 +42,7 @@
               <img src="<?php echo base_url(); ?>img/logo.png" class="logo img-responsive" />
             </a>
             <div class="search-by">Search by</div>
-            <div class="cat-text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category <i class="glyphicon glyphicon-triangle-bottom"></i></div>
+            <div class="cat-text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categoty <i class="glyphicon glyphicon-triangle-bottom"></i></div>
             <ul class="dropdown-menu">
               <?php foreach($query as $cat) { ?>
             <li>
@@ -72,7 +71,7 @@
                       <?php echo $cat->name; ?>
                     </a>
                   </li>
-          <?php } ?>
+      <?php } ?>
                   </ul>
 
 
@@ -88,12 +87,12 @@
             <div class="bmp-menu hidden-xs">
               <ul>
                 <li><a href="<?php echo base_url();?>dealers">Are you a Dealer? </a></li>
-                <li><a href="<?php echo base_url();?>pages/directory">|&nbsp; Business Directory </a></li>
-                <li><a href="<?php echo base_url();?>pages/exchange">|&nbsp; Exchange Rates </a></li>
+                <li><a href="<?php echo base_url();?>">|&nbsp; Business Directory </a></li>
+                <li><a href="<?php echo base_url();?>">|&nbsp; Exchange Rates </a></li>
                 <li><a href="<?php echo base_url();?>">|&nbsp; Your Requisition </a></li>
                 <li><a href="<?php echo base_url();?>">|&nbsp; DIY </a></li>
-                <li><a href="<?php echo base_url();?>pages/Blog">| &nbsp;Blog </a></li>
-                <li><a href="<?php echo base_url();?>user">| &nbsp; My Account </a></li>
+                <li><a href="<?php echo base_url();?>">| &nbsp;Blog </a></li>
+                <li><a href="<?php echo base_url();?>">| &nbsp; My Account </a></li>
               </ul>
             </div>
           </div>
@@ -105,17 +104,22 @@
              <?php 
                 if(!$this->session->userdata('isLoggedin')) {
                ?>
+               <?php 
+                  $this->shop1 = new Udp_cart("shop1");//cart1
+                  $totalitems = $this->shop1->total_articles();
+               ?>
             <div class="bmp-menu-r">
               <ul>
-                <li><a href="<?php echo base_url(); ?>authentication/login">Sign In </a></li>
+                <li data-toggle="modal" data-target="#myModal"><a href="#">Sign In </a></li>
                 <li>|&nbsp; <a href="<?php echo base_url(); ?>registration">Sign up</a> </li>
-                <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">WishList (<?php  echo count($this->cart->contents()); ?>)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
+                <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">WishList (<?php if(empty($totalitems)) echo '0'; else echo $totalitems; ?>)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
           </div>
           <?php } else { ?>
           <div class="bmp-menu-r">
               <ul>
                 <li data-toggle="modal" data-target="#myModal"><a href="<?php echo base_url(); ?>authentication/logout">Logout </a></li>
+                <li>|&nbsp; <a href="#">My Profile</a> </li>
                 <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">Wish List(0)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
           </div>
@@ -128,7 +132,7 @@
           } else {
         ?>
 
-       <div class="category" style="color: transparent">Hell</div>
+       <div class="category">Hell</div>
      </div>
    </div>
 
@@ -142,13 +146,13 @@
             <li><i class="glyphicon glyphicon-user"></i> Hi, 
                <?php 
                 if($this->session->userdata('isLoggedin')) {
-                 echo strtoupper($this->session->userdata('fname')); 
-               } else echo strtoupper("guest" );
+                 echo $this->session->userdata('fname'); 
+               } else echo "Guest" ;
                ?>
              </li>
             <li> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
             <li><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
-            <li align="left"><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
+            <li><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
             <li><a href="<?php echo base_url(); ?>">List Your Products</a></li>
             <li><a href="<?php echo base_url(); ?>">Looking for a Tradesman?</a></li>
           </ul>

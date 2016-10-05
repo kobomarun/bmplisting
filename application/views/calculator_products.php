@@ -9,35 +9,39 @@
           <div class="bmp-signup">
               <div class="col-sm-12">
                 <div class="container">
-                  <h1>My Wishlist</h1>
+                  <h1>My Products</h1>
                  <table class="table table-hover absd">
                     <thead>
                       <tr>
                         <th>#</th>
                         <th>Product Name</th>
                         <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php 
                       $i = 1;
-                      if($cart_contents!=null){
-                        foreach ($cart_contents as $items){ 
+                      if($cartcontents!=null){
+                        foreach ($cartcontents as $items){ 
                       ?>
                     
                       <tr>
                         <th scope="row"><?php echo $i ?></th>
                         <td><?php echo $items['name']; ?></td>
                         <td><?php echo $items['price']; ?></td>
+                        <td><?php echo $items['qty']; ?></td>
+                        <td><?php echo $items['total']; ?></td>
                   
-                        <td><a href="<?php echo base_url(); ?>wishlist/remove/<?php echo $items['rowid']; ?> "data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a></td> 
+                        <td><a href="<?php echo base_url(); ?>calculator/remove/<?php echo $items['rowid']; ?> "data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a></td> 
                         <!--<td>
                           <a href="#" onclick="deleteitem(<?php echo $items['rowid']; ?>)" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                         
                         </td>-->
                       </tr>
-                    <?php $i++; } }else{ ?>
+                    <?php $i++; } echo 'Total Amount: '.$total_amount; }else{ ?>
                       <tr>
                         <td colspan="4">No result found</td>
                       </tr>
@@ -56,7 +60,7 @@
   {
     $.ajax({  
         type: "POST",  
-        url: "<?php echo base_url();?>wishlist/delete_product/"+product_id,  
+        url: "<?php echo base_url();?>calculator/delete_product/"+product_id,  
 
         success: function(response)
         {

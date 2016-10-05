@@ -26,4 +26,5 @@ class Mdl_category extends CI_Model {
 		return $this->db->count_all_results();
 	}
 
+	
 }

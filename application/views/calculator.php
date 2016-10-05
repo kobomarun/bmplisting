@@ -20,31 +20,16 @@
                      </p>
                      <form class="form-inline">
                       <div class="form-group">
-                        <div class="col-sm-8"> 
-                          <select class="form-control" id="sel1" name="state">
-                            <option value="lagos">Select Product Category</option>
-                            <option>Ogun</option>
-                            <option>3</option>
-                            <option>4</option>
+                        <div class="col-sm-12"> 
+                          <select class="form-control" onchange="window.location='<?php echo base_url(); ?>calculator/get_products/'+this.value" id="sel1" name="state">
+                          <option value="">Select Category</option>
+                          <?php foreach($categories as $row){ ?>
+                            <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
+                          <?php } ?>
                           </select>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <div class=""> 
-                          <select class="form-control" id="sel1" name="state">
-                            <option value="lagos">Select Product</option>
-                            <option>Ogun</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div>
-                          <input type="number" class="form-control" Placeholder="Quantity" size="5" Required />
-                        </div>
-                      </div>
-                      <button type="submit" class="btn btn-default">Add more</button>
+                      <!-- <button type="submit" class="btn btn-default">Add more</button> -->
                     </form>
                     
                 </section>
