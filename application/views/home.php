@@ -7,166 +7,43 @@
     <div class="col-md-9 col-sm-8 col-xs-12">
       <!-- MAin Column-->
       <div class="bmp-maincol">
+      <?php 
+          if($categories!=null)
+              foreach($categories as $row)
+              {
+                $category_id = $row->id;
+      ?>
+          <?php 
+              $this->db->select('p.id as product_id, p.name as product_name,p.price,p.img,s.name as category_name,p.subcatid');
+              $this->db->from('bmp_products p');
+              $this->db->join('sub_category s','p.subcatid = s.id');
+              $this->db->where('p.catid',$category_id);
+              $this->db->limit(8);
+              $result = $this->db->get()->result();
+          ?>
+
         <div class="row">
           <div class="col-sm-12 container">
-            <h2>Kitchen Utensil<small><a href="#">see more</a></small></h2>
+            <h2><?php echo $row->name; ?><small><a href="<?php echo base_url() . "category/listing/". $row->id; ?>">see more</a></small></h2>
           </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-            <a href="#">
-              <img src="<?php echo base_url(); ?>img/blocks.jpeg" class="img-responsive"/>
-            </a>
-            <div class="bmp-prod-cat">Sub-category name</div>
-            <div class="bmp-prod-name">Product name</div>
-            <div class="bmp-prod-price">₦1200</div>
-            <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-            <a href="#">
-          <img src="<?php echo base_url(); ?>img/branite.jpeg" class="img-responsive"/>
-            </a>
-          <div class="bmp-prod-cat">Sub-category name</div>
-            <div class="bmp-prod-name">Product name</div>
-            <div class="bmp-prod-price">₦1200</div>
-            <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-            <a href="#">
-          <img src="<?php echo base_url(); ?>img/iron.jpeg" class="img-responsive"/>
-            </a>
-          <div class="bmp-prod-cat">Sub-category name</div>
-            <div class="bmp-prod-name">Product name</div>
-            <div class="bmp-prod-price">₦1200</div>
-            <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-            <a href="#">
-          <img src="<?php echo base_url(); ?>img/cement.jpeg" class="img-responsive"/>
-            </a>
-          <div class="bmp-prod-cat">Sub-category name</div>
-          <div class="bmp-prod-name">Product name</div>
-          <div class="bmp-prod-price">₦1200</div>
-            <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
+              <?php foreach($result as $row1){ ?>
+                <div class="col-sm-3 col-xs-12 bmp-home-listing">
+                  <a href="<?php echo base_url() . "products/details/". $row1->product_id.'/'.url_title($row1->product_name); ?>">
+                    <img src="<?php echo base_url(); ?>img/<?php echo $row1->img; ?>" class="img-responsive" style="height:135px"/>
+                  </a>
+                  <div class="bmp-prod-cat"><?php echo $row1->category_name; ?></div>
+                  <div class="bmp-prod-name"><?php echo $row1->product_name; ?></div>
+                  <div class="bmp-prod-price">Guide Price: <?php echo $row1->price; ?></div>
+                  <div class="bmp-wishlist-btn-container">
+                  <!-- <a href="<?php //echo base_url(); ?>wishlist/add/<?php echo $row1->product_id; ?>"> -->
+                  <a onclick="addtowishlist(<?php echo $row1->product_id; ?>)">
+                    <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
+                  </a>
+                  </div>
+                </div>
+              <?php } ?>
         </div>
-        
-        <div class="row">
-          <div class="col-sm-12 container">
-            <h2>Bathrooms<small><a href="#">see more</a></small></h2>
-          </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-            <a href="#">
-          <img src="<?php echo base_url(); ?>img/pan.jpeg" class="img-responsive"/>
-            </a>
-          <div class="bmp-prod-cat">Sub-category name</div>
-          <div class="bmp-prod-name">Product name</div>
-          <div class="bmp-prod-price">₦1200</div>
-            <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-          <img src="<?php echo base_url(); ?>img/planks.jpeg" class="img-responsive"/>
-          <div class="bmp-prod-cat">Sub-category name</div>
-          <div class="bmp-prod-name">Product name</div>
-          <div class="bmp-prod-price">₦1200</div>
-            <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-          <img src="<?php echo base_url(); ?>img/iron.jpeg" class="img-responsive"/>
-          <div class="bmp-prod-cat">Sub-category name</div>
-          <div class="bmp-prod-name">Product name</div>
-          <div class="bmp-prod-price">₦1200</div>
-            <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-          <img src="<?php echo base_url(); ?>img/branite.jpeg" class="img-responsive"/>
-          <div class="bmp-prod-cat">Sub-category name</div>
-          <div class="bmp-prod-name">Product name</div>
-          <div class="bmp-prod-price">₦1200</div>
-          <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-sm-12 container">
-            <h2>Materials<small><a href="#">see more</a></small></h2>
-          </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-          <img src="<?php echo base_url(); ?>img/blocks.jpeg" class="img-responsive"/>
-            <div class="bmp-prod-cat">Sub-category name</div>
-            <div class="bmp-prod-name">Product name</div>
-            <div class="bmp-prod-price">₦1200</div>
-            <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-          <img src="<?php echo base_url(); ?>img/branite.jpeg" class="img-responsive"/>
-          <div class="bmp-prod-cat">Sub-category name</div>
-            <div class="bmp-prod-name">Product name</div>
-            <div class="bmp-prod-price">₦1200</div>
-            <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-          <img src="<?php echo base_url(); ?>img/iron.jpeg" class="img-responsive"/>
-          <div class="bmp-prod-cat">Sub-category name</div>
-            <div class="bmp-prod-name">Product name</div>
-            <div class="bmp-prod-price">₦1200</div>
-            <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12 bmp-home-listing">
-          <img src="<?php echo base_url(); ?>img/cement.jpeg" class="img-responsive"/>
-          <div class="bmp-prod-cat">Sub-category name</div>
-          <div class="bmp-prod-name">Product name</div>
-          <div class="bmp-prod-price">₦1200</div>
-            <div class="bmp-wishlist-btn-container">
-            <a href="#">
-              <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
-            </a>
-            </div>
-          </div>
-        </div>
-        
+    <?php } ?>
         <div class="bmp-clients">
           <img src="<?php echo base_url(); ?>img/clients.png" alt="" width="700" class="img-responsive">
         </div>
@@ -180,3 +57,20 @@
 <?php
   include("template/footer.php");
 ?>
+
+<script type="text/javascript">
+  function addtowishlist(product_id)
+  {
+      $.ajax({  
+        type: "POST",  
+        url: "<?php echo base_url();?>wishlist/add/"+product_id,  
+
+        success: function(response)
+        {
+              console.log("return", response);
+        }
+      });
+
+  }
+
+</script>

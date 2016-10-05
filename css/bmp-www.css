@@ -9,6 +9,10 @@
   right: 0;
  }
 
+ .iti-flag {
+  background-image: url("../img/flags.png");
+}
+
 .bmplisting {
   overflow: hidden;
   background-color: #fff;
@@ -21,18 +25,22 @@
 }
 
 .search-by {
-  margin-top: 15px;
+  margin-top: 10px;
   font-size: 11px;
-  cursor: pointer;
 }
 
 .cat-text {
   font-size: 13px;
-  cursor: pointer;
 }
 
 .glyphicon-triangle-bottom {
   font-size: 10px;
+  cursor: pointer;
+  margin-top: -10px;
+}
+
+.glyphicon-remove {
+  cursor: pointer;
 }
 
 .bmplisting header {
@@ -73,7 +81,7 @@ header .bmp-header-search input[type='text'] {
 .bmp-menu {
   position: relative;
   margin-left: -58px;
-  margin-top: 20px;
+  margin-top: 18px;
   color: #fff;
   font-weight: bold;
   font-size: 14px;
@@ -84,6 +92,7 @@ header .bmp-header-search input[type='text'] {
   display: inline-block;
   margin-right: 5px;
   list-style: none;
+  cursor: pointer;
 }
 
 .bmp-menu ul li a {
@@ -95,7 +104,7 @@ header .bmp-header-search input[type='text'] {
 .bmp-menu-r {
   position: relative;
   margin-left: 0px;
-  margin-top: 20px;
+  margin-top: 18px;
   color: #fff;
   font-weight: bold;
   font-size: 14px;
@@ -182,7 +191,6 @@ header .bmp-header-search input[type='text'] {
   color: #fff;
   font-size: 16px;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
 .bmp-intro ul li:nth-child(2) {
@@ -210,6 +218,7 @@ header .bmp-header-search input[type='text'] {
   font-size: 14px;
   text-align: center;
   color: #fff;
+
 }
 /*Main COlumn*/
 .bmp-maincol {
@@ -410,6 +419,9 @@ aside {
   font-size: 10px;
 }
 
+.pagination>li>a, .pagination>li>span {
+  float: none;
+}
 /*Product Listing names*/
 .bmp-prod-cat {
   margin-top: 10px;
@@ -427,6 +439,7 @@ small {
   color: #666;
   font-size: 13px;
   text-align: left;
+  white-space: nowrap;
 }
 
 .bmp-prod-price {
@@ -907,6 +920,7 @@ footer .terms li a:hover{
 
 .prod-recommended-container .block-one  th{
   padding-right: 10px;
+  width: 100px;
   color: #666;
   font-size: 13px;
   font-family: sans-serif;
@@ -992,7 +1006,46 @@ footer .terms li a:hover{
 .bmp-profile ..panel-info>.panel-heading {
   border: none;
   background: none;
+}
 
+.bmp-dealers {
+  margin-top: 20px;
+}
+.bmp-dealers .bmp-dealers-title {
+  margin-bottom: 10px;
+  color: #000;
+  font-size: 20px;
+  font-family: serif;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.bmp-dealers select {
+  width: 71%;
+}
+
+.bmp-pages {
+  margin-top: 20px;
+}
+.bmp-pages .bmp-pages-title {
+  margin-bottom: 10px;
+  color: #000;
+  font-size: 20px;
+  font-family: serif;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.bmp-blog {
+  margin-top: 20px;
+  margin-right: 25px;
+}
+
+.bmp-blog h1 a{
+  color: #f23534;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-transform: uppercase;
 }
 
 
@@ -1283,6 +1336,7 @@ footer .terms li a:hover{
 .img-thumb li {
   display: inline-block;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .img-thumb li img {

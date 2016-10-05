@@ -25,10 +25,10 @@
                        <?php } ?>
 
                           <?php if($this->session->flashdata('logout')) {   ?>
-                      <div class="alert alert-success" role="alert">
-                         <?php echo $this->session->flashdata('logout'); ?>
-                        <a href="#" class="close">&times;</a>
-                      </div>
+                          <div class="alert alert-success" role="alert">
+                             <?php echo $this->session->flashdata('logout'); ?>
+                            <a href="#" class="close">&times;</a>
+                          </div>
                       <?php } ?>
                   <?php if($this->session->flashdata('notLoggedIn')) { ?>
                   <div data-alert class="alert alert-success" role="alert">
@@ -37,14 +37,21 @@
                   </div>
                      <?php } ?>
 
-                  <form action="login  " class="form-horizontal" method="post" name="signup" id="signup" enctype="multipart/form-data" >        
+                     <?php if($this->session->flashdata('success')) { ?>
+                  <div data-alert class="alert alert-success" role="alert">
+                    <strong><?php echo $this->session->flashdata('success'); ?></strong> 
+                    <a href="#" class="close">&times;</a>
+                  </div>
+                     <?php } ?>
+
+                  <form action="<?php echo base_url(); ?>authentication/login" class="form-horizontal" method="post" />        
                     
                     <div class="form-group">
                       <label class="control-label col-sm-3">Email Addresss</label>
                       <div class="col-md-8 col-sm-5">
                           <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                          <input type="email" class="form-control" name="email" id="emailid" value="">
+                          <input type="email" autocomplete="off" class="form-control" name="email" value="<?php echo set_value(' email '); ?>" Required />
                         </div>
                       </div>
                     </div>
@@ -54,10 +61,16 @@
                       <div class="col-md-5 col-sm-2">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                          <input type="password" class="form-control" name="password" id="password" value="">
+                          <input type="password" class="form-control" name="password" id="password" value="" Required />
                        </div>   
                       </div>
                     </div>
+
+                    <div class="forgotp" style="margin-left:200px;">
+                      <label>
+                        <a href="<?php echo base_url(); ?>authentication/iforgot"> Forgot your password?</a>
+                      </label>
+                    </div><br />
 
                     <div class="form-group">
                       <div class="col-xs-offset-3 col-xs-10">

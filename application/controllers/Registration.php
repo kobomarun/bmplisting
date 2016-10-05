@@ -18,13 +18,7 @@ class Registration extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		$this->load->view('register.php');
-	}
-
-  function signup()
-  {
+	public function index() {
     if($this->input->post()) {
 
       $fname = $this->input->post('fname');
@@ -32,10 +26,13 @@ class Registration extends CI_Controller {
       $phone = $this->input->post('phone');
       $email = $this->input->post('email');
       $pwd = $this->input->post('password');
+      $gender = $this->input->post('gender');
 
-      $this->form_validation->set_rules('password', 'Password', 'trim|required');
+      $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
+      $this->form_validation->set_rules('cpassword', 'Password Confirmation', 'required|matches[password]');
       $this->form_validation->set_rules('fname', 'Full Name', 'trim|required');
-      $this->form_validation->set_rules('email', 'Email', 'trim|required|is_unique[bmp_users.email]');
+      $this->form_validation->set_rules('gender', 'Gender', 'trim|required');
+      $this->form_validation->set_rules('email', 'Email', 'valid_email|required|is_unique[bmp_users.email]');
 
       if ($this->form_validation->run() == FALSE) {
 
@@ -49,7 +46,10 @@ class Registration extends CI_Controller {
         'fname'=>$fname,
         'pwdd'=>md5($pwd),
         'email'=>$email,
-        'ipaddress'=>$this->input->ip_address()
+        'phone'=>$phone,
+        'gender'=>$gender,
+        'ipaddress'=>$this->input->ip_address(),
+        'date'=> date("F j, Y")
       );
         $this->db->insert('bmp_users',$data);
 
@@ -74,9 +74,9 @@ class Registration extends CI_Controller {
       $this->email->set_newline("\r\n");
       
       $this->email->set_mailtype('html');
-      $this->email->from('no-reply@swap-it.com.ng');
+      $this->email->from('no-reply@bmplist.com');
       $this->email->to($email);
-      $this->email->subject('Welcome To SWAP-it::: Your registration was successful');
+      $this->email->subject('Account Activation Your registration was successful');
       
       
       
@@ -89,45 +89,42 @@ class Registration extends CI_Controller {
       
     
       $message .='<div style="background:#ececec; padding:20px; border:3px solid #d3d3d3; border-radius:6px;">';
-      $message .='<p style="font-size:15px;">Dear ' . $this->input->post('name') . '</p>';
+      $message .='<p style="font-size:15px;">Dear ' . $this->input->post('fname') ." " . $this->input->post('lname') . '</p>';
       $message .='
       <div style="width:100%; background:#fff; height:auto; border:3px solid #d02552; box-shadow:4px 4px 5px; color:#d02552; font:arial padding:20px; text-align:center; border-radius:4px;">
-      <h1>Welcome to</h1>
-      <p align ="center"><img src="'. base_url() .'template/img/logo_1811349_web.jpg" />
+      <h1>Account Activation</h1>
+      
       <br />
       </div><br />';
-      $message .='<p style="font-size:15px;">Thank you for signing up on SWAP-it! <br />Here is a quick guide to help you started.</p>';
-      $message .='<div style="">
-      <h3>1. Post your own items to swap and / or barter services.</h3>
-      <p style="font-size:13px;">
-      After you must have logged in, post item you wish to swap with other item by clicking  <a href="'.base_url().'xchange/post">here</a>
-      </p>
-
-      <h3>2. Your Offer Seen</h3>
-      <p style="font-size:13px;">
-      Your item will be listed on Swap-it and be seen by Swap-it users / visitors. once users have interest, you will be contacted  if interested, you will be contacted via Swap-it or your mobile phone number.
-      </p>
-
-      <h3>3. SWAP-it</h3>
-      <p style="font-size:13px;">
-      once agreement is reached, Just Swap-it.
-      </p>
-      </div>';
+      $message .='<p style="font-size:15px;"> ' . $this->db->get_where('email',array('type'=>'Registration'))->row()->email . '</p>';
+      
+     
+      $message .= base_url() . "/registration/activation/" . $this->input->post('email'). "/" . rand(); 
       $message .='<p>Thank you!</p>';
-      $message .='<p>The Team at SWAP-it!</p>';
+      $message .='<p>The Team at BMPLIST</p>';
       $message .='</div>';
       $message .='</body></html>';
 
       $this->email->message($message);
       $this->email->send();
 
-        $this->session->set_flashdata('success', 'Your registration was successful. Please login to swap goods and services.');
-        redirect('authentication/login');
-      }
+        $this->session->set_flashdata('success', 'An email has been sent to your email address. You need to activate your account');
+        redirect(base_url() . 'authentication/login');
+        }
 
       } 
       else {
       $this->load->view('register.php');
     }
   }
+
+  function activation($email) {
+    $email = $this->uri->segment(3);
+    $data = array('status'=>1);
+    $this->db->where('email',$email);
+    $this->db->update('bmp_users', $data);
+    $this->session->set_flashdata('success', 'Your registration was successful. Please log in .');
+    redirect('authentication/login');
+  }
+		
 }

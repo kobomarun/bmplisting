@@ -8,7 +8,7 @@ class Mdl_auth extends CI_Model {
 	function login($email,$pwd)
 	{
 
-		 $query =  $this->db->get_where('bmp_users',array('email'=>$email, 'pwdd'=>$pwd));
+		 $query =  $this->db->get_where('bmp_users',array('email'=>$email, 'pwdd'=>$pwd, 'status' => 1));
 		 if($query->num_rows() == 1) {
 
 		 	$row =  $query->row_array();
