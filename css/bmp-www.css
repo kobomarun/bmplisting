@@ -1036,6 +1036,18 @@ footer .terms li a:hover{
   text-align: left;
 }
 
+.bmp-blog {
+  margin-top: 20px;
+  margin-right: 25px;
+}
+
+.bmp-blog h1 a{
+  color: #f23534;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+
 
 
 /* Tablet viewport*/

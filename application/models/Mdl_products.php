@@ -71,4 +71,21 @@ class Mdl_products extends CI_Model {
       return $result; 
   }
 
+  function getRandomProduct() {
+    $this->db->order_by('name', 'RANDOM');
+    $this->db->limit(4);
+    $result = $this->db->get('bmp_products')->result();
+    return $result; 
+
+  }
+
+  function getProductChecked() {
+    $this->db->order_by('name', 'RANDOM');
+    $this->db->order_by('name', 'DESC');
+    $this->db->limit(4);
+    $result = $this->db->get('bmp_products')->result();
+    return $result; 
+
+  }
+
 }

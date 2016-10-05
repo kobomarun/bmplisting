@@ -92,7 +92,7 @@
                 <li><a href="<?php echo base_url();?>pages/exchange">|&nbsp; Exchange Rates </a></li>
                 <li><a href="<?php echo base_url();?>">|&nbsp; Your Requisition </a></li>
                 <li><a href="<?php echo base_url();?>">|&nbsp; DIY </a></li>
-                <li><a href="<?php echo base_url();?>pages/Blog">| &nbsp;Blog </a></li>
+                <li><a href="<?php echo base_url();?>blog">| &nbsp;Blog </a></li>
                 <li><a href="<?php echo base_url();?>user">| &nbsp; My Account </a></li>
               </ul>
             </div>

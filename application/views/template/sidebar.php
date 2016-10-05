@@ -12,7 +12,7 @@
     <ul>
       <?php foreach($query as $cat) { ?>
       <li>
-        <a href="<?php echo base_url(); ?>category/listing/<?php echo $cat->id; ?>/<?php echo preg_replace('/\s+/', '', $cat->name) ?>">
+        <a href="<?php echo base_url(); ?>category/listing/<?php echo $cat->id; ?>/<?php echo url_title( $cat->name) ?>">
           <i class="glyphicon glyphicon-list-alt"></i> <?php echo $cat->name; ?>
         </a>
       </li>
@@ -31,7 +31,7 @@
     ?>
     <?php foreach($query as $product) { ?>
     <div class="row ">
-      <a href="<?php echo base_url() . "products/details/". $product->id.'/'.preg_replace('/\s+/', '', $product->name); ?>">
+      <a href="<?php echo base_url() . "products/details/". $product->id.'/'.url_title($product->name); ?>">
       <div class="col-sm-5 ">
         <img src="<?php echo base_url(); ?>img/<?php echo $product->img; ?>" class="img-responsive"/>
       </div>

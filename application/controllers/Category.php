@@ -29,7 +29,7 @@ class Category extends CI_Controller {
      //create pages
      $total_rows = $this->mdl_category->count_all_products($id);
      $config['base_url'] = base_url() . 'category/listing/'. $id;
-     $config['per_page'] = 3;
+     $config['per_page'] = 20;
      $config['total_rows'] = $total_rows;
      $config['num_links'] = 10;
      $config['use_page_numbers'] = TRUE;
