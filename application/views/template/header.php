@@ -40,10 +40,11 @@
         <header>
           <div class="col-md-2 col-sm-2 col-xs-12">
             <a href="<?php echo base_url(); ?>">
-              <img src="<?php echo base_url(); ?>img/logo.png" class="logo img-responsive" />
+              <img src="<?php echo base_url(); ?>img/logo.png" class="logo img-responsive"/>
             </a>
-            <div class="search-by">Search by</div>
-            <div class="cat-text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category <i class="glyphicon glyphicon-triangle-bottom"></i></div>
+            <div class="search-by hidden-xs">Search by</div>
+            <div class="cat-text hidden-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category <i class="glyphicon glyphicon-triangle-bottom"></i>
+              </div>
             <ul class="dropdown-menu">
               <?php foreach($query as $cat) { ?>
             <li>
@@ -68,7 +69,7 @@
                   <ul class="dropdown-menu">
                    <?php foreach($query as $cat) { ?>
                   <li>
-                    <a href="<?php echo base_url(); ?>listing/listing/<?php echo $cat->id; ?>/<?php echo preg_replace('/\s+/', '', $cat->name) ?>">
+                    <a href="<?php echo base_url(); ?>category/listing/<?php echo $cat->id; ?>/<?php echo url_title($cat->name) ?>">
                       <?php echo $cat->name; ?>
                     </a>
                   </li>
@@ -123,7 +124,7 @@
         </div>
        </header>
        <?php 
-          if($this->uri->segment(1) === "home") { 
+          if(current_url() === base_url()) { 
             include("homeMenu.php");
           } else {
         ?>
@@ -144,13 +145,13 @@
                 if($this->session->userdata('isLoggedin')) {
                  echo strtoupper($this->session->userdata('fname')); 
                } else echo strtoupper("guest" );
-               ?>
+               ?> <span class="visible-xs"><a href="<?php echo base_url(); ?>registration">Register</a> &nbsp;| &nbsp; <a href="<?php echo base_url(); ?>authentication/login">Login</a></span>
              </li>
-            <li> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
-            <li><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
-            <li align="left"><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
-            <li><a href="<?php echo base_url(); ?>">List Your Products</a></li>
-            <li><a href="<?php echo base_url(); ?>">Looking for a Tradesman?</a></li>
+            <li class="hidden-xs"> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
+            <li class="hidden-xs"><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
+            <li align="left" class="hidden-xs"><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
+            <li class="hidden-xs"><a href="<?php echo base_url(); ?>">List Your Products</a></li>
+            <li class="hidden-xs"><a href="<?php echo base_url(); ?>">Looking for a Tradesman?</a></li>
           </ul>
         </div>
        </div>

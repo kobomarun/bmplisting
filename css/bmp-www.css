@@ -140,6 +140,10 @@ header .bmp-header-search input[type='text'] {
   margin-top: 60px;
 }
 
+.sliderimg {
+  cursor: default; width: 980px; height: 250px; overflow: hidden;
+}
+
 /*bmp intro home*/
 .bmp-intro {
   position: relative;
@@ -1354,6 +1358,38 @@ footer .terms li a:hover{
   border-bottom: 1px solid #ccc;
   position: relative;
   top: -23px;
+}
+
+/* Mobile Viewport CSS */
+@media (min-width: 320px) and (max-width: 767px) {
+  .logo {
+    display: block;
+    margin-top: 7px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  header .bmp-header-search {
+    position: relative;
+    top: -15px;
+    left: 10px;
+  }
+  .bmp-intro ul li:first-child {
+    width: 600px;
+  }
+
+  .bmp-intro ul li:first-child span{
+    margin-left: 200px;
+    margin-top: -27px;
+  }
+
+  .bmp-slider {
+    height: 200px;
+  }
+
+  .sliderimg {
+    height: 200px;
+  }
 }
 
   
