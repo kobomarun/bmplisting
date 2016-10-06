@@ -48,6 +48,8 @@ class Calculator extends CI_Controller {
 
 		if($query = $this->shop2->insert($data))
 		{
+	        header('Content-Type: application/json');
+	        //echo json_encode($query);
 	        $total_amount = $this->shop2->total_cart();
 	        echo json_encode($total_amount);
 		} 
@@ -70,12 +72,12 @@ class Calculator extends CI_Controller {
 	function delete_product()
 	{
 		$row_id = $this->uri->segment(3);
-		$qty = 0;
-		$array = array('rowid' =>$row_id ,'qty'=>$qty );
-		if($query = $this->shop2->delete($array))
+	  	$this->shop2->remove_item($row_id);
+		if($query = $this->shop2->remove_item($row_id))
 		{
 			header('Content-Type: application/json');
-	        echo json_encode($query);
+			$cartcontents = $this->shop2->get_content();	
+	        echo json_encode($cartcontents);
 		}
 	}
 }

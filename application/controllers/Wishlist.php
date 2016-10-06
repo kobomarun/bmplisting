@@ -41,7 +41,7 @@ class Wishlist extends CI_Controller {
 
 		if($query = $this->shop1->insert($data))
 		{
-			//header('Content-Type: application/json');
+			header('Content-Type: application/json');
 	        //echo json_encode($query);
 	        $totalitems = $this->shop1->total_articles();
 	        echo json_encode($totalitems);

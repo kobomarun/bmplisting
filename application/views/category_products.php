@@ -14,7 +14,6 @@
                     <div class="col-sm-9">
                     <p>Showing 1 - 3 of 9</p>
                     </div>
-                    <a align="center" href="<?php echo base_url(); ?>calculator/viewproducts">View Products</a>
                     <div class="col-sm-3">
                       <div class="dropdown" style="float:right">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -30,6 +29,10 @@
                     </div>
                   </div>
                 </div>
+              </div>
+              <div align="center">
+                Total Amount: <p id="total_amount"></p>
+                <a href="<?php echo base_url(); ?>calculator/viewproducts">View Added Products</a>
               </div>
 
               <?php 
@@ -100,7 +103,8 @@
 
         success: function(response)
         {
-              console.log("return", response);
+              $('#total_amount').text(response);
+              //console.log("return", response);
         }
       });
 

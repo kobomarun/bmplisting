@@ -41,7 +41,7 @@
                         
                         </td>-->
                       </tr>
-                    <?php $i++; } echo 'Total Amount: '.$total_amount; }else{ ?>
+                    <?php $i++; } }else{ ?>
                       <tr>
                         <td colspan="4">No result found</td>
                       </tr>
@@ -52,10 +52,17 @@
               </div>
             </div>
           </div>
+          <div>
+              <h3 align="center">Total Amount:  &#x20A6;<?php echo number_format($total_amount) ?></h3>
+          </div>
         </div>
       </div>
     </div>
-   <script type="text/javascript">
+<?php
+  include("template/footer.php");
+?>
+
+<script type="text/javascript">
   function deleteitem(product_id)
   {
     $.ajax({  
@@ -68,9 +75,5 @@
         }
     });
   }
-
-
 </script>
-<?php
-  include("template/footer.php");
-?>
+
