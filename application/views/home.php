@@ -27,7 +27,7 @@
             <h2><?php echo $row->name; ?><small><a href="<?php echo base_url() . "category/listing/". $row->id; ?>">see more</a></small></h2>
           </div>
               <?php foreach($result as $row1){ ?>
-                <div class="col-sm-3 col-xs-12 bmp-home-listing">
+                <div class="col-sm-3 col-xs-6 bmp-home-listing">
                   <a href="<?php echo base_url() . "products/details/". $row1->product_id.'/'.url_title($row1->product_name); ?>">
                     <img src="<?php echo base_url(); ?>img/<?php echo $row1->img; ?>" class="img-responsive" style="height:135px"/>
                   </a>
@@ -37,7 +37,7 @@
                   <div class="bmp-wishlist-btn-container">
                   <!-- <a href="<?php //echo base_url(); ?>wishlist/add/<?php echo $row1->product_id; ?>"> -->
                   <a onclick="addtowishlist(<?php echo $row1->product_id; ?>)">
-                    <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
+                    <button class="bmp-wishlist-btn">ADD TO REQUISITION LIST</button>
                   </a>
                   </div>
                 </div>

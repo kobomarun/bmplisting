@@ -1,7 +1,7 @@
 <footer>
         <div class="row">
           <div class="container">
-            <div class="col-sm-3 col-xs-12">
+            <div class="col-sm-3 col-xs-6">
               <div class="footer-section">
                 <h2 class="header">Menu</h2>
                 <ul>
@@ -18,7 +18,7 @@
               </div>
             </div> 
 
-             <div class="col-sm-3 col-xs-12">
+             <div class="col-sm-3 col-xs-6">
               <div class="footer-section">
                 <h2 class="header">Tools </h2>
                   <ul>
@@ -29,7 +29,7 @@
               </div>
             </div>
 
-            <div class="col-sm-3 col-xs-12">
+            <div class="col-sm-3 col-xs-6">
               <div class="footer-section">
                 <h2 class="header">Information</h2>
                 <ul>
@@ -45,7 +45,7 @@
               </div>
             </div>
 
-            <div class="col-sm-3 col-xs-12">
+            <div class="col-sm-3 col-xs-9">
               <div class="footer-section">
                 <h2 class="header">Newsletter</h2>
                 <div class="">
@@ -91,7 +91,7 @@
         </div>
         <div class="divider"></div>
             <div class="row">
-              <div class="col-sm-12 terms">
+              <div class="col-sm-12 col-xs-10 terms">
                 <ul>
                   <li><a href="#">Terms & Condition</li>
                   <li><a href="#">Privacy Policy</li>

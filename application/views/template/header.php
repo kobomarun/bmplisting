@@ -39,6 +39,24 @@
       <div class="container-fluid">
         <header>
           <div class="col-md-2 col-sm-2 col-xs-12">
+            <!--Mobile Menu Viewport-->
+            <div class="input-group-btn visible-xs mobile-menu">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-menu-hamburger"></i> <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+              <li><a href="<?php echo base_url();?>dealers"><i class="glyphicon glyphicon-list-alt"></i> Are you a Dealer? </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>pages/directory"><i class="glyphicon glyphicon-list-alt"></i> Business Directory </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>pages/exchange"><i class="glyphicon glyphicon-list-alt"></i> Exchange Rates </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>"><i class="glyphicon glyphicon-list-alt"></i> Your Requisition </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>"><i class="glyphicon glyphicon-list-alt"></i> DIY </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>blog"><i class="glyphicon glyphicon-list-alt"></i> Blog </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>user"><i class="glyphicon glyphicon-list-alt"></i> My Account </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url(); ?>calculator"><i class="glyphicon glyphicon-list-alt"></i> Building Calculator</a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url(); ?>"><i class="glyphicon glyphicon-list-alt"></i> Price Tracker</a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url(); ?>"><i class="glyphicon glyphicon-list-alt"></i> List Your Products</a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url(); ?>"><i class="glyphicon glyphicon-list-alt"></i> Looking for a Tradesman?</a></li><hr style="margin:5px 5px"/>
+              </ul>
+            </div><!-- /btn-group -->
+            <!--End of Mobile Menu-->
             <a href="<?php echo base_url(); ?>">
               <img src="<?php echo base_url(); ?>img/logo.png" class="logo img-responsive"/>
             </a>
@@ -75,10 +93,9 @@
                   </li>
           <?php } ?>
                   </ul>
-
-
-                  <?php echo form_open('products/search'); ?>
+                   <?php echo form_open('products/search'); ?>
                 </div><!-- /btn-group -->
+               
                 <input type="text" class="form-control" name="search_item" placeholder="Enter your search terms" value="<?php echo set_value('search_item'); ?>" aria-label="Enter your Search terms">
                 <span class="input-group-btn">
                         <button class="btn btn-default" name="submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>

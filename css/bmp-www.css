@@ -144,6 +144,10 @@ header .bmp-header-search input[type='text'] {
   cursor: default; width: 980px; height: 250px; overflow: hidden;
 }
 
+.bmp-slider .arrow-left {
+  top:0px;left:10px;width:40px;height:58px;
+}
+
 /*bmp intro home*/
 .bmp-intro {
   position: relative;
@@ -1364,7 +1368,7 @@ footer .terms li a:hover{
 @media (min-width: 320px) and (max-width: 767px) {
   .logo {
     display: block;
-    margin-top: 7px;
+    margin-top: -27px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1379,18 +1383,55 @@ footer .terms li a:hover{
   }
 
   .bmp-intro ul li:first-child span{
-    margin-left: 200px;
+    margin-left: 190px;
     margin-top: -27px;
   }
 
   .bmp-slider {
-    height: 200px;
+    height: 180px;
   }
 
   .sliderimg {
-    height: 200px;
+    height: 500px;
   }
+
+  .bmp-slider .arrow-left {
+    top: 260px;
+  }
+
+  .bmp-wishlist-btn {
+    font-size: 9px;
+  }
+
+  .mobile-menu {
+    position: relative;
+    top: 13px;
+  }
+
+  .mobile-menu .btn-default {
+    background: #f23534;
+    color: #fff;
+    border: none;
+  }
+
+  .mobile-menu .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+    background: #f23534;
+    color: #fff;
+  }
+  
+  footer .terms li {
+    display: block;
+    margin: 4px;
+  }
+
+  .footer-section .footer-social li {
+    margin: 7px;
+  }
+
+  
 }
+
+
 
   
 

@@ -22,8 +22,8 @@
       <div data-u="prototype" style="width:16px;height:16px;"></div>
   </div>
   <!-- Arrow Navigator -->
-  <span data-u="arrowleft" class="jssora22l" style="top:0px;left:10px;width:40px;height:58px;" data-autocenter="2"></span>
-  <span data-u="arrowright" class="jssora22r" style="top:0px;right:10px;width:40px;height:58px;" data-autocenter="2"></span>
+  <span data-u="arrowleft" class="jssora22l hidden-xs" style="top:0px;left:10px;width:40px;height:58px;" data-autocenter="2"></span>
+  <span data-u="arrowright" class="jssora22r hidden-xs" style="top:0px;right:10px;width:40px;height:58px;" data-autocenter="2"></span>
 </div>
 <script>
   jssor_1_slider_init();
@@ -43,7 +43,7 @@
                 if($this->session->userdata('isLoggedin')) {
                  echo $this->session->userdata('fname'); 
                } else echo "Guest" ;
-               ?><span class="visible-xs<a href="<?php echo base_url(); ?>registration">Register</a> &nbsp;| &nbsp; <a href="<?php echo base_url(); ?>authentication/login">Login</a></span>
+               ?><span class="visible-xs"><a href="<?php echo base_url(); ?>registration">Register</a> &nbsp;| &nbsp; <a href="<?php echo base_url(); ?>authentication/login">Login</a></span>
              </li>
               <li class="hidden-xs"> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
