@@ -43,10 +43,9 @@
                           <label class="control-label col-sm-4">State:</label>
                           <div class="col-sm-8"> 
                               <select class="form-control" id="sel1" name="state">
-                                <option value="lagos">Lagos</option>
-                                <option>Ogun</option>
-                                <option>3</option>
-                                <option>4</option>
+                                <?php foreach($states as $state) { ?>
+                                <option value="<?php echo $state->name; ?>"><?php echo $state->name; ?></option>
+                                <?php } ?>
                               </select>
                           </div>
                         </div>

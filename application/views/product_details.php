@@ -64,26 +64,26 @@
                       <ul class="">
                       <li>
                         <a href="http://www.facebook.com/share.php?u=<?php echo current_url(); ?>&title=<?php echo $product->name; ?>" target="_blank">
-                          <img src="<?php echo base_url(); ?>img/fb.png" alt=""/>
+                          <img src="<?php echo base_url(); ?>img/fb.png" alt="" class="img-responsive soc" />
                         </a>
                       </li>
                       <li>
-                        <a href="http://twitter.com/intent/tweet?status=<?php echo $product->name; ?>+<?php echo current_url(); ?>" target="_blank"><img src="<?php echo base_url(); ?>img/tw.png" alt="" />
+                        <a href="http://twitter.com/intent/tweet?status=<?php echo $product->name; ?>+<?php echo current_url(); ?>" target="_blank"><img src="<?php echo base_url(); ?>img/tw.png" alt="" class="img-responsive soc"/>
                         </a>
                       </li>
                       <li>
                         <a href="http://pinterest.com/pin/create/bookmarklet/?url=<?php echo current_url(); ?>&is_video=false&description=<?php echo $product->name; ?>" target="_blank">
-                        <img src="<?php echo base_url(); ?>img/pint.png" alt="" />
+                        <img src="<?php echo base_url(); ?>img/pint.png" alt="" class="img-responsive soc"/>
                         </a>
                       </li>
                       <li>
                         <a href="https://plus.google.com/share?url=<?php echo current_url(); ?>" target="_blank">
-                          <img src="<?php echo base_url(); ?>img/gplus.png" alt="" />
+                          <img src="<?php echo base_url(); ?>img/gplus.png" alt="" class="img-responsive soc"/>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <img src="<?php echo base_url(); ?>img/ins.png" alt="" />
+                          <img src="<?php echo base_url(); ?>img/ins.png" alt="" class="img-responsive soc" />
                         </a>
                       </li>
                     </ul>   
@@ -95,12 +95,12 @@
             </div>
             <!-- Ads-->
             <div class="row">
-              <div class="col-sm-6"> 
+              <div class="col-sm-6 col-xs-11"> 
                 <div class="prod-ads">
                   <img src="http://placehold.it/400X130" alt="" class="img">
                 </div>
               </div>
-              <div class="col-sm-6"> 
+              <div class="col-sm-6 col-xs-11"> 
                 <div class="prod-ads">
                   <img src="http://placehold.it/400x130" alt="" class="img">
                 </div>
@@ -113,15 +113,16 @@
                 <ul>
                   <li class="tab-header"><a style="color:red;"> Recommended Dealers For This Item</a></li>
                   <li>
-                    <div class="prod-filter">
+                    <div class="prod-filter hidden-xs">
                         <button class="btn  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                           Filter by State
                           <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                           <li><a href="#">Default</a></li>
-                          <li><a href="#">Price: Low to High</a></li>
-                          <li><a href="#">Price: High to Low</a></li>
+                          <?php foreach($states as $state) { ?>
+                          <li><a href="#"><?php echo $state->name; ?></a></li>
+                          <?php } ?>
                         </ul>
                       </div>
                   </li>
@@ -274,10 +275,9 @@
                           <label class="control-label col-sm-4">State:</label>
                           <div class="col-sm-8"> 
                               <select class="form-control" id="sel1" name="state">
-                                <option value="lagos">Lagos</option>
-                                <option>Ogun</option>
-                                <option>3</option>
-                                <option>4</option>
+                                <?php foreach($states as $state) { ?>
+                                <option value="<?php echo $state->name; ?>"><?php echo $state->name; ?></option>
+                                <?php } ?>
                               </select>
                           </div>
                         </div>
@@ -338,10 +338,9 @@
                           <label class="control-label col-sm-4">State:</label>
                           <div class="col-sm-8"> 
                               <select class="form-control" id="sel1" name="state">
-                                <option value="lagos">Lagos</option>
-                                <option>Ogun</option>
-                                <option>3</option>
-                                <option>4</option>
+                                <?php foreach($states as $state) { ?>
+                                <option value="<?php echo $state->name; ?>"><?php echo $state->name; ?></option>
+                                <?php } ?>
                               </select>
                           </div>
                         </div>
@@ -395,7 +394,7 @@
                 <br />
                 <div class="row">
                   <?php foreach($checked as $check) { ?>
-                  <div class="col-sm-3 col-xs-12 bmp-home-listing">
+                  <div class="col-sm-3 col-xs-6 bmp-home-listing">
                 <a href="#">
                   <img src="<?php echo base_url(); ?>img/<?php echo $check->img; ?>" class="img-responsive"/>
                 </a>
@@ -429,7 +428,7 @@
                 <br />
                 <div class="row">
                 <?php foreach($bought as $frequently) { ?>
-                  <div class="col-sm-3 col-xs-12 bmp-home-listing">
+                  <div class="col-sm-3 col-xs-6 bmp-home-listing">
                 <a href="#">
                   <img src="<?php echo base_url(); ?>img/<?php echo $frequently->img; ?>" class="img-responsive"/>
                 </a>

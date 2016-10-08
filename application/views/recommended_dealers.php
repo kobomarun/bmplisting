@@ -28,7 +28,7 @@
             ?>
             <?php foreach($query as $product) { ?>
             <div class="row ">
-              <a href="<?php echo base_url() . "products/details/". $product->id.'/'.preg_replace('/\s+/', '', $product->name); ?>">
+              <a href="<?php echo base_url() . "products/details/". $product->id.'/'.url_title($product->name); ?>">
               <div class="col-sm-5 ">
                 <img src="<?php echo base_url(); ?>img/<?php echo $product->img; ?>" class="img-responsive"/>
               </div>

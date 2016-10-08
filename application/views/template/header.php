@@ -162,7 +162,18 @@
                 if($this->session->userdata('isLoggedin')) {
                  echo strtoupper($this->session->userdata('fname')); 
                } else echo strtoupper("guest" );
-               ?> <span class="visible-xs"><a href="<?php echo base_url(); ?>registration">Register</a> &nbsp;| &nbsp; <a href="<?php echo base_url(); ?>authentication/login">Login</a></span>
+               ?> <span class="visible-xs">
+               <?php 
+                if($this->session->userdata('isLoggedin')) { ?>
+               <a href="<?php echo base_url(); ?>user">My Profile</a> 
+               &nbsp;| &nbsp; 
+               <a href="<?php echo base_url(); ?>authentication/logout">Logout</a>
+               <?php } else { ?>
+               <a href="<?php echo base_url(); ?>registration">Register</a> 
+               &nbsp;| &nbsp; 
+               <a href="<?php echo base_url(); ?>authentication/login">Login</a>
+               <?php } ?>
+             </span>
              </li>
             <li class="hidden-xs"> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>

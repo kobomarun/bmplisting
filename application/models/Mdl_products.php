@@ -88,4 +88,9 @@ class Mdl_products extends CI_Model {
 
   }
 
+  function getAllStates() {
+    $query = $this->db->get('states');
+    return $query->result();
+  }
+
 }

@@ -21,6 +21,7 @@ class Products extends CI_Controller {
     $data['dealers2'] = $this->mdl_products->get_dealers2($id);
     $data['bought'] = $this->mdl_products->getRandomProduct();
     $data['checked'] = $this->mdl_products->getProductChecked();
+    $data['states'] = $this->mdl_products->getAllStates();
 		$this->load->view('product_details.php', $data);
 
 	}
