@@ -47,7 +47,7 @@
                 <li><a href="<?php echo base_url();?>pages/directory"><i class="glyphicon glyphicon-list-alt"></i> Business Directory </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>pages/exchange"><i class="glyphicon glyphicon-list-alt"></i> Exchange Rates </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>"><i class="glyphicon glyphicon-list-alt"></i> Your Requisition </a></li><hr style="margin:5px 5px"/>
-                <li><a href="<?php echo base_url();?>"><i class="glyphicon glyphicon-list-alt"></i> DIY </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>diy"><i class="glyphicon glyphicon-list-alt"></i> DIY </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>blog"><i class="glyphicon glyphicon-list-alt"></i> Blog </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>user"><i class="glyphicon glyphicon-list-alt"></i> My Account </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url(); ?>calculator"><i class="glyphicon glyphicon-list-alt"></i> Building Calculator</a></li><hr style="margin:5px 5px"/>
@@ -109,7 +109,7 @@
                 <li><a href="<?php echo base_url();?>pages/directory">|&nbsp; Business Directory </a></li>
                 <li><a href="<?php echo base_url();?>pages/exchange">|&nbsp; Exchange Rates </a></li>
                 <li><a href="<?php echo base_url();?>">|&nbsp; Your Requisition </a></li>
-                <li><a href="<?php echo base_url();?>">|&nbsp; DIY </a></li>
+                <li><a href="<?php echo base_url();?>diy">|&nbsp; DIY </a></li>
                 <li><a href="<?php echo base_url();?>blog">| &nbsp;Blog </a></li>
                 <li><a href="<?php echo base_url();?>user">| &nbsp; My Account </a></li>
               </ul>

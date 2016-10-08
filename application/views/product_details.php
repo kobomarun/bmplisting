@@ -49,7 +49,7 @@
                     <div class="bmp-related-wishlist">
                       <div class="bmp-wishlist-btn-container">
                         <a href="#">
-                          <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
+                          <button class="bmp-wishlist-btn">ADD TO REQUISITION</button>
                         </a>
                       </div>
 
@@ -218,14 +218,14 @@
               </div>
               </div>
               <div class="prod-break"></div>
-            <div class="bmp-product-tabs">
+              <div class="bmp-product-tabs hidden-xs">
               <ul>
               <li class="active"><a data-toggle="tab" href="#home" style="color:red;">Description</a></li>
               <li><a data-toggle="tab" href="#additional">Additional Information</a></li>
               <li><a data-toggle="tab" href="#review">Review (0)</a></li>
             </ul>
             </div>
-            <div class="prod-recommended-container">
+            <div class="prod-recommended-container hidden-xs">
               <div id="home" class="description fade in active">
                 <p> <?php echo $product->description; ?></p>
               </div>
@@ -241,15 +241,51 @@
                 <p style="margin-top:-150px">Some content in Review</p>
               </div>
             </div>
+            <!-- Mobile Vieport Product Description-->
+            <div class="panel-group visible-xs" id="accordion">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#description">Description</a>
+                  </h4>
+                </div>
+                    <div id="description" class="panel-collapse collapse in">
+                  <div class="panel-body"><?php echo $product->description; ?></div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#add">Additional Information</a>
+                  </h4>
+                </div>
+                <div id="add" class="panel-collapse collapse">
+                  <div class="panel-body"><?php echo $product->add_info; ?></div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Reviews(0)</a>
+                  </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                  <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                </div>
+              </div>
+            </div>
+            <!--end of mobile vieport Product Description-->
             <div class="prod-break"></div>
-              <div class="bmp-product-tabs">
+              <div class="bmp-product-tabs hidden-xs">
                 <ul>
                   <li class="tab-header"><a style="color:red;"> Recommend A Dealer For This Item</a></li>
                   <li><a> Recommend Your Business For This Item</a></li>
                 </ul>
               </div>
 
-              <div class="prod-recommended-container">
+              <div class="prod-recommended-container hidden-xs">
                 <div class="row">
                   <div class="col-sm-5">
                     <div class="block-one">
@@ -377,6 +413,147 @@
                 </div>
                 </div>
               </div>
+              
+              <!-- Mobile Vieport For Recommending Dealers-->
+            <div class="panel-group visible-xs" id="accordion">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#recommend1">Recommend A Dealer For This Item</a>
+                  </h4>
+                </div>
+                    <div id="recommend1" class="panel-collapse collapse in">
+                  <div class="panel-body">
+                    <p>
+                        Have you recently bought this item from a trusted dealer? If your answer is yes, you can share your experience with other users by entering details of the dealer and the price you paid for it using the short form below.
+                       </p>
+                       <?php 
+                       if($this->session->userdata('isLoggedin')== false) { ?>
+                       <p>
+                         <span style="color:red; font-weigth:bolder">Note:</span> Only registered user can recommend. Click <a href="/registration" style="color:red; font-weigth:bolder">here </a>to register or <a href="/authentication/login" style="color:red; font-weigth:bolder">here </a> to login
+
+                       </p>
+                        <?php } else { ?>
+                        
+                        <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>products/dealers">
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Dealer's Name:</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" name="dname" value="" required />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">State:</label>
+                          <div class="col-sm-8"> 
+                              <select class="form-control" id="sel1" name="state">
+                                <?php foreach($states as $state) { ?>
+                                <option value="<?php echo $state->name; ?>"><?php echo $state->name; ?></option>
+                                <?php } ?>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Office Address:</label>
+                          <div class="col-sm-8">
+                            <input type="text" name="address" class="form-control" value="" required />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Phone Number:</label>
+                          <div class="col-sm-8">
+                            <input type="phone" name="phone" class="form-control" value="" required />
+                            <input type="hidden" name="id" value="<?php echo $this->session->userdata('id'); ?>"/>
+                            <input type="hidden" name="productid" value="<?php echo $product->id; ?>"/>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Price:</label>
+                          <div class="col-sm-8">
+                            <input type="phone" name="price" class="form-control" value="" required />
+                            <input type="hidden" name="productName" value="<?php echo $product->name; ?>"/>
+                          </div>
+                        </div>
+                        <div class="form-group"> 
+                          <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                          </div>
+                        </div>
+                      </form>
+                      <?php } ?>
+                  </div>
+                </div>
+              </div>
+              <br /><br />
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#recommend2">Recommend Your Business For This Item</a>
+                  </h4>
+                </div>
+                <div id="recommend2" class="panel-collapse collapse in">
+                  <div class="panel-body">
+                    <p>
+                      Are you a building material dealer? Do you deal in quality materials? Do you sell the item on this page? Do you offer competitive prices? If your answer is yes, you can recommend your business for this item by clicking the recommendation button below
+                     </p>
+                     <?php 
+                       if($this->session->userdata('isLoggedin')== false) { ?>
+                       <p>
+                         <span style="color:red; font-weigth:bolder">Note:</span> Only registered user can recommend. Click <a href="/registration" style="color:red; font-weigth:bolder">here </a>to register or <a href="/authentication/login" style="color:red; font-weigth:bolder">here </a> to login
+
+                       </p>
+                        <?php } else { ?>
+                        
+                        <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>products/dealers">
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Dealer's Name:</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" name="dname" value="" required />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">State:</label>
+                          <div class="col-sm-8"> 
+                              <select class="form-control" id="sel1" name="state">
+                                <?php foreach($states as $state) { ?>
+                                <option value="<?php echo $state->name; ?>"><?php echo $state->name; ?></option>
+                                <?php } ?>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Office Address:</label>
+                          <div class="col-sm-8">
+                            <input type="text" name="address" class="form-control" value="" required />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Phone Number:</label>
+                          <div class="col-sm-8">
+                            <input type="phone" name="phone" class="form-control" value="" required />
+                            <input type="hidden" name="id" value="<?php echo $this->session->userdata('id'); ?>"/>
+                           <input type="hidden" name="productid" value="<?php echo $product->id; ?>"/>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Price:</label>
+                          <div class="col-sm-8">
+                            <input type="phone" name="price" class="form-control" value="" required />
+                            <input type="hidden" name="productName" value="<?php echo $product->name; ?>"/>
+                          </div>
+                        </div>
+                        <div class="form-group"> 
+                          <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                          </div>
+                        </div>
+                      </form>
+                      <?php } ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--end of mobile vieport Recommending Dealers-->
+
             </div>
               <!--Frequently checked products-->
             <div class="prod-recommended">
@@ -384,8 +561,8 @@
                 <ul>
                   <li class="tab-header"><a style="color:red; float:left">People Who Checked This Also Checked </a></li>
                   <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                   <a href=""> <i class="glyphicon glyphicon-chevron-right"></i></a>
+                    <a href="#"><i class="glyphicon glyphicon-chevron-left hidden-xs"></i></a>
+                   <a href=""> <i class="glyphicon glyphicon-chevron-right hidden-xs"></i></a>
                   </li>
                 </ul>
               </div>
@@ -394,7 +571,7 @@
                 <br />
                 <div class="row">
                   <?php foreach($checked as $check) { ?>
-                  <div class="col-sm-3 col-xs-6 bmp-home-listing">
+                  <div class="col-sm-3 col-xs-6 bmp-home-listing back2left">
                 <a href="#">
                   <img src="<?php echo base_url(); ?>img/<?php echo $check->img; ?>" class="img-responsive"/>
                 </a>
@@ -418,8 +595,8 @@
                 <ul>
                   <li class="tab-header"><a style="color:red; float: left">Frequently Bought Together</a></li>
                   <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                   <a href=""> <i class="glyphicon glyphicon-chevron-right"></i></a>
+                    <a href="#"><i class="glyphicon glyphicon-chevron-left hidden-xs"></i></a>
+                   <a href=""> <i class="glyphicon glyphicon-chevron-right hidden-xs"></i></a>
                    </li>
                 </ul>
               </div>
@@ -428,7 +605,7 @@
                 <br />
                 <div class="row">
                 <?php foreach($bought as $frequently) { ?>
-                  <div class="col-sm-3 col-xs-6 bmp-home-listing">
+                  <div class="col-sm-3 col-xs-6 bmp-home-listing back2left">
                 <a href="#">
                   <img src="<?php echo base_url(); ?>img/<?php echo $frequently->img; ?>" class="img-responsive"/>
                 </a>
@@ -467,6 +644,7 @@
           <?php } ?>
       </div>
       </div>
+    </div>
 <?php
   include("template/footer.php");
 ?>

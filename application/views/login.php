@@ -51,7 +51,7 @@
                       <div class="col-md-8 col-sm-5">
                           <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                          <input type="email" autocomplete="off" class="form-control " name="email" value="<?php echo set_value(' email '); ?>" Required />
+                          <input type="email" autocomplete="off" class="form-control" autofocus name="email" value="<?php echo set_value(' email '); ?>" Required />
                         </div>
                       </div>
                     </div>

@@ -1410,6 +1410,7 @@ footer .terms li a:hover{
   }
 
   .mobile-menu .btn-default {
+    left: -10px;
     background: #f23534;
     color: #fff;
     border: none;
@@ -1463,6 +1464,7 @@ footer .terms li a:hover{
 
   .bmp-show-num .btn {
     margin-top: -40px;
+    color: #333;
   }
 
   .cat-pagination {
@@ -1470,6 +1472,37 @@ footer .terms li a:hover{
     margin-right: 0;
     border: none;
     width: 0px;
+  }
+
+  .bmp-product-container p {
+    width: 85%;
+    text-align: justify;
+  }
+
+  .review-btn {
+    top: 10px;
+    left: 10px;
+    margin-bottom: 20px;
+  }
+
+  .back2left {
+    margin-left: 0px;
+  }
+
+  .panel-default>.panel-heading {
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #f23534;
+    border-radius: 0;
+  }
+
+  .btn {
+    background: #f23534;
+    color: #fff;
+  }
+
+  .bmp-blog h1 a {
+    text-transform: none;
   }
 
   
