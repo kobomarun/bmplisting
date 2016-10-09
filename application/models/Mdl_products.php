@@ -93,4 +93,13 @@ class Mdl_products extends CI_Model {
     return $query->result();
   }
 
+  function getAllCategories()
+  {
+    $this->db->select('id,name');
+    $this->db->from('category');
+    $this->db->order_by('name','ASC');
+    $result = $this->db->get()->result();
+    return $result;
+  }
+
 }

@@ -48,16 +48,16 @@
                     <p class="place">Last updated on <?php echo date("F j, Y"); ?>. Price is based on  <?php echo $product->market; ?>. </p>
                     <div class="bmp-related-wishlist">
                       <div class="bmp-wishlist-btn-container">
-                        <a href="#">
-                          <button class="bmp-wishlist-btn">ADD TO REQUISITION</button>
+                        <a onclick="addtowishlist(<?php echo $product->id; ?>)">
+                          <button class="bmp-wishlist-btn" onclick="swal({   title: 'Requisition Added', timer: 700,   showConfirmButton: false });">ADD TO REQUISITION</button>
                         </a>
                       </div>
 
-                      <div class="bmp-wishlist-btn-container">
+                      <!--<div class="bmp-wishlist-btn-container">
                         <a href="#">
                           <button class="bmp-wishlist-btn">COMPARE PRICES</button>
                         </a>
-                      </div>
+                      </div>-->
                     </div>
                     <div class="bmp-soc">
                       <h4>SHARE</h4>
@@ -579,8 +579,8 @@
                 <div class="bmp-prod-name"><?php echo $check->name; ?></div>
                 <div class="bmp-prod-price">Guide Price ₦<?php echo number_format($check->price,2); ?></div>
                 <div class="bmp-wishlist-btn-container">
-                <a href="#">
-                  <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
+                <a onclick="addtowishlist(<?php echo $check->id; ?>)">
+                  <button class="bmp-wishlist-btn" onclick="swal({   title: 'Requisition Added', timer: 700,   showConfirmButton: false });">ADD TO REQUISITION</button>
                 </a>
                 </div>
               </div>
@@ -613,8 +613,8 @@
                 <div class="bmp-prod-name"><?php echo $frequently->name; ?></div>
                 <div class="bmp-prod-price">Guide Price ₦<?php echo number_format($frequently->price,2); ?></div>
                 <div class="bmp-wishlist-btn-container">
-                <a href="#">
-                  <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
+                <a onclick="addtowishlist(<?php echo $frequently->id; ?>)">
+                  <button class="bmp-wishlist-btn" onclick="swal({   title: 'Requisition Added', timer: 700,   showConfirmButton: false });">ADD TO REQUISITION</button>
                 </a>
                 </div>
               </div>
@@ -648,3 +648,19 @@
 <?php
   include("template/footer.php");
 ?>
+<script type="text/javascript">
+  function addtowishlist(product_id)
+  {
+      $.ajax({  
+        type: "POST",  
+        url: "<?php echo base_url();?>wishlist/add/"+product_id,  
+
+        success: function(response)
+        {
+              console.log("return", response);
+        }
+      });
+
+  }
+
+</script>

@@ -43,16 +43,16 @@
             <div class="input-group-btn visible-xs mobile-menu">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-menu-hamburger"></i> <span class="caret"></span></button>
               <ul class="dropdown-menu">
-              <li><a href="<?php echo base_url();?>dealers"><i class="glyphicon glyphicon-list-alt"></i> Are you a Dealer? </a></li><hr style="margin:5px 5px"/>
-                <li><a href="<?php echo base_url();?>pages/directory"><i class="glyphicon glyphicon-list-alt"></i> Business Directory </a></li><hr style="margin:5px 5px"/>
-                <li><a href="<?php echo base_url();?>pages/exchange"><i class="glyphicon glyphicon-list-alt"></i> Exchange Rates </a></li><hr style="margin:5px 5px"/>
+              <li><a href="<?php echo base_url();?>dealers/are-you-a-dealer"><i class="glyphicon glyphicon-list-alt"></i> Are you a Dealer? </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>pages/business-directory"><i class="glyphicon glyphicon-list-alt"></i> Business Directory </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>pages/exchange-rate"><i class="glyphicon glyphicon-list-alt"></i> Exchange Rates </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>"><i class="glyphicon glyphicon-list-alt"></i> Your Requisition </a></li><hr style="margin:5px 5px"/>
-                <li><a href="<?php echo base_url();?>diy"><i class="glyphicon glyphicon-list-alt"></i> DIY </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>diy/do-it-yourself"><i class="glyphicon glyphicon-list-alt"></i> DIY </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>blog"><i class="glyphicon glyphicon-list-alt"></i> Blog </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>user"><i class="glyphicon glyphicon-list-alt"></i> My Account </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url(); ?>calculator"><i class="glyphicon glyphicon-list-alt"></i> Building Calculator</a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url(); ?>"><i class="glyphicon glyphicon-list-alt"></i> Price Tracker</a></li><hr style="margin:5px 5px"/>
-                <li><a href="<?php echo base_url(); ?>"><i class="glyphicon glyphicon-list-alt"></i> List Your Products</a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url(); ?>products/list-your-products"><i class="glyphicon glyphicon-list-alt"></i> List Your Products</a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url(); ?>"><i class="glyphicon glyphicon-list-alt"></i> Looking for a Tradesman?</a></li><hr style="margin:5px 5px"/>
               </ul>
             </div><!-- /btn-group -->
@@ -105,11 +105,11 @@
             <?php echo form_close(); ?>
             <div class="bmp-menu hidden-xs">
               <ul>
-                <li><a href="<?php echo base_url();?>dealers">Are you a Dealer? </a></li>
-                <li><a href="<?php echo base_url();?>pages/directory">|&nbsp; Business Directory </a></li>
-                <li><a href="<?php echo base_url();?>pages/exchange">|&nbsp; Exchange Rates </a></li>
-                <li><a href="<?php echo base_url();?>">|&nbsp; Your Requisition </a></li>
-                <li><a href="<?php echo base_url();?>diy">|&nbsp; DIY </a></li>
+                <li><a href="<?php echo base_url();?>dealers/are-you-a-dealer">Are you a Dealer? </a></li>
+                <li><a href="<?php echo base_url();?>pages/business-directory">|&nbsp; Business Directory </a></li>
+                <li><a href="<?php echo base_url();?>pages/exchange-rate">|&nbsp; Exchange Rates </a></li>
+                <li><a href="<?php echo base_url();?>requisition">|&nbsp; Your Requisition (<?php  echo count($this->cart->contents()); ?>)</a></li>
+                <li><a href="<?php echo base_url();?>diy/do-it-yourself">|&nbsp; DIY </a></li>
                 <li><a href="<?php echo base_url();?>blog">| &nbsp;Blog </a></li>
                 <li><a href="<?php echo base_url();?>user">| &nbsp; My Account </a></li>
               </ul>
@@ -127,14 +127,14 @@
               <ul>
                 <li><a href="<?php echo base_url(); ?>authentication/login">Sign In </a></li>
                 <li>|&nbsp; <a href="<?php echo base_url(); ?>registration">Sign up</a> </li>
-                <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">WishList (<?php  echo count($this->cart->contents()); ?>)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
+                <li>|&nbsp; <i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
           </div>
           <?php } else { ?>
           <div class="bmp-menu-r">
               <ul>
                 <li data-toggle="modal" data-target="#myModal"><a href="<?php echo base_url(); ?>authentication/logout">Logout </a></li>
-                <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">Wish List(0)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
+                <li>| &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
           </div>
           <?php } ?>
@@ -178,7 +178,7 @@
             <li class="hidden-xs"> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
             <li align="left" class="hidden-xs"><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
-            <li class="hidden-xs"><a href="<?php echo base_url(); ?>">List Your Products</a></li>
+            <li class="hidden-xs"><a href="<?php echo base_url(); ?>products/list-your-products">List Your Products</a></li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>">Looking for a Tradesman?</a></li>
           </ul>
         </div>

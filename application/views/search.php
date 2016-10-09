@@ -29,7 +29,7 @@
                 <div class="bmp-prod-price">Guide Price: ₦<?php echo $row->price; ?></div>
                 <div class="bmp-wishlist-btn-container">
                 <a onclick="addtowishlist(<?php echo $row->product_id; ?>)">
-                  <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
+                  <button class="bmp-wishlist-btn" onclick="swal({   title: 'Requisition Added', timer: 700,   showConfirmButton: false });">ADD TO WISH lIST</button>
                 </a>
                 </div>
               </div>

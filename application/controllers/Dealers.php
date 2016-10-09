@@ -10,7 +10,11 @@ class Dealers extends CI_Controller {
     $this->load->model("mdl_products");
 	}
 
-	public function index()
+  function index() {
+    $this->are_you_a_dealer();
+  }
+
+	public function are_you_a_dealer()
 	{
     $data['states'] = $this->mdl_products->getAllStates();
 		$this->load->view('dealers.php',$data);

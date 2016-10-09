@@ -169,6 +169,10 @@ header .bmp-header-search input[type='text'] {
   line-height: 16px;
 }
 
+.requisitionbtn {
+  width: 300px;
+}
+
 .bmp-intro ul li a {
   color: #fff;
   font-size: 13px;
@@ -993,7 +997,7 @@ footer .terms li a:hover{
   border: none;
 }
 
-.bmp-signup .input-group .form-control, input[type="text"] {
+.bmp-signup .input-group .form-control, input[type="text"],input[type="number"] {
   width: 350px;
   z-index: 0;
 }
@@ -1450,7 +1454,7 @@ footer .terms li a:hover{
     font-size: 19px;
   }
 
-  .bmp-signup .input-group .form-control, input[type="text"] {
+  .bmp-signup .input-group .form-control, input[type="text"],input[type="number"] {
     width: 270px;
   }
 

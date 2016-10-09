@@ -15,15 +15,17 @@ class Pages extends CI_Controller {
 
 	}
 
-  public function directory()
+  public function business_directory()
   {
     $this->load->view('pages');
 
   }
 
-  public function exchange()
+  public function exchange_rate()
   {
-    $this->load->view('pages');
+    $data['bdc'] = $this->mdl_pages->getRates();
+    $this->load->view('exchange-rate', $data);
 
   }
+ 
 }

@@ -10,7 +10,11 @@ class Diy extends CI_Controller {
     $this->load->helper('text');
 	}
 
-	public function index()
+  function index() {
+    $this->do_it_yourself();
+  }
+
+	public function do_it_yourself()
 	{
     $data['diy'] = $this->mdl_diy->getAllPosts();
     $this->load->view('diy', $data);
