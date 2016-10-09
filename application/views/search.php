@@ -20,8 +20,8 @@
               <?php } ?>
               <?php if($products!=null){ ?>
               <?php foreach($products as $row) { ?>
-              <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                <a href="<?php echo base_url() . "products/details/". $row->catid.'/'.preg_replace('/\s+/', '', $row->category_name); ?>">
+              <div class="col-sm-3 col-xs-6 bmp-home-listing">
+                <a href="<?php echo base_url() . "products/details/". $row->catid.'/'.url_title($row->category_name); ?>">
                   <img src="<?php echo base_url(); ?>img/<?php echo $row->img; ?>" class="img-responsive" style="height:135px"/>
                 </a>
                 <div class="bmp-prod-cat"><?php echo $row->category_name; ?></div>
