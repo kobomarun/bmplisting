@@ -53,7 +53,7 @@
                 <li><a href="<?php echo base_url(); ?>calculator"><i class="glyphicon glyphicon-list-alt"></i> Building Calculator</a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url(); ?>"><i class="glyphicon glyphicon-list-alt"></i> Price Tracker</a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url(); ?>products/list-your-products"><i class="glyphicon glyphicon-list-alt"></i> List Your Products</a></li><hr style="margin:5px 5px"/>
-                <li><a href="<?php echo base_url(); ?>"><i class="glyphicon glyphicon-list-alt"></i> Looking for a Tradesman?</a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url(); ?>pages/looking-for-a-tradesman"<i class="glyphicon glyphicon-list-alt"></i> Looking for a Tradesman?</a></li><hr style="margin:5px 5px"/>
               </ul>
             </div><!-- /btn-group -->
             <!--End of Mobile Menu-->
@@ -179,7 +179,7 @@
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
             <li align="left" class="hidden-xs"><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>products/list-your-products">List Your Products</a></li>
-            <li class="hidden-xs"><a href="<?php echo base_url(); ?>">Looking for a Tradesman?</a></li>
+            <li class="hidden-xs"><a href="<?php echo base_url(); ?>pages/looking-for-a-tradesman">Looking for a Tradesman?</a></li>
           </ul>
         </div>
        </div>

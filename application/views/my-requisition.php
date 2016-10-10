@@ -13,7 +13,7 @@
                 <li><a href="<?php echo base_url(); ?>user/editprofile/<?php echo $this->session->userdata('id'); ?>"><i class="glyphicon glyphicon-list-alt"></i> Edit My Profile</a></li>
                 <li><a href="<?php echo base_url(); ?>wishlist"><i class="glyphicon glyphicon-list-alt"></i> My Requisition</a></li>
                 <li><a href="<?php echo base_url(); ?>dealers/recommended/<?php echo $this->session->userdata('id'); ?>"><i class="glyphicon glyphicon-list-alt"></i> Recommended Dealers</a></li>
-                <li><a href="<?php echo base_url(); ?>dealers/recommended"><i class="glyphicon glyphicon-list-alt"></i> Requisition Orders</a></li>
+                <li><a href="<?php echo base_url(); ?>requisition/your-requisition-orders/<?php echo $this->session->userdata('id'); ?>"><i class="glyphicon glyphicon-list-alt"></i> Requisition Orders</a></li>
               </ul>
             
             </div>

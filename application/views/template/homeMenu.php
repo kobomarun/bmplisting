@@ -48,8 +48,8 @@
               <li class="hidden-xs"> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
             <li align="left" class="hidden-xs"><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
-            <li class="hidden-xs"><a href="<?php echo base_url(); ?>">List Your Products</a></li>
-            <li class="hidden-xs"><a href="<?php echo base_url(); ?>">Looking for a Tradesman?</a></li>
+            <li class="hidden-xs"><a href="<?php echo base_url(); ?>products/list-your-products">List Your Products</a></li>
+            <li class="hidden-xs"><a href="<?php echo base_url(); ?>pages/looking-for-a-tradesman">Looking for a Tradesman?</a></li>
             </ul>
           </div>
          </div>

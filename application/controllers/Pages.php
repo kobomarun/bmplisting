@@ -27,5 +27,10 @@ class Pages extends CI_Controller {
     $this->load->view('exchange-rate', $data);
 
   }
+
+  public function looking_for_a_tradesman() {
+    $data['trades'] = $this->mdl_pages->getTradesmen();
+    $this->load->view('tradesman-view', $data);
+  }
  
 }
