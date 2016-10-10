@@ -22,5 +22,12 @@ class Mdl_requisition extends CI_Model {
 		return $result;
 	}
 
+	function getMyRequisitions($id)
+  {
+    $this->db->where('userid', $id );
+    $query =  $this->db->get('requisition')->result();
+    return $query;
+  }
+
 
 }

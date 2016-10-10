@@ -68,4 +68,31 @@ class Requisition extends CI_Controller {
 		}
 	}
 
+	function add_requisition() {
+		foreach($this->cart->contents() as $items) {
+			$data = array(
+				'productid'=>$items['id'],
+				'price'=>$items['price'],
+				'userid'=>$this->input->post('userid'),
+				'email'=>$this->input->post('email'),
+				'total'=>$this->input->post('total'),
+				'phone'=>$this->input->post('phone')
+			);
+			$this->db->insert('requisition',$data);
+		}
+				$this->session->set_flashdata('success', 'Your requisition orders has been submitted. We will get back to you shortly');
+				$this->cart->destroy();
+				redirect(base_url() ."requisition");
+	}
+
+	function your_requisition_orders($id=null) {
+		$id = $this->uri->segment(3);
+    if($id=='') {
+      $this->index();
+    }
+    $data['requisition'] = $this->mdl_requisition->getMyRequisitions($id);
+
+    $this->load->view('my-requisition', $data);
+  }
+
 }

@@ -46,7 +46,7 @@
               <li><a href="<?php echo base_url();?>dealers/are-you-a-dealer"><i class="glyphicon glyphicon-list-alt"></i> Are you a Dealer? </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>pages/business-directory"><i class="glyphicon glyphicon-list-alt"></i> Business Directory </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>pages/exchange-rate"><i class="glyphicon glyphicon-list-alt"></i> Exchange Rates </a></li><hr style="margin:5px 5px"/>
-                <li><a href="<?php echo base_url();?>"><i class="glyphicon glyphicon-list-alt"></i> Your Requisition </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>requisition"><i class="glyphicon glyphicon-list-alt"></i> Your Requisition </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>diy/do-it-yourself"><i class="glyphicon glyphicon-list-alt"></i> DIY </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>blog"><i class="glyphicon glyphicon-list-alt"></i> Blog </a></li><hr style="margin:5px 5px"/>
                 <li><a href="<?php echo base_url();?>user"><i class="glyphicon glyphicon-list-alt"></i> My Account </a></li><hr style="margin:5px 5px"/>

@@ -37,7 +37,7 @@
                   <div class="bmp-wishlist-btn-container">
                   <!-- <a href="<?php //echo base_url(); ?>wishlist/add/<?php echo $row1->product_id; ?>"> -->
                   <a onclick="addtowishlist(<?php echo $row1->product_id; ?>)">
-                    <button class="bmp-wishlist-btn">ADD TO REQUISITION</button>
+                    <button class="bmp-wishlist-btn" onclick="swal({   title: 'Requisition Added', timer: 700,   showConfirmButton: false });">ADD TO REQUISITION</button>
                   </a>
                   </div>
                 </div>
