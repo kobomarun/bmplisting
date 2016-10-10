@@ -11,7 +11,7 @@
               <ul>
                 <li><a href="<?php echo base_url(); ?>user"><i class="glyphicon glyphicon-list-alt"></i> My Profile</a></li>
                 <li><a href="<?php echo base_url(); ?>user/editprofile/<?php echo $this->session->userdata('id'); ?>"><i class="glyphicon glyphicon-list-alt"></i> Edit My Profile</a></li>
-                <li><a href="<?php echo base_url(); ?>wishlist"><i class="glyphicon glyphicon-list-alt"></i> My Wishlist</a></li>
+                <li><a href="<?php echo base_url(); ?>wishlist"><i class="glyphicon glyphicon-list-alt"></i> My Requisition</a></li>
                 <li><a href="<?php echo base_url(); ?>dealers/recommended/<?php echo $this->session->userdata('id'); ?>"><i class="glyphicon glyphicon-list-alt"></i> Recommended Dealers</a></li>
                 <li><a href="<?php echo base_url(); ?>dealers/recommended"><i class="glyphicon glyphicon-list-alt"></i> Requisition Orders</a></li>
               </ul>
@@ -56,7 +56,7 @@
                       <div class="">
                         <div class="">
                           <h3 class="">
-                            Your Recommended Dealers
+                            Your Requisition Orders
                            </h3>
                            <?php if(!$this->session->userdata('gender') || !$this->session->userdata('country')) {   ?>
                               <div class="alert alert-success" role="alert">
@@ -71,34 +71,27 @@
                             </div>
                             <div class=" col-md-10 col-lg-10 "> 
                               <?php 
-                              if($recommend) {
-                                foreach($recommend as $row) { ?>
-                              <table class="table table-user-information">
+                              if($requisition) {
+                                $i = 1;
+                              ?>
+                              <table class="table table-user-information pull-left">
                                 <tbody>
                                   <tr>
-                                    <td>Dealer's Name:</td>
-                                    <td><?php echo $row->name; ?></td>
-                                  </tr>
+                                    <th>#</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                  </tr> 
+                                  <?php foreach($requisition as $row) { ?>              
                                   <tr>
-                                    <td>Dealer's Phone Number:</td>
-                                    <td><?php echo $row->phone; ?></td>
+                                    <td><?php echo $i; ?></td>
+                                    <td><?php echo $this->db->get_where('bmp_products',array('id'=>$row->productid))->row()->name; ?></td>
+                                    <td><?php echo $row->price; ?></td>                                
                                   </tr>
-                                  <tr>
-                                    <td>Dealer's Address</td>
-                                    <td><?php echo $row->address . " " . $row->state; ?></td>
-                                  </tr>
-                                    <tr>
-                                    <td>Dealer's Items / Product</td>
-                                    <td><?php echo $row->product_name; ?></td>
-                                  </tr>
-                                    <tr>
-                                    <td>Price</td>
-                                    <td><?php echo $row->price; ?></td>
-                                  </tr>
+                                  <?php $i++; } ?>
                                 </tbody>
                               </table>
                               <div class="divider"></div>
-                              <?php } } else { echo "<h4>You haven't recommend any dealer</h4>"; }?>
+                              <?php }  else { echo "<h4>You Order Any Requisition</h4>"; }?>
                             </div>
                           </div>
                       </div>

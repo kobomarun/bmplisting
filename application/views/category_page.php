@@ -12,7 +12,7 @@
                 <div class="bmp-show-num">
                   <div class="row">
                     <div class="col-sm-9">
-                    <p>Showing 1 - 3 of 9</p>
+                    <p>Showing 1 - <?php echo $total_rows . " of " . $per_page; ?></p>
                     </div>
                     <div class="col-sm-3">
                       <div class="dropdown" style="float:right">
@@ -21,8 +21,8 @@
                           <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                          <li><a href="#">Default</a></li>
-                          <li><a href="#">Price: Low to High</a></li>
+                          <li><a href="">Default</a></li>
+                          <li><a href="<?php echo current_url(); ?>">Price: Low to High</a></li>
                           <li><a href="#">Price: High to Low</a></li>
                         </ul>
                       </div>
@@ -35,16 +35,16 @@
                       if($categories!=null){
                         foreach($categories as $cat) { 
                ?>
-              <div class="col-sm-3 col-xs-12 bmp-home-listing">
-                <a href="<?php echo base_url() . "products/details/". $cat->id.'/'.preg_replace('/\s+/', '', $cat->name); ?>">
+              <div class="col-sm-3 col-xs-6 bmp-home-listing">
+                <a href="<?php echo base_url() . "products/details/". $cat->id.'/'.url_title($cat->name); ?>">
                   <img src="<?php echo base_url(); ?>img/<?php echo $cat->img; ?>" class="img-responsive" style="height:135px"/>
                 </a>
-                <div class="bmp-prod-cat">Sub-category name</div>
+                <div class="bmp-prod-cat"><?php echo $this->db->get_where('sub_category',array('id'=>$cat->subcatid))->row()->name; ?></div>
                 <div class="bmp-prod-name"><?php echo $cat->name; ?></div>
                 <div class="bmp-prod-price">Guide Price: ₦<?php echo $cat->price; ?></div>
                 <div class="bmp-wishlist-btn-container">
                 <a onclick="addtowishlist(<?php echo $cat->id; ?>)">
-                  <button class="bmp-wishlist-btn">ADD TO WISH lIST</button>
+                  <button class="bmp-wishlist-btn" onclick="swal({   title: 'Requisition Added', timer: 700,   showConfirmButton: false });">ADD TO REQUISITION</button>
                 </a>
                 </div>
               </div>
@@ -55,20 +55,12 @@
               <a  onClick="window.scrollTo(0,0);"><i class="glyphicon glyphicon-triangle-top"></i></a>
             </div>
           </div>
+          <?php if($links){ ?>
           <div class="row cat-pagination">
-            <div class="col-md-4 col-sm-5">
-              <!-- <p>Showing 1 - 16 of 20</p> -->
-             
-            </div>
             <div class="col-md-8 col-sm-7">
               <p><nav aria-label="Page navigation">
            <ul class="pagination">
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <?php echo $links; ?> 
+            <li><?php echo $links; ?> </li>
             <!--<li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
@@ -80,9 +72,10 @@
               </a>
             </li>-->
           </ul> 
-        </nav>
+          </nav>
             </div>
           </div>
+          <?php } ?>
     </div>
   </div>
 </div>

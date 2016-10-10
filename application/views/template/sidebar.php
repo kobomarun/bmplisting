@@ -1,5 +1,5 @@
 <!-- sidebar Column-->
-<div class="col-md-3 col-sm-3 col-xs-12">
+<div class="col-md-3 col-sm-3 col-xs-12 hidden-xs">
 <aside>
   <?php
     $this->db->order_by("name", "asc");

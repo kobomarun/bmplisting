@@ -7,11 +7,17 @@ class Dealers extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model("mdl_dealers");
+    $this->load->model("mdl_products");
 	}
 
-	public function index()
+  function index() {
+    $this->are_you_a_dealer();
+  }
+
+	public function are_you_a_dealer()
 	{
-		$this->load->view('dealers.php');
+    $data['states'] = $this->mdl_products->getAllStates();
+		$this->load->view('dealers.php',$data);
 
 	}
 

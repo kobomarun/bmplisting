@@ -39,11 +39,30 @@
       <div class="container-fluid">
         <header>
           <div class="col-md-2 col-sm-2 col-xs-12">
+            <!--Mobile Menu Viewport-->
+            <div class="input-group-btn visible-xs mobile-menu">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-menu-hamburger"></i> <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+              <li><a href="<?php echo base_url();?>dealers/are-you-a-dealer"><i class="glyphicon glyphicon-list-alt"></i> Are you a Dealer? </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>pages/business-directory"><i class="glyphicon glyphicon-list-alt"></i> Business Directory </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>pages/exchange-rate"><i class="glyphicon glyphicon-list-alt"></i> Exchange Rates </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>requisition"><i class="glyphicon glyphicon-list-alt"></i> Your Requisition </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>diy/do-it-yourself"><i class="glyphicon glyphicon-list-alt"></i> DIY </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>blog"><i class="glyphicon glyphicon-list-alt"></i> Blog </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url();?>user"><i class="glyphicon glyphicon-list-alt"></i> My Account </a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url(); ?>calculator"><i class="glyphicon glyphicon-list-alt"></i> Building Calculator</a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url(); ?>"><i class="glyphicon glyphicon-list-alt"></i> Price Tracker</a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url(); ?>products/list-your-products"><i class="glyphicon glyphicon-list-alt"></i> List Your Products</a></li><hr style="margin:5px 5px"/>
+                <li><a href="<?php echo base_url(); ?>"><i class="glyphicon glyphicon-list-alt"></i> Looking for a Tradesman?</a></li><hr style="margin:5px 5px"/>
+              </ul>
+            </div><!-- /btn-group -->
+            <!--End of Mobile Menu-->
             <a href="<?php echo base_url(); ?>">
-              <img src="<?php echo base_url(); ?>img/logo.png" class="logo img-responsive" />
+              <img src="<?php echo base_url(); ?>img/logo.png" class="logo img-responsive"/>
             </a>
-            <div class="search-by">Search by</div>
-            <div class="cat-text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category <i class="glyphicon glyphicon-triangle-bottom"></i></div>
+            <div class="search-by hidden-xs">Search by</div>
+            <div class="cat-text hidden-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category <i class="glyphicon glyphicon-triangle-bottom"></i>
+              </div>
             <ul class="dropdown-menu">
               <?php foreach($query as $cat) { ?>
             <li>
@@ -68,16 +87,15 @@
                   <ul class="dropdown-menu">
                    <?php foreach($query as $cat) { ?>
                   <li>
-                    <a href="<?php echo base_url(); ?>listing/listing/<?php echo $cat->id; ?>/<?php echo preg_replace('/\s+/', '', $cat->name) ?>">
+                    <a href="<?php echo base_url(); ?>category/listing/<?php echo $cat->id; ?>/<?php echo url_title($cat->name) ?>">
                       <?php echo $cat->name; ?>
                     </a>
                   </li>
           <?php } ?>
                   </ul>
-
-
-                  <?php echo form_open('products/search'); ?>
+                   <?php echo form_open('products/search'); ?>
                 </div><!-- /btn-group -->
+               
                 <input type="text" class="form-control" name="search_item" placeholder="Enter your search terms" value="<?php echo set_value('search_item'); ?>" aria-label="Enter your Search terms">
                 <span class="input-group-btn">
                         <button class="btn btn-default" name="submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>
@@ -87,11 +105,11 @@
             <?php echo form_close(); ?>
             <div class="bmp-menu hidden-xs">
               <ul>
-                <li><a href="<?php echo base_url();?>dealers">Are you a Dealer? </a></li>
-                <li><a href="<?php echo base_url();?>pages/directory">|&nbsp; Business Directory </a></li>
-                <li><a href="<?php echo base_url();?>pages/exchange">|&nbsp; Exchange Rates </a></li>
-                <li><a href="<?php echo base_url();?>">|&nbsp; Your Requisition </a></li>
-                <li><a href="<?php echo base_url();?>">|&nbsp; DIY </a></li>
+                <li><a href="<?php echo base_url();?>dealers/are-you-a-dealer">Are you a Dealer? </a></li>
+                <li><a href="<?php echo base_url();?>pages/business-directory">|&nbsp; Business Directory </a></li>
+                <li><a href="<?php echo base_url();?>pages/exchange-rate">|&nbsp; Exchange Rates </a></li>
+                <li><a href="<?php echo base_url();?>requisition">|&nbsp; Your Requisition (<?php  echo count($this->cart->contents()); ?>)</a></li>
+                <li><a href="<?php echo base_url();?>diy/do-it-yourself">|&nbsp; DIY </a></li>
                 <li><a href="<?php echo base_url();?>blog">| &nbsp;Blog </a></li>
                 <li><a href="<?php echo base_url();?>user">| &nbsp; My Account </a></li>
               </ul>
@@ -109,21 +127,21 @@
               <ul>
                 <li><a href="<?php echo base_url(); ?>authentication/login">Sign In </a></li>
                 <li>|&nbsp; <a href="<?php echo base_url(); ?>registration">Sign up</a> </li>
-                <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">WishList (<?php  echo count($this->cart->contents()); ?>)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
+                <li>|&nbsp; <i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
           </div>
           <?php } else { ?>
           <div class="bmp-menu-r">
               <ul>
                 <li data-toggle="modal" data-target="#myModal"><a href="<?php echo base_url(); ?>authentication/logout">Logout </a></li>
-                <li>|&nbsp; <a href="<?php echo base_url(); ?>wishlist">Wish List(0)</a> &nbsp; | &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
+                <li>| &nbsp;<i class="glyphicon glyphicon-shopping-cart"></i></li>
               </ul>
           </div>
           <?php } ?>
         </div>
        </header>
        <?php 
-          if($this->uri->segment(1) === "home") { 
+          if(current_url() === base_url()) { 
             include("homeMenu.php");
           } else {
         ?>
@@ -144,13 +162,24 @@
                 if($this->session->userdata('isLoggedin')) {
                  echo strtoupper($this->session->userdata('fname')); 
                } else echo strtoupper("guest" );
-               ?>
+               ?> <span class="visible-xs">
+               <?php 
+                if($this->session->userdata('isLoggedin')) { ?>
+               <a href="<?php echo base_url(); ?>user">My Profile</a> 
+               &nbsp;| &nbsp; 
+               <a href="<?php echo base_url(); ?>authentication/logout">Logout</a>
+               <?php } else { ?>
+               <a href="<?php echo base_url(); ?>registration">Register</a> 
+               &nbsp;| &nbsp; 
+               <a href="<?php echo base_url(); ?>authentication/login">Login</a>
+               <?php } ?>
+             </span>
              </li>
-            <li> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
-            <li><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
-            <li align="left"><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
-            <li><a href="<?php echo base_url(); ?>">List Your Products</a></li>
-            <li><a href="<?php echo base_url(); ?>">Looking for a Tradesman?</a></li>
+            <li class="hidden-xs"> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
+            <li class="hidden-xs"><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
+            <li align="left" class="hidden-xs"><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
+            <li class="hidden-xs"><a href="<?php echo base_url(); ?>products/list-your-products">List Your Products</a></li>
+            <li class="hidden-xs"><a href="<?php echo base_url(); ?>">Looking for a Tradesman?</a></li>
           </ul>
         </div>
        </div>

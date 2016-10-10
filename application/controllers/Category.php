@@ -59,6 +59,8 @@ class Category extends CI_Controller {
      $uri_segment = $this->uri->segment(4,0);
      $data['categories'] = $this->mdl_category->get_categories($id,$per_page,$uri_segment);
      $data["links"] = $this->pagination->create_links();
+     $data['per_page'] = 20;
+     $data['total_rows'] = $total_rows;
      $this->load->view('category_page',$data);
 
   }

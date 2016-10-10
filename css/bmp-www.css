@@ -140,6 +140,14 @@ header .bmp-header-search input[type='text'] {
   margin-top: 60px;
 }
 
+.sliderimg {
+  cursor: default; width: 980px; height: 250px; overflow: hidden;
+}
+
+.bmp-slider .arrow-left {
+  top:0px;left:10px;width:40px;height:58px;
+}
+
 /*bmp intro home*/
 .bmp-intro {
   position: relative;
@@ -159,6 +167,10 @@ header .bmp-header-search input[type='text'] {
   cursor: pointer;
   list-style: none;
   line-height: 16px;
+}
+
+.requisitionbtn {
+  width: 300px;
 }
 
 .bmp-intro ul li a {
@@ -617,6 +629,7 @@ footer .terms li a:hover{
   width: 100%;
   height: 50px;
   border: 1px solid #ccc;
+  text-align: center;
 }
 
 
@@ -984,7 +997,7 @@ footer .terms li a:hover{
   border: none;
 }
 
-.bmp-signup .input-group .form-control, input[type="text"] {
+.bmp-signup .input-group .form-control, input[type="text"],input[type="number"] {
   width: 350px;
   z-index: 0;
 }
@@ -1355,6 +1368,151 @@ footer .terms li a:hover{
   position: relative;
   top: -23px;
 }
+
+/* Mobile Viewport CSS */
+@media (min-width: 320px) and (max-width: 767px) {
+  .logo {
+    display: block;
+    margin-top: -27px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  header .bmp-header-search {
+    position: relative;
+    top: -15px;
+    left: 10px;
+  }
+  .bmp-intro ul li:first-child {
+    width: 600px;
+  }
+
+  .bmp-intro ul li:first-child span{
+    margin-left: 190px;
+    margin-top: -27px;
+  }
+
+  .bmp-slider {
+    height: 180px;
+  }
+
+  .sliderimg {
+    height: 500px;
+  }
+
+  .bmp-slider .arrow-left {
+    top: 260px;
+  }
+
+  .bmp-wishlist-btn {
+    font-size: 9px;
+  }
+
+  .mobile-menu {
+    position: relative;
+    top: 13px;
+  }
+
+  .mobile-menu .btn-default {
+    left: -10px;
+    background: #f23534;
+    color: #fff;
+    border: none;
+  }
+
+  .mobile-menu .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+    background: #f23534;
+    color: #fff;
+  }
+  
+  footer .terms li {
+    display: block;
+    margin: 4px;
+  }
+
+  .footer-section .footer-social li {
+    margin: 7px;
+  }
+
+  .bmp-product-tabs .tab-header {
+    width: 100%;
+  }
+  
+  .bmp-product-tabs li a {
+    font-size: 14px;
+  }
+
+  .bmp-product img {
+    width: 340px;
+  }
+
+  .bmp-product .soc {
+    width: 30px;
+  }
+
+  .bmp-product-title {
+    font-size: 19px;
+  }
+
+  .bmp-signup .input-group .form-control, input[type="text"],input[type="number"] {
+    width: 270px;
+  }
+
+  .forgotp a {
+    margin-left: -200px;
+  }
+
+  .bmp-show-num {
+    padding: 7px;
+  }
+
+  .bmp-show-num .btn {
+    margin-top: -40px;
+    color: #333;
+  }
+
+  .cat-pagination {
+    margin-left: 0;
+    margin-right: 0;
+    border: none;
+    width: 0px;
+  }
+
+  .bmp-product-container p {
+    width: 85%;
+    text-align: justify;
+  }
+
+  .review-btn {
+    top: 10px;
+    left: 10px;
+    margin-bottom: 20px;
+  }
+
+  .back2left {
+    margin-left: 0px;
+  }
+
+  .panel-default>.panel-heading {
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #f23534;
+    border-radius: 0;
+  }
+
+  .btn {
+    background: #f23534;
+    color: #fff;
+  }
+
+  .bmp-blog h1 a {
+    text-transform: none;
+  }
+
+  
+}
+
+
 
   
 

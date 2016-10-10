@@ -29,7 +29,7 @@
                       <div class="col-md-8 col-sm-9">
                           <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                          <input type="email" class="form-control" name="email" id="emailid" value="<?php echo set_value('email'); ?>" required />
+                          <input type="email" class="form-control" autofocus name="email" id="emailid" value="<?php echo set_value('email'); ?>" required />
                         </div>
                       </div>
                     </div>

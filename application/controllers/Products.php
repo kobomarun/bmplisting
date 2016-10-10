@@ -21,6 +21,7 @@ class Products extends CI_Controller {
     $data['dealers2'] = $this->mdl_products->get_dealers2($id);
     $data['bought'] = $this->mdl_products->getRandomProduct();
     $data['checked'] = $this->mdl_products->getProductChecked();
+    $data['states'] = $this->mdl_products->getAllStates();
 		$this->load->view('product_details.php', $data);
 
 	}
@@ -113,9 +114,57 @@ class Products extends CI_Controller {
 
   function product_search()
   {
-          $search_item = $this->input->post('search_item');
-          $products = $this->mdl_products->getproducts($search_item);
-          return json_encode($products);
+    $search_item = $this->input->post('search_item');
+    $products = $this->mdl_products->getproducts($search_item);
+    return json_encode($products);
+  }
+
+  function list_your_products() {
+    if($this->input->post()) {
+      $category = $this->input->post('category');
+      $address = $this->input->post('address');
+      $phone = $this->input->post('phone');
+      $state = $this->input->post('state');
+      $country = $this->input->post('country');
+      $userid = $this->input->post('userid');
+      $email = $this->input->post('email');
+      $productName = $this->input->post('productName');
+      $price = $this->input->post('price');
+
+      $this->form_validation->set_rules('address', 'Address', 'trim|required');
+      $this->form_validation->set_rules('productName', 'Product Name', 'trim|required');
+      $this->form_validation->set_rules('phone', 'Phone Number', 'trim|required');
+      $this->form_validation->set_rules('state', 'State', 'required');
+
+      if ($this->form_validation->run() == FALSE) {
+
+        $data['states'] = $this->mdl_products->getAllStates();
+        $data['categories'] = $this->mdl_products->getAllCategories();
+        $this->load->view('product_listing', $data);
+
+      } else {
+
+      $data = array(
+        'email'=>$email,
+        'catid'=>$category,
+        'address'=>$address,
+        'phone'=>$phone,
+        'userid'=>$userid,
+        'price'=>$price,
+        'state'=>$state,
+        'product_name'=>$productName
+      );
+        $this->db->insert('premium-products',$data);
+        $this->session->set_flashdata('thankyou', 'Thank you for recommending. We will get in-touch.');
+        $this->load->view('thank_you.php');
+    }
+      
+    } else {
+
+      $data['states'] = $this->mdl_products->getAllStates();
+      $data['categories'] = $this->mdl_products->getAllCategories();
+      $this->load->view('product_listing', $data);
+    }
   }
 
 }

@@ -65,7 +65,7 @@
                            <i class="glyphicon glyphicon-user"></i>   <?php echo $this->session->userdata('fname') . " " . $this->session->userdata('lname'); ?></h3>
                            <?php if(!$this->session->userdata('gender') || !$this->session->userdata('country')) {   ?>
                               <div class="alert alert-success" role="alert">
-                                 <?php echo $this->get_where('email', array('type','profileUpdate'))->row()->email; ?>
+                                 <?php echo $this->db->get_where('email', array('type'=>'profileUpdate'))->row()->email; ?>
                                 <a href="#" class="close">&times;</a>
                               </div>
                           <?php } ?>

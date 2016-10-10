@@ -5,10 +5,11 @@ class Mdl_category extends CI_Model {
 
 	function get_categories($id,$per_page,$uri_segment)
 	{
-		$this->db->select('id,name,catid,price,img');
+		$this->db->select('id,subcatid,name,catid,price,img');
 		$this->db->from('bmp_products');
 		$this->db->where('catid', $id );
-		$this->db->order_by("name", "asc");
+		//$this->db->order_by("name", "asc");
+		$this->db->order_by("price", "asc");
 	    $this->db->limit($per_page); 
       	$this->db->offset($uri_segment);
 	    $query =  $this->db->get();
