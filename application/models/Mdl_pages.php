@@ -12,8 +12,12 @@ class Mdl_pages extends CI_Model {
 	}
 
   function getRates() {
-    //$this->db->where('currency','USD');
     $query = $this->db->get('bdc')->result();
+    return $query;
+  }
+
+  function getTradesmen() {
+    $query = $this->db->get('tradesman')->result();
     return $query;
   }
 
