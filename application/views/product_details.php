@@ -95,16 +95,16 @@
             </div>
             <!-- Ads-->
             <div class="row">
+            <?php 
+                  if($page_ads_top!=null){
+                    foreach($page_ads_top as $row){
+             ?>
               <div class="col-sm-6 col-xs-11"> 
                 <div class="prod-ads">
-                  <img src="http://placehold.it/400X130" alt="" class="img">
+                  <img src="<?php echo base_url(); ?>img/<?php echo $row->image; ?>" alt="" class="img">
                 </div>
               </div>
-              <div class="col-sm-6 col-xs-11"> 
-                <div class="prod-ads">
-                  <img src="http://placehold.it/400x130" alt="" class="img">
-                </div>
-              </div>
+              <?php } } ?>
             </div>
             <!--end of ads-->
 
@@ -622,21 +622,18 @@
               </div>
               </div>
             </div>
-             <!-- Ads-->
+            <!-- Ads-->
             <div class="row">
-              <div class="col-sm-6"> 
+            <?php 
+                  if($page_ads_bottom!=null){
+                    foreach($page_ads_bottom as $row){
+             ?>
+              <div class="col-sm-6 col-xs-11"> 
                 <div class="prod-ads">
-                  <img src="http://placehold.it/300X130" alt="" class="img">
+                  <img src="<?php echo base_url(); ?>img/<?php echo $row->image; ?>" alt="" class="img">
                 </div>
               </div>
-              <div class="col-sm-6"> 
-                <div class="prod-ads">
-                  <img src="http://placehold.it/300x130" alt="" class="img">
-                </div>
-              </div>
-            </div>
-            <div class="bmp-clients">
-              <img src="<?php echo base_url(); ?>img/clients.png" alt="" width="700" class="img-responsive">
+              <?php } } ?>
             </div>
             <!--end of ads-->
 

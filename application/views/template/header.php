@@ -115,11 +115,25 @@
               </ul>
             </div>
           </div>
-          
+          <?php 
+                $this->db->select('image');
+                $this->db->from('bmp_ads');
+                $this->db->where('type',1);
+                $this->db->limit(1);
+                $this->db->order_by('id','ASC');
+                $this->db->order_by('rand()');
+                $result = $this->db->get()->first_row();
+                $image = $result->image;
+          ?>          
           <div class="col-md-3 col-sm-3 hidden-xs">
+            <?php 
+                /*if($result!=null){
+                    foreach($result as $row){*/
+            ?>
             <div class="bmp-header-right">
-              <img src="http://placehold.it/270x40" class="img-responsive"/>
+              <!-- <img src="<?php //echo base_url(); ?>img/<?php echo $image; ?>" class="img-responsive"/> -->
             </div>
+            <?php //} } ?>
              <?php 
                 if(!$this->session->userdata('isLoggedin')) {
                ?>

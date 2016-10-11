@@ -15,6 +15,10 @@ class Products extends CI_Controller {
       redirect('home');
     }
 
+    //get page ads
+    $data['page_ads_top'] = $this->mdl_products->get_page_ads_top();
+    $data['page_ads_bottom'] = $this->mdl_products->get_page_ads_bottom();
+
     $id = $this->uri->segment(3);
 		$data['products'] = $this->mdl_products->get_products($id);
     $data['dealers1'] = $this->mdl_products->get_dealers1($id);

@@ -102,4 +102,28 @@ class Mdl_products extends CI_Model {
     return $result;
   }
 
+  function get_page_ads_top()
+  {
+      $this->db->select('image');
+      $this->db->from('bmp_ads');
+      $this->db->where('type',1);
+      $this->db->limit(2);
+      $this->db->order_by('id','ASC');
+      $this->db->order_by('rand()');
+      $result = $this->db->get()->result();
+      return $result;
+  }
+
+  function get_page_ads_bottom()
+  {
+      $this->db->select('image');
+      $this->db->from('bmp_ads');
+      $this->db->where('type',1);
+      $this->db->limit(2);
+      $this->db->order_by('id','DESC');
+      $this->db->order_by('rand()');
+      $result = $this->db->get()->result();
+      return $result;
+  }
+
 }
