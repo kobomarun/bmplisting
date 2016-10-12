@@ -1,14 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.5
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:8889
--- Generation Time: Oct 10, 2016 at 03:52 PM
--- Server version: 5.5.38
--- PHP Version: 5.5.14
+-- Host: 127.0.0.1
+-- Generation Time: Oct 12, 2016 at 07:09 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `bmplistdb`
@@ -21,11 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bdc` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `currency` varchar(255) NOT NULL,
   `rate` varchar(255) NOT NULL,
   `date` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bdc`
@@ -43,7 +49,7 @@ INSERT INTO `bdc` (`id`, `currency`, `rate`, `date`) VALUES
 --
 
 CREATE TABLE `blog` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `description` longtext NOT NULL,
   `date` varchar(80) NOT NULL,
@@ -51,7 +57,7 @@ CREATE TABLE `blog` (
   `slug` text NOT NULL,
   `img` varchar(225) NOT NULL,
   `status` int(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `blog`
@@ -66,11 +72,38 @@ INSERT INTO `blog` (`id`, `title`, `description`, `date`, `userid`, `slug`, `img
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bmp_ads`
+--
+
+CREATE TABLE `bmp_ads` (
+  `id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `date_created` date NOT NULL,
+  `type` tinyint(1) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bmp_ads`
+--
+
+INSERT INTO `bmp_ads` (`id`, `title`, `image`, `date_created`, `type`, `start_date`, `end_date`, `status`) VALUES
+(1, 'First ad', 'ad1.png', '2016-10-11', 1, '2016-10-11', '2016-10-18', 1),
+(2, 'Second ad', 'ad2.png', '2016-10-11', 1, '2016-10-15', '2016-10-14', 1),
+(3, 'Third ad', 'ad3.jpg', '2016-10-11', 1, '2016-10-15', '2016-10-14', 1),
+(4, 'Fourth ad', 'ad4.png', '2016-10-11', 1, '2016-10-15', '2016-10-14', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `bmp_dealers`
 --
 
 CREATE TABLE `bmp_dealers` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `productid` int(11) NOT NULL,
   `price` varchar(100) NOT NULL,
   `product_name` varchar(255) NOT NULL,
@@ -81,7 +114,7 @@ CREATE TABLE `bmp_dealers` (
   `country` text NOT NULL,
   `userid` int(11) NOT NULL,
   `recommended_by` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bmp_dealers`
@@ -104,7 +137,7 @@ INSERT INTO `bmp_dealers` (`id`, `productid`, `price`, `product_name`, `name`, `
 --
 
 CREATE TABLE `bmp_products` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `catid` int(111) NOT NULL,
   `subcatid` int(111) NOT NULL,
   `name` text NOT NULL,
@@ -116,7 +149,7 @@ CREATE TABLE `bmp_products` (
   `market` varchar(100) NOT NULL,
   `add_info` longtext NOT NULL,
   `img` varchar(40) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bmp_products`
@@ -145,7 +178,7 @@ INSERT INTO `bmp_products` (`id`, `catid`, `subcatid`, `name`, `price`, `descrip
 --
 
 CREATE TABLE `bmp_users` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
@@ -159,7 +192,7 @@ CREATE TABLE `bmp_users` (
   `phone` varchar(30) NOT NULL,
   `date` varchar(100) NOT NULL,
   `lastlogin` date NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bmp_users`
@@ -178,10 +211,10 @@ INSERT INTO `bmp_users` (`id`, `fname`, `lname`, `email`, `pwdd`, `gender`, `add
 --
 
 CREATE TABLE `bmp_wishlists` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `productid` int(11) NOT NULL,
   `userid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -190,10 +223,10 @@ CREATE TABLE `bmp_wishlists` (
 --
 
 CREATE TABLE `category` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` mediumtext NOT NULL,
   `description` longtext NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
@@ -220,10 +253,10 @@ INSERT INTO `category` (`id`, `name`, `description`) VALUES
 --
 
 CREATE TABLE `email` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `type` varchar(255) NOT NULL,
   `email` longtext NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `email`
@@ -240,10 +273,10 @@ INSERT INTO `email` (`id`, `type`, `email`) VALUES
 --
 
 CREATE TABLE `locals` (
-`local_id` int(11) NOT NULL,
+  `local_id` int(11) NOT NULL,
   `state_id` int(11) NOT NULL,
   `local_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -252,10 +285,10 @@ CREATE TABLE `locals` (
 --
 
 CREATE TABLE `newsletter` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `date` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `newsletter`
@@ -275,7 +308,7 @@ INSERT INTO `newsletter` (`id`, `email`, `date`) VALUES
 --
 
 CREATE TABLE `premium-products` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `product_name` text NOT NULL,
   `price` varchar(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
@@ -287,7 +320,7 @@ CREATE TABLE `premium-products` (
   `end-date` varchar(100) NOT NULL,
   `userid` int(11) NOT NULL,
   `catid` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `premium-products`
@@ -304,9 +337,9 @@ INSERT INTO `premium-products` (`id`, `product_name`, `price`, `phone`, `email`,
 --
 
 CREATE TABLE `recover_pass` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `pass` varchar(50) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `recover_pass`
@@ -322,14 +355,14 @@ INSERT INTO `recover_pass` (`id`, `pass`) VALUES
 --
 
 CREATE TABLE `requisition` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `productid` int(11) NOT NULL,
   `price` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `total` varchar(100) NOT NULL,
   `phone` varchar(30) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `requisition`
@@ -349,9 +382,9 @@ INSERT INTO `requisition` (`id`, `userid`, `productid`, `price`, `email`, `total
 --
 
 CREATE TABLE `states` (
-`state_id` int(11) NOT NULL,
+  `state_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `states`
@@ -403,11 +436,11 @@ INSERT INTO `states` (`state_id`, `name`) VALUES
 --
 
 CREATE TABLE `sub_category` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `catid` int(111) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` longtext NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sub_category`
@@ -428,14 +461,14 @@ INSERT INTO `sub_category` (`id`, `catid`, `name`, `description`) VALUES
 --
 
 CREATE TABLE `tradesman` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `address` longtext NOT NULL,
   `phone` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
   `jobType` varchar(255) NOT NULL,
   `state` varchar(30) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tradesman`
@@ -456,97 +489,103 @@ INSERT INTO `tradesman` (`id`, `name`, `address`, `phone`, `email`, `jobType`, `
 -- Indexes for table `bdc`
 --
 ALTER TABLE `bdc`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `blog`
 --
 ALTER TABLE `blog`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bmp_ads`
+--
+ALTER TABLE `bmp_ads`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `bmp_dealers`
 --
 ALTER TABLE `bmp_dealers`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `bmp_products`
 --
 ALTER TABLE `bmp_products`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `bmp_users`
 --
 ALTER TABLE `bmp_users`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `bmp_wishlists`
 --
 ALTER TABLE `bmp_wishlists`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `email`
 --
 ALTER TABLE `email`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `locals`
 --
 ALTER TABLE `locals`
- ADD PRIMARY KEY (`local_id`);
+  ADD PRIMARY KEY (`local_id`);
 
 --
 -- Indexes for table `newsletter`
 --
 ALTER TABLE `newsletter`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `premium-products`
 --
 ALTER TABLE `premium-products`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `recover_pass`
 --
 ALTER TABLE `recover_pass`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `requisition`
 --
 ALTER TABLE `requisition`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `states`
 --
 ALTER TABLE `states`
- ADD PRIMARY KEY (`state_id`);
+  ADD PRIMARY KEY (`state_id`);
 
 --
 -- Indexes for table `sub_category`
 --
 ALTER TABLE `sub_category`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tradesman`
 --
 ALTER TABLE `tradesman`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -556,79 +595,87 @@ ALTER TABLE `tradesman`
 -- AUTO_INCREMENT for table `bdc`
 --
 ALTER TABLE `bdc`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `bmp_ads`
+--
+ALTER TABLE `bmp_ads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `bmp_dealers`
 --
 ALTER TABLE `bmp_dealers`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `bmp_products`
 --
 ALTER TABLE `bmp_products`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `bmp_users`
 --
 ALTER TABLE `bmp_users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `bmp_wishlists`
 --
 ALTER TABLE `bmp_wishlists`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `email`
 --
 ALTER TABLE `email`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `locals`
 --
 ALTER TABLE `locals`
-MODIFY `local_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `local_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `newsletter`
 --
 ALTER TABLE `newsletter`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `premium-products`
 --
 ALTER TABLE `premium-products`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `recover_pass`
 --
 ALTER TABLE `recover_pass`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `requisition`
 --
 ALTER TABLE `requisition`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `states`
 --
 ALTER TABLE `states`
-MODIFY `state_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+  MODIFY `state_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `sub_category`
 --
 ALTER TABLE `sub_category`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tradesman`
 --
 ALTER TABLE `tradesman`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
