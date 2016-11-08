@@ -13,4 +13,11 @@ class Mdl_home extends CI_Model {
 		return $result;
 	}
 
+  function getAds() {
+    $this->db->order_by('title', 'RANDOM');
+    $this->db->limit(2);
+    $result = $this->db->get('bmp_ads')->result();
+    return $result; 
+  }
+
 }

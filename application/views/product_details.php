@@ -44,7 +44,7 @@
                     <h3>Product Details</h3>
                     <p> <?php echo $product->overview; ?></p>
 
-                    <div class="prod-price">Guide Price: ₦ <?php echo $product->price; ?></div>
+                    <div class="prod-price">Guide Price: ₦<?php echo number_format($product->price); ?></div>
                     <p class="place">Last updated on <?php echo date("F j, Y"); ?>. Price is based on  <?php echo $product->market; ?>. </p>
                     <div class="bmp-related-wishlist">
                       <div class="bmp-wishlist-btn-container">
@@ -63,21 +63,21 @@
                       <h4>SHARE</h4>
                       <ul class="">
                       <li>
-                        <a href="http://www.facebook.com/share.php?u=<?php echo current_url(); ?>&title=<?php echo $product->name; ?>" target="_blank">
+                        <a href="http://www.facebook.com/share.php?u=<?php echo current_url(); ?>&title=<?php echo $product->name; ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Like Us On Facebook">
                           <img src="<?php echo base_url(); ?>img/fb.png" alt="" class="img-responsive soc" />
                         </a>
                       </li>
                       <li>
-                        <a href="http://twitter.com/intent/tweet?status=<?php echo $product->name; ?>+<?php echo current_url(); ?>" target="_blank"><img src="<?php echo base_url(); ?>img/tw.png" alt="" class="img-responsive soc"/>
+                        <a href="http://twitter.com/intent/tweet?status=<?php echo $product->name; ?>+<?php echo current_url(); ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Follow us on Twitter"><img src="<?php echo base_url(); ?>img/tw.png" alt="" class="img-responsive soc"/>
                         </a>
                       </li>
                       <li>
-                        <a href="http://pinterest.com/pin/create/bookmarklet/?url=<?php echo current_url(); ?>&is_video=false&description=<?php echo $product->name; ?>" target="_blank">
+                        <a href="http://pinterest.com/pin/create/bookmarklet/?url=<?php echo current_url(); ?>&is_video=false&description=<?php echo $product->name; ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Follow Us On Pinterest">
                         <img src="<?php echo base_url(); ?>img/pint.png" alt="" class="img-responsive soc"/>
                         </a>
                       </li>
                       <li>
-                        <a href="https://plus.google.com/share?url=<?php echo current_url(); ?>" target="_blank">
+                        <a href="https://plus.google.com/share?url=<?php echo current_url(); ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Follow Us On Google Plus">
                           <img src="<?php echo base_url(); ?>img/gplus.png" alt="" class="img-responsive soc"/>
                         </a>
                       </li>
@@ -133,10 +133,16 @@
                   <div class="col-sm-5">
                     <div class="block-one">
                       <?php if(!$dealers1) { ?>
-                      <p>No dealer found for this product</p>
-                      <a href="#"> 
-                        <button class="btn btn-primary">Recommend a dealer now</button>
-                       </a>
+                      <p>There is currently no recommended dealer for this product</p>
+
+                      <p>
+                         As a user, please click <a href="#" style="color:red; font-weigth:bolder">here </a>to recommend a dealer for this product.
+                       </p>
+                      
+                      <p>
+                         As a dealer, please click <a href="#" style="color:red; font-weigth:bolder">here </a>to recommend business for this product.
+                       </p>
+
                       <?php } foreach($dealers1 as $dealer) { ?>
                       <h3>dealer's details</h3>
                       <table>
@@ -175,13 +181,19 @@
                     <div class="line-divider"></div>
                   </div>
                   <div class="col-sm-5">
-                    <?php if(!$dealers2) { ?>
-                      <p>No dealer found for this product</p>
-                      <a href="#"> 
-                        <button class="btn btn-primary">Recommend a dealer now</button>
-                       </a>
-                  <?php } foreach($dealers2 as $dealer) { ?>
                     <div class="block-one">
+                      <?php if(!$dealers2) { ?>
+                      <p>There is currently no recommended dealer for this product</p>
+
+                      <p>
+                         As a user, please click <a href="#" style="color:red; font-weigth:bolder">here </a>to recommend a dealer for this product.
+                       </p>
+                      
+                      <p>
+                         As a dealer, please click <a href="#" style="color:red; font-weigth:bolder">here </a>to recommend business for this product.
+                       </p>
+
+                  <?php } foreach($dealers2 as $dealer) { ?>
                       <h3>dealer's details</h3>
                       <table>
                         <tbody>
@@ -212,8 +224,8 @@
                         <button class="review-btn">Review this dealer</button>
                        </a>
                       </div>
-                    </div>
                     <?php } ?>
+                  </div>
                 </div>
               </div>
               </div>
@@ -227,18 +239,29 @@
             </div>
             <div class="prod-recommended-container hidden-xs">
               <div id="home" class="description fade in active">
-                <p> <?php echo $product->description; ?></p>
+                <p> <?php echo $product->description; ?> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
               </div>
-              <div id="additional" class="description fade">
-                
-                <div style="margin-top:-150px;">
+              <div id="additional" class="description fade" style="position:relative; top:-210px">
                   <h3>Additional Information</h3>
                   <p> <?php echo $product->add_info; ?></p>
-                 </div>
               </div>
-              <div id="review" class="description fade">
-                <h3>Review</h3>
-                <p style="margin-top:-150px">Some content in Review</p>
+              <div id="review" class="description fade" style="margin-top:-250px">
+                <!--<h4>Review</h4>-->
+                <p style="top:-120px; position:relative;">
+                  Some content in Review <br />
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+                </p>
               </div>
             </div>
             <!-- Mobile Vieport Product Description-->
@@ -250,7 +273,7 @@
                   </h4>
                 </div>
                     <div id="description" class="panel-collapse collapse in">
-                  <div class="panel-body"><?php echo $product->description; ?></div>
+                  <div class="panel-body"><?php echo $product->description; ?> lorem</div>
                 </div>
               </div>
               <div class="panel panel-default">
@@ -348,7 +371,12 @@
                     </div>
                   </div>
                   <div class="col-sm-1">
+                    <?php 
+                       if($this->session->userdata('isLoggedin')== false) { ?>
                     <div class="line-divider2"></div>
+                    <?php } else { ?>
+                    <div class="line-divider3"></div>
+                    <?php } ?>
                   </div>
                   <div class="col-sm-5">
                   <div class="block-one">
@@ -554,7 +582,7 @@
             </div>
             <!--end of mobile vieport Recommending Dealers-->
 
-            </div>
+            </div><br />
               <!--Frequently checked products-->
             <div class="prod-recommended">
               <div class="bmp-product-tabs">

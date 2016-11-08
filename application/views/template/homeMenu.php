@@ -36,7 +36,7 @@
       <div class="bmp-intro">
         <div class="row">
          <div class="">
-          <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-9 col-sm-9 col-xs-12">
             <ul>
               <li><i class="glyphicon glyphicon-user"></i> Hi, 
                <?php 
@@ -47,11 +47,32 @@
              </li>
               <li class="hidden-xs"> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
-            <li align="left" class="hidden-xs"><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
+            <li align="left" class="hidden-xs"><a href="<?php echo base_url(); ?>business-directory">Business Directory</a></li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>products/list-your-products">List Your Products</a></li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>pages/looking-for-a-tradesman">Looking for a Tradesman?</a></li>
             </ul>
           </div>
+          <a href="<?php echo base_url(); ?>pages/exchange-rate">
+        <div class="col-sm-3 header-bdc table-responsive">
+          <table>
+            <tr>
+              <th></th>
+              <th>USD/NGN</th>
+              <th>GBP/NGN</th>
+            </tr>
+            <tr>
+              <td>OFFICIAL</td>
+              <td>300 / 250</td>
+              <td>530 / 550</td>
+            </tr>
+            <tr>
+              <td>LAGOS BDC</td>
+              <td>300 / 250</td>
+              <td>530 / 550</td>
+            </tr>
+          </table>
+        </div>
+      </a>
          </div>
         </div> 
       </div>

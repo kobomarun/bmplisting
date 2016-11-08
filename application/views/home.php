@@ -32,8 +32,12 @@
                     <img src="<?php echo base_url(); ?>img/<?php echo $row1->img; ?>" class="img-responsive" style="height:135px"/>
                   </a>
                   <div class="bmp-prod-cat"><?php echo $row1->category_name; ?></div>
-                  <div class="bmp-prod-name"><?php echo $row1->product_name; ?></div>
-                  <div class="bmp-prod-price">Guide Price: <?php echo $row1->price; ?></div>
+                  <div class="bmp-prod-name">
+                    <a href="<?php echo base_url() . "products/details/". $row1->product_id.'/'.url_title($row1->product_name); ?>">
+                    <?php echo $row1->product_name; ?>
+                  </a>
+                  </div>
+                  <div class="bmp-prod-price">Guide Price: ₦<?php echo number_format($row1->price); ?></div>
                   <div class="bmp-wishlist-btn-container">
                   <!-- <a href="<?php //echo base_url(); ?>wishlist/add/<?php echo $row1->product_id; ?>"> -->
                   <a onclick="addtowishlist(<?php echo $row1->product_id; ?>)">
@@ -41,14 +45,18 @@
                   </a>
                   </div>
                 </div>
+                <?php } ?>
+             </div>
+              <?php foreach($getads as $ads ) { ?>
+                <div class="col-sm-6 col-xs-11"> 
+                <div class="home-ads">
+                  <img src="<?php echo base_url(); ?>img/<?php echo $ads->image; ?>" alt="" class="img">
+                </div>
+              </div>
               <?php } ?>
-        </div>
     <?php } ?>
         <div class="bmp-clients">
           <img src="<?php echo base_url(); ?>img/clients.png" alt="" width="700" class="img-responsive">
-        </div>
-        <div class="back-to-top">
-          <a  onClick="window.scrollTo(0,0);"><i class="glyphicon glyphicon-triangle-top"></i></a>
         </div>
       </div>
     </div>

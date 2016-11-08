@@ -30,28 +30,28 @@
                   </div>
                 </div>
               </div>
-            <div class="listing">
+              <div class="listing">
               <?php 
                       if($categories!=null){
                         foreach($categories as $cat) { 
                ?>
-                 <div class="col-sm-3 col-xs-6 bmp-home-listing">
-                  <a href="<?php echo base_url() . "products/details/". $cat->id.'/'.url_title($cat->name); ?>">
-                    <img src="<?php echo base_url(); ?>img/<?php echo $cat->img; ?>" class="img-responsive" style="height:135px"/>
-                  </a>
-                  <div class="bmp-prod-cat"><?php echo $this->db->get_where('sub_category',array('id'=>$cat->subcatid))->row()->name; ?></div>
-                  <div class="bmp-prod-name">
-                  <a href="<?php echo base_url() . "products/details/". $cat->id.'/'.url_title($cat->name); ?>">
-                    <?php echo $cat->name; ?>
-                  </a>
-                  </div>
-                  <div class="bmp-prod-price">Guide Price: ₦<?php echo number_format($cat->price); ?></div>
-                  <div class="bmp-wishlist-btn-container">
-                  <a onclick="addtowishlist(<?php echo $cat->id; ?>)">
-                    <button class="bmp-wishlist-btn" onclick="swal({   title: 'Requisition Added', timer: 700,   showConfirmButton: false });">ADD TO REQUISITION</button>
-                  </a>
-                  </div>
+              <div class="col-sm-3 col-xs-6 bmp-home-listing">
+                <a href="<?php echo base_url() . "products/details/". $cat->id.'/'.url_title($cat->name); ?>">
+                  <img src="<?php echo base_url(); ?>img/<?php echo $cat->img; ?>" class="img-responsive" style="height:135px"/>
+                </a>
+                <div class="bmp-prod-cat"><?php echo $this->db->get_where('sub_category',array('id'=>$cat->subcatid))->row()->name; ?></div>
+                <div class="bmp-prod-name">
+                 <a href="<?php echo base_url() . "products/details/". $cat->id.'/'.url_title($cat->name); ?>">
+                  <?php echo $cat->name; ?>
+                </a>
                 </div>
+                <div class="bmp-prod-price">Guide Price: ₦<?php echo number_format($cat->price); ?></div>
+                <div class="bmp-wishlist-btn-container">
+                <a onclick="addtowishlist(<?php echo $cat->id; ?>)">
+                  <button class="bmp-wishlist-btn" onclick="swal({   title: 'Requisition Added', timer: 700,   showConfirmButton: false });">ADD TO REQUISITION</button>
+                </a>
+                </div>
+              </div>
               <?php } } ?>
             </div>
           </div>

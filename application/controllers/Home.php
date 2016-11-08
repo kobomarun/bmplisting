@@ -12,6 +12,7 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$data['categories'] = $this->mdl_home->get_categories();
+    $data['getads'] = $this->mdl_home->getAds();
 		$this->load->view('home.php',$data);
 	}
 

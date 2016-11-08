@@ -34,6 +34,7 @@
       $this->db->order_by("name", "asc");
       $query =  $this->db->get('category')->result();
     ?>
+    <div class="row container-fluid">
   <div class="bmplisting">
     <div class="row">
       <div class="container-fluid">
@@ -106,7 +107,7 @@
             <div class="bmp-menu hidden-xs">
               <ul>
                 <li><a href="<?php echo base_url();?>dealers/are-you-a-dealer">Are you a Dealer? </a></li>
-                <li><a href="<?php echo base_url();?>pages/business-directory">|&nbsp; Business Directory </a></li>
+                <li><a href="<?php echo base_url();?>pages/price-tracker">|&nbsp; Price Tracker </a></li>
                 <li><a href="<?php echo base_url();?>pages/exchange-rate">|&nbsp; Exchange Rates </a></li>
                 <li><a href="<?php echo base_url();?>requisition">|&nbsp; Your Requisition (<?php  echo count($this->cart->contents()); ?>)</a></li>
                 <li><a href="<?php echo base_url();?>diy/do-it-yourself">|&nbsp; DIY </a></li>
@@ -116,24 +117,20 @@
             </div>
           </div>
           <?php 
-                $this->db->select('image');
-                $this->db->from('bmp_ads');
-                $this->db->where('type',1);
-                $this->db->limit(1);
-                $this->db->order_by('id','ASC');
-                $this->db->order_by('rand()');
-                $result = $this->db->get()->first_row();
-                $image = $result->image;
+            $this->db->select('image');
+            $this->db->from('bmp_ads');
+            $this->db->where('type',1);
+            $this->db->limit(1);
+            $this->db->order_by('title', 'RANDOM');
+           // $this->db->order_by('rand()');
+            $result = $this->db->get()->first_row();
+            $image = $result->image;
           ?>          
           <div class="col-md-3 col-sm-3 hidden-xs">
-            <?php 
-                /*if($result!=null){
-                    foreach($result as $row){*/
-            ?>
+           
             <div class="bmp-header-right">
-              <!-- <img src="<?php //echo base_url(); ?>img/<?php echo $image; ?>" class="img-responsive"/> -->
+               <img src="<?php echo base_url(); ?>img/<?php echo $image; ?>" class="img-responsive"/>
             </div>
-            <?php //} } ?>
              <?php 
                 if(!$this->session->userdata('isLoggedin')) {
                ?>
@@ -169,14 +166,15 @@
     <div class="bmp-intro">
       <div class="row">
        <div class="">
-        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-9 col-sm-9 col-xs-12">
           <ul>
             <li><i class="glyphicon glyphicon-user"></i> Hi, 
                <?php 
                 if($this->session->userdata('isLoggedin')) {
-                 echo strtoupper($this->session->userdata('fname')); 
-               } else echo strtoupper("guest" );
-               ?> <span class="visible-xs">
+                 echo $this->session->userdata('fname'); 
+               } else echo "Guest" ;
+               ?>
+               <span class="visible-xs">
                <?php 
                 if($this->session->userdata('isLoggedin')) { ?>
                <a href="<?php echo base_url(); ?>user">My Profile</a> 
@@ -191,11 +189,32 @@
              </li>
             <li class="hidden-xs"> <img src="<?php echo base_url(); ?>img/line.png" alt=""> </li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>calculator">Building Calculator</a></li>
-            <li align="left" class="hidden-xs"><a href="<?php echo base_url(); ?>">&nbsp;&nbsp;Price Tracker</a></li>
+            <li align="left" class="hidden-xs"><a href="<?php echo base_url(); ?>">Business Directory</a></li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>products/list-your-products">List Your Products</a></li>
             <li class="hidden-xs"><a href="<?php echo base_url(); ?>pages/looking-for-a-tradesman">Looking for a Tradesman?</a></li>
           </ul>
         </div>
+        <a href="<?php echo base_url(); ?>pages/exchange-rate">
+        <div class="col-sm-3 header-bdc table-responsive">
+          <table>
+            <tr>
+              <th></th>
+              <th>USD/NGN</th>
+              <th>GBP/NGN</th>
+            </tr>
+            <tr>
+              <td>OFFICIAL</td>
+              <td>300 / 250</td>
+              <td>530 / 550</td>
+            </tr>
+            <tr>
+              <td>LAGOS BDC</td>
+              <td>300 / 250</td>
+              <td>530 / 550</td>
+            </tr>
+          </table>
+        </div>
+      </a>
        </div>
       </div> 
     </div>
