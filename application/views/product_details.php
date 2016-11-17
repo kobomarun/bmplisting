@@ -101,12 +101,150 @@
              ?>
               <div class="col-sm-6 col-xs-11"> 
                 <div class="prod-ads">
-                  <img src="<?php echo base_url(); ?>img/<?php echo $row->image; ?>" alt="" class="img">
+                  <img src="<?php echo base_url(); ?>img/<?php echo $row->image; ?>" alt="" class="img" width="430">
                 </div>
               </div>
               <?php } } ?>
             </div>
             <!--end of ads-->
+
+            <!-- Prices in Other States-->
+             <?php 
+             $noprice ='';
+
+             foreach($states as $state) {
+                            $query = $this->db->get_where('state_price',array('productid'=>$product->id, 'stateid'=>
+              $state->state_id))->result();
+              foreach($query as $new) {
+                if(!empty($new->price)) {
+                $noprice = $new->price;
+                }
+                }
+              }           
+              if($noprice == '') {
+                  echo "";
+                }
+                else {
+              ?>
+            <div class="prod-recommended">
+              <div class="bmp-product-tabs">
+                <ul>
+                  <li class="tab-header">
+                    <a style="color:red; float:left">Prices in Other States Capital </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="prod-recommended-container">
+                <br />
+                <div class="row"> 
+                     <?php foreach($states as $state) { ?>
+                  <div class="col-sm-3 col-xs-6 ">
+                    <p>
+                      <?php echo $state->name; ?><small style="color:red;">₦<?php 
+                    $query = $this->db->get_where('state_price',array('productid'=>$product->id, 'stateid'=>
+                    $state->state_id))->result();
+                    foreach($query as $new) {
+                      if(!$new->stateid == NULL) {
+                        echo number_format($new->price);
+                      }
+                    }
+                    ?></small>
+                    </p>
+                  </div>  
+                  <?php } ?>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+          <br />
+            <!-- End of Prices in other states-->
+
+            <!-- Price in your Area -->
+            
+              <div class="prod-recommended">
+              <div class="bmp-product-tabs">
+                <ul>
+                  <li class="tab-header">
+                    <a style="color:red; float:left">Kindly tell us the price of this item in your area</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="prod-recommended-container">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div style="margin-top:15px;">
+                      <p>
+                      If you have bought this item recently in your area and you believed the price you paid for it is good, why not share this information with others living in the same area as you by filling the short form below. You can tell them the price and the place you bought it.
+                    </p>
+                    </div>
+                    <div class="bmp-other-price">
+                    <form class="form-horizontal">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">State Where You Bought It.</label>
+                          <div class="col-sm-4"> 
+                              <select class="form-control" id="sel1" name="state">
+                                <?php foreach($states as $state) { ?>
+                                <option value="<?php echo $state->name; ?>"><?php echo $state->name; ?></option>
+                                <?php } ?>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Local Goverment:</label>
+                          <div class="col-sm-4"> 
+                              <select class="form-control" id="sel1" name="state">
+                                <?php foreach($states as $state) { ?>
+                                <option value="<?php echo $state->name; ?>"><?php echo $state->name; ?></option>
+                                <?php } ?>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Seller's Name</label>
+                          <div class="col-sm-4">
+                            <input type="text" name="sname" class="form-control" value="" required />
+                          </div>
+                      </div>
+                    </div>
+
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="control-label col-sm-4">Cost of Item:</label>
+                          <div class="col-sm-4">
+                            <input type="text" name="cost" class="form-control" value="" required />
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="control-label col-sm-4">Seller's Phone Number:</label>
+                          <div class="col-sm-4">
+                            <input type="text" name="phone" class="form-control" value="" required />
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                          <label class="control-label col-sm-2">Name of Market (If any):</label>
+                          <div class="col-sm-4">
+                            <input type="text" name="phone" class="form-control" value="" required />
+                          </div>
+                      </div>
+                      <div class="form-group"> 
+                          <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" class="btn review-btn" value="Submit" />
+                          </div>
+                        </div>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <!--End of prices in your area -->
+
 
             <div class="prod-recommended">
               <div class="bmp-product-tabs">

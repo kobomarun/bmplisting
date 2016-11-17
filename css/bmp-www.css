@@ -671,6 +671,29 @@ footer .terms li a:hover{
   z-index: 999;
 }
 
+.bmp-other-price {
+  margin-left: -5px;
+}
+
+.bmp-other-price input[type="text"] {
+  width: 220px;
+}
+
+.bmp-other-price input[type="submit"] {
+  position: relative;
+  top: 2px;
+}
+
+.bmp-other-price select {
+  width: 220px;
+}
+
+.bmp-other-price .form-horizontal .control-label {
+  text-align: left;
+  color: #f23534;
+  font-size: 13px;
+}
+
 .bmp-show-num {
   padding: 10px;
   margin-top: 0px;
